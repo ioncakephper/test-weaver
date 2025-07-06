@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A robust starter template for modern Node.js development, pre-configured with Jest for testing, ESLint for linting, and Prettier for code formatting.",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "test": "jest --coverage --passWithNoTests",
