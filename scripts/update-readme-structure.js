@@ -83,19 +83,35 @@ function generateTree(dir, prefix = '') {
 const projectTree = `.\n${generateTree(ROOT_DIR)}`;
 const readmeContent = fs.readFileSync(README_PATH, 'utf8');
 
-const regex = /(## 📁 Project Structure\n\n```plaintext\n)[\s\S]*?(\n```)/m;
+const START_MARKER = '<!-- START PROJECT STRUCTURE -->';
+const END_MARKER = '<!-- END PROJECT STRUCTURE -->';
 
-const newReadmeContent = readmeContent.replace(
-  regex,
-  `$1${projectTree.trim()}\n$2`,
-);
+const regex = new RegExp(`(${START_MARKER})[\\s\\S]*?(${END_MARKER})`, 'm');
 
-if (readmeContent === newReadmeContent) {
+// First, check if the markers exist at all.
+if (!regex.test(readmeContent)) {
   console.error(
-    '❌ Error: Could not find the "Project Structure" section in README.md.',
+    `❌ Error: Could not find project structure markers in README.md.\nEnsure you have "${START_MARKER}" and "${END_MARKER}".`,
   );
   process.exit(1);
 }
 
-fs.writeFileSync(README_PATH, newReadmeContent, 'utf8');
-console.log('✅ Successfully updated the Project Structure in README.md');
+const newContent = `
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN \`npm run docs:structure\` TO UPDATE -->
+
+\`\`\`plaintext
+${projectTree.trim()}
+\`\`\`
+`;
+const newReadmeContent = readmeContent.replace(regex, `$1${newContent}$2`);
+
+// Check if the content actually changed.
+if (
+  readmeContent.replace(/\r\n/g, '\n') ===
+  newReadmeContent.replace(/\r\n/g, '\n')
+) {
+  console.log('✅ Project structure in README.md is already up-to-date.');
+} else {
+  fs.writeFileSync(README_PATH, newReadmeContent, 'utf8');
+  console.log('✅ Successfully updated the project structure in README.md');
+}

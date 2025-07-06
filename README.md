@@ -1,10 +1,6 @@
 # JS Starter Template
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
-[![Build Status](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/ioncakephper/js-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/js-starter)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/js-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/js-starter) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A robust starter template for modern Node.js development, pre-configured with Jest for testing, ESLint for linting, and Prettier for code formatting.
 
@@ -18,6 +14,25 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Formatting with Prettier**: Integrated with Prettier for consistent, automatic code formatting.
 - **Markdown Support**: Lints and formats your `.md` files to keep your documentation clean.
 - **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and `.eslintignore`.
+- **Automated Project Structure**: Includes a script to automatically generate an accurate project structure diagram in the `README.md`.
+- **Automated Table of Contents**: Uses `doctoc` to generate and maintain a Table of Contents in the `README.md`.
+
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [🚀 Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [📜 Available Scripts](#-available-scripts)
+- [📁 Project Structure](#-project-structure)
+- [🤝 Contributing](#-contributing)
+- [⚖️ Code of Conduct](#-code-of-conduct)
+- [🙏 Acknowledgements](#-acknowledgements)
+- [📄 License](#-license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 🚀 Getting Started
 
@@ -62,7 +77,13 @@ This project includes a set of useful scripts to streamline your development wor
 - `npm run docs:structure`
   - Updates the project structure section in the README file to reflect the current state of the project
 
+- `npm run toc`
+  - Generates or updates the Table of Contents in the `README.md` file. `
+
 ## 📁 Project Structure
+
+<!-- START PROJECT STRUCTURE -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN `npm run docs:structure` TO UPDATE -->
 
 ```plaintext
 .
@@ -82,8 +103,9 @@ This project includes a set of useful scripts to streamline your development wor
 ├── LICENSE            # Project license
 ├── package.json       # Project metadata and dependencies
 └── README.md          # This file
-
 ```
+
+<!-- END PROJECT STRUCTURE -->
 
 ## 🤝 Contributing
 
