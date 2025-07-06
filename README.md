@@ -12,7 +12,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## ✨ Key Features
 
-- **Modern JavaScript**: Uses ES Modules (`import`/`export`) for a clean and modern codebase.
+- **Standard JavaScript**: Uses CommonJS (`require`/`module.exports`), the standard for many Node.js projects.
 - **Testing with Jest**: Comes with Jest set up for unit and integration testing.
 - **Linting with ESLint**: Includes a strict ESLint configuration to catch errors and enforce coding standards.
 - **Formatting with Prettier**: Integrated with Prettier for consistent, automatic code formatting.
@@ -59,19 +59,30 @@ This project includes a set of useful scripts to streamline your development wor
 - `npm run fix`
   - Automatically formats all files and fixes all auto-fixable linting issues. Run this before committing your changes.
 
+- `npm run docs:structure`
+  - Updates the project structure section in the README file to reflect the current state of the project
+
 ## 📁 Project Structure
 
 ```plaintext
 .
-├── src/
-│   └── index.js      # Main application entry point
-├── .eslintignore
-├── .eslintrc.json
-├── .gitignore
-├── .prettierignore
-├── .prettierrc.json
-├── package.json
-└── README.md
+├── .github/           # GitHub Actions workflows
+│   └── workflows/
+│       └── ci.yml # Continuous Integration (CI) workflow
+├── src/               # Source code
+│   └── index.js # Main application entry point
+├── .eslintignore      # Files/folders for ESLint to ignore
+├── .eslintrc.json     # ESLint configuration
+├── .gitignore         # Files/folders for Git to ignore
+├── .prettierignore    # Files/folders for Prettier to ignore
+├── .prettierrc.json   # Prettier configuration
+├── CODE_OF_CONDUCT.md # Community standards
+├── CONTRIBUTING.md    # Guidelines for contributors
+├── jest.config.mjs
+├── LICENSE            # Project license
+├── package.json       # Project metadata and dependencies
+└── README.md          # This file
+
 ```
 
 ## 🤝 Contributing
