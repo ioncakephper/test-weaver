@@ -6,12 +6,12 @@ A robust starter template for modern Node.js development, pre-configured with Je
 
 This project provides a solid foundation for building high-quality JavaScript applications, ensuring code consistency and best practices from the start.
 
-## 📚 Table of Contents
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## 📚 Table of Contents
 
-- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -19,7 +19,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [📜 Available Scripts](#-available-scripts)
 - [📁 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
-- [⚖️ Code of Conduct](#️-code-of-conduct)
+- [⚖️ Code of Conduct](#-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 

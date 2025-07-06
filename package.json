@@ -11,7 +11,7 @@
     "lint:fix": "eslint \"**/*.{js,md}\" --fix",
     "format": "prettier --write \"**/*.{js,md,json}\"",
     "docs:structure": "node scripts/update-readme-structure.js",
-    "toc": "doctoc --notitle README.md",
+    "toc": "doctoc --title \"## 📚 Table of Contents\" README.md",
     "check": "npm run lint",
     "fix": "npm run format && npm run lint:fix"
   },
