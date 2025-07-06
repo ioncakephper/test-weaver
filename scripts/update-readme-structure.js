@@ -35,6 +35,12 @@ const FILE_DESCRIPTIONS = {
 };
 // --- End Configuration ---
 
+/**
+ * Generates a tree structure representation of the project directory.
+ * @param {*} dir - The directory to scan.
+ * @param {*} prefix - The prefix to use for each line (used for indentation).
+ * @returns {object} A string representing the directory tree.
+ */
 function generateTree(dir, prefix = '') {
   let entries;
   try {

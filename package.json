@@ -33,6 +33,29 @@
     "fix": "A convenience script that formats code and then fixes lint issues.",
     "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files."
   },
+  "scriptCategories": {
+    "Core Development": [
+      "start",
+      "test",
+      "test:watch"
+    ],
+    "Code Quality & Formatting": [
+      "check",
+      "fix",
+      "format",
+      "lint",
+      "lint:fix"
+    ],
+    "Automated Documentation": [
+      "docs:all",
+      "docs:scripts",
+      "docs:structure",
+      "toc"
+    ],
+    "The \"One-Click\" Pre-Commit Workflow": [
+      "ready"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ioncakephper/js-starter.git"
@@ -52,6 +75,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "doctoc": "^2.2.1",
+    "eslint-plugin-jsdoc": "^48.2.3",
     "eslint-plugin-markdown": "^4.0.1",
     "jest": "^29.7.0",
     "prettier": "^3.2.5"

@@ -16,7 +16,13 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [🚀 Available Scripts](#-available-scripts)
+- [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
+  - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
+  - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
 - [📁 Project Structure](#-project-structure)
+- [✍️ Linting for Documentation](#-linting-for-documentation)
+  - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
+  - [Example](#example)
 - [🤝 Contributing](#-contributing)
 - [⚖️ Code of Conduct](#-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
@@ -26,14 +32,12 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## ✨ Key Features
 
-- **Standard JavaScript**: Uses CommonJS (`require`/`module.exports`), the standard for many Node.js projects.
-- **Testing with Jest**: Comes with Jest set up for unit and integration testing.
-- **Linting with ESLint**: Includes a strict ESLint configuration to catch errors and enforce coding standards.
-- **Formatting with Prettier**: Integrated with Prettier for consistent, automatic code formatting.
-- **Markdown Support**: Lints and formats your `.md` files to keep your documentation clean.
-- **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and `.eslintignore`.
-- **Automated Project Structure**: Includes a script to automatically generate an accurate project structure diagram in the `README.md`.
-- **Automated Table of Contents**: Uses `doctoc` to generate and maintain a Table of Contents in the `README.md`.
+- **Testing with Jest**: A complete testing framework for unit and integration tests, with coverage reports enabled.
+- **Linting with ESLint & Prettier**: A strict, pre-configured setup to catch errors, enforce best practices, and maintain a consistent code style across all files (`.js`, `.md`, `.json`).
+- **JSDoc Enforcement**: Integrated `eslint-plugin-jsdoc` to ensure all functions are documented, improving code clarity and maintainability from the start.
+- **Always-Accurate Documentation**: Custom scripts (`npm run docs:all`) automatically generate the project structure, a table of contents, and a list of available scripts. This prevents documentation drift and saves hours of tedious manual updates.
+- **Commit-Ready with One Command**: A single `npm run ready` command formats, lints, and updates all documentation, ensuring every commit is clean, consistent, and professional.
+- **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and a CI workflow for GitHub Actions.
 
 ## 🚀 Getting Started
 
@@ -52,26 +56,60 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## 🚀 Available Scripts
 
+This template includes a set of scripts designed to streamline development, enforce quality, and automate documentation.
+
 <!-- START AVAILABLE SCRIPTS -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->
 
-| Script | Description |
-| --- | --- |
-| `npm run check` | A convenience script that runs the linter. |
-| `npm run docs:all` | A convenience script that updates the table of contents, available scripts, and project structure in the README. |
-| `npm run docs:scripts` | Updates the "Available Scripts" section in `README.md` with this script. |
-| `npm run docs:structure` | Updates the project structure tree in `README.md`. |
-| `npm run fix` | A convenience script that formats code and then fixes lint issues. |
-| `npm run format` | Formats all JavaScript, Markdown, and JSON files with Prettier. |
-| `npm run lint` | Lints all JavaScript and Markdown files using ESLint. |
-| `npm run lint:fix` | Automatically fixes linting issues in all JavaScript and Markdown files. |
-| `npm run ready` | A convenience script to run before committing: updates all documentation and then formats and fixes all files. |
-| `npm run start` | Runs the application using `node src/index.js`. |
-| `npm run test` | Runs all tests with Jest and generates a coverage report. |
-| `npm run test:watch` | Runs Jest in watch mode, re-running tests on file changes. |
-| `npm run toc` | Generates a Table of Contents in `README.md` using `doctoc`. |
+### Automated Documentation
+
+- `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
+- `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
+- `npm run docs:structure`: Updates the project structure tree in `README.md`.
+- `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
+
+### Code Quality & Formatting
+
+- `npm run check`: A convenience script that runs the linter.
+- `npm run fix`: A convenience script that formats code and then fixes lint issues.
+- `npm run format`: Formats all JavaScript, Markdown, and JSON files with Prettier.
+- `npm run lint`: Lints all JavaScript and Markdown files using ESLint.
+- `npm run lint:fix`: Automatically fixes linting issues in all JavaScript and Markdown files.
+
+### Core Development
+
+- `npm run start`: Runs the application using `node src/index.js`.
+- `npm run test`: Runs all tests with Jest and generates a coverage report.
+- `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
+
+### The "One-Click" Pre-Commit Workflow
+
+- `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
 
 <!-- END AVAILABLE SCRIPTS -->
+
+## A Focus on Quality and Productivity
+
+This starter template is more than just a collection of files; it's a workflow designed to maximize developer productivity and enforce high-quality standards from day one. The core philosophy is to **automate the tedious and error-prone tasks** so you can focus on what matters: building great software.
+
+### The Cost of Stale Documentation
+
+In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. A stale README misleads new contributors and creates a perception of a poorly maintained project.
+
+`js-starter` solves this problem with its custom documentation scripts:
+
+- `scripts/update-readme-structure.js`: Saves you from manually drawing out file trees. What might take 5-10 minutes of careful, manual work (and is often forgotten) is now an instant, accurate, and repeatable command.
+- `scripts/update-readme-scripts.js`: Ensures that your project's capabilities are always documented. It reads directly from `package.json`, so the documentation can't lie. It even reminds you to describe your scripts, promoting good habits.
+
+### The Power of Workflow Scripts
+
+Chaining commands together is a simple but powerful concept. The `fix`, `docs:all`, and `ready` scripts are designed to create a seamless development experience.
+
+- Instead of remembering to run `prettier` then `eslint --fix`, you just run `npm run fix`.
+- Instead of running three separate documentation commands, you just run `npm run docs:all`.
+- And most importantly, before you commit, you run `npm run ready`. This single command is your pre-flight check. It guarantees that every commit you push is not only functional but also perfectly formatted, linted, and documented. This discipline saves countless hours in code review and prevents messy commit histories.
+
+By embracing this automation, `js-starter` helps you build better software, faster.
 
 ## 📁 Project Structure
 
@@ -101,6 +139,55 @@ This project provides a solid foundation for building high-quality JavaScript ap
 ```
 
 <!-- END PROJECT STRUCTURE -->
+
+## ✍️ Linting for Documentation
+
+This project uses the [`eslint-plugin-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc) package to enforce that all functions, classes, and methods are properly documented using JSDoc comments. This helps maintain a high level of code quality and makes the codebase easier for new and existing developers to understand.
+
+### How to Check for Missing Documentation
+
+You can check the entire project for missing or incomplete docblocks by running the standard linting command:
+
+```bash
+npm run lint
+```
+
+ESLint will scan your JavaScript files and report any undocumented code as a warning.
+
+### Example
+
+Consider the following function in your code without any documentation:
+
+```javascript
+function calculateArea(width, height) {
+  return width * height;
+}
+```
+
+When you run `npm run lint`, ESLint will produce a warning similar to this:
+
+```plaintext
+/path/to/your/project/src/your-file.js
+  1:1  warning  Missing JSDoc for function 'calculateArea'  jsdoc/require-jsdoc
+```
+
+To fix this, you would add a JSDoc block that describes the function, its parameters, and what it returns. Most modern code editors (like VS Code) can help by generating a skeleton for you if you type `/**` and press Enter above the function.
+
+**Corrected Code:**
+
+```javascript
+/**
+ * Calculates the area of a rectangle.
+ * @param {number} width The width of the rectangle.
+ * @param {number} height The height of the rectangle.
+ * @returns {number} The calculated area.
+ */
+function calculateArea(width, height) {
+  return width * height;
+}
+```
+
+After adding the docblock, running `npm run lint` again will no longer show the warning for this function.
 
 ## 🤝 Contributing
 

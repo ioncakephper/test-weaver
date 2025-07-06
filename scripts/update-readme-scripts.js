@@ -2,30 +2,63 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Generates a Markdown table from the scripts in package.json.
+ * Generates Markdown content for the available scripts section.
  * @param {object} scripts - The scripts object from package.json.
  * @param {object} scriptDescriptions - The script descriptions object from package.json.
- * @returns {string} A Markdown formatted table.
+ * @param {object} scriptCategories - The script categories object from package.json.
+ * @returns {string} A Markdown formatted string of script categories and their scripts.
  */
-function generateScriptsTable(scripts, scriptDescriptions = {}) {
-  let table = '| Script | Description |\n';
-  table += '|--------|-------------|\n';
+function generateScriptsContent(
+  scripts,
+  scriptDescriptions = {},
+  scriptCategories = {},
+) {
+  let content = '';
+  const allCategorizedScripts = new Set();
 
-  const sortedScriptNames = Object.keys(scripts).sort();
+  // Sort categories by name for consistent order
+  const sortedCategories = Object.keys(scriptCategories).sort((a, b) =>
+    a.localeCompare(b),
+  );
 
-  for (const scriptName of sortedScriptNames) {
-    const description = scriptDescriptions[scriptName];
-    if (!description) {
+  for (const categoryName of sortedCategories) {
+    content += `### ${categoryName}\n`;
+    const scriptsInCategory = scriptCategories[categoryName].sort();
+
+    for (const scriptName of scriptsInCategory) {
+      if (!scripts[scriptName]) {
+        console.warn(
+          `⚠️  Warning: Script '${scriptName}' in category '${categoryName}' does not exist in package.json scripts.`,
+        );
+        continue;
+      }
+      allCategorizedScripts.add(scriptName);
+      const description = scriptDescriptions[scriptName];
+      if (!description) {
+        console.warn(
+          `⚠️  Warning: Script '${scriptName}' is missing a description in package.json.`,
+        );
+      }
+      content += `*   \`npm run ${scriptName}\`: ${description || 'No description available.'}\n`;
+    }
+    content += '\n';
+  }
+
+  // Check for any script that exists but has not been categorized
+  Object.keys(scripts).forEach((scriptName) => {
+    if (!allCategorizedScripts.has(scriptName)) {
       console.warn(
-        `⚠️  Warning: Script '${scriptName}' is missing a description in package.json.`,
+        `⚠️  Warning: Script '${scriptName}' is not assigned to any category in package.json.`,
       );
     }
-    // Use the found description or fall back to the default text for the table.
-    table += `| \`npm run ${scriptName}\` | ${description || 'No description available.'} |\n`;
-  }
-  return table;
+  });
+
+  return content.trim();
 }
 
+/**
+ *
+ */
 function main() {
   try {
     const packageJsonPath = path.resolve(__dirname, '..', 'package.json');
@@ -34,9 +67,10 @@ function main() {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     const readmeContent = fs.readFileSync(readmePath, 'utf8');
 
-    const scriptsTable = generateScriptsTable(
+    const scriptsContent = generateScriptsContent(
       packageJson.scripts,
       packageJson.scriptDescriptions,
+      packageJson.scriptCategories,
     );
 
     const startMarker = '<!-- START AVAILABLE SCRIPTS -->';
@@ -59,9 +93,9 @@ function main() {
     );
     const contentAfter = readmeContent.substring(endIndex);
 
-    const doNotEditComment = `\n<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->\n`;
+    const doNotEditComment = `\n<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->\n\n`;
 
-    const newReadmeContent = `${contentBefore}${doNotEditComment}\n${scriptsTable}\n${contentAfter}`;
+    const newReadmeContent = `${contentBefore}${doNotEditComment}${scriptsContent}\n\n${contentAfter}`;
     fs.writeFileSync(readmePath, newReadmeContent, 'utf8');
     console.log(
       '✅ Successfully updated the Available Scripts section in README.md',
