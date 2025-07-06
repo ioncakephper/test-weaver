@@ -11,9 +11,23 @@
     "lint:fix": "eslint \"**/*.{js,md}\" --fix",
     "format": "prettier --write \"**/*.{js,md,json}\"",
     "docs:structure": "node scripts/update-readme-structure.js",
+    "docs:scripts": "node scripts/update-readme-scripts.js",
     "toc": "doctoc --title \"## 📚 Table of Contents\" README.md",
     "check": "npm run lint",
     "fix": "npm run format && npm run lint:fix"
+  },
+  "scriptDescriptions": {
+    "start": "Runs the application using `node src/index.js`.",
+    "test": "Runs all tests with Jest and generates a coverage report.",
+    "test:watch": "Runs Jest in watch mode, re-running tests on file changes.",
+    "lint": "Lints all JavaScript and Markdown files using ESLint.",
+    "lint:fix": "Automatically fixes linting issues in all JavaScript and Markdown files.",
+    "format": "Formats all JavaScript, Markdown, and JSON files with Prettier.",
+    "docs:structure": "Updates the project structure tree in `README.md`.",
+    "docs:scripts": "Updates the \"Available Scripts\" section in `README.md` with this script.",
+    "toc": "Generates a Table of Contents in `README.md` using `doctoc`.",
+    "check": "A convenience script that runs the linter.",
+    "fix": "A convenience script that formats code and then fixes lint issues."
   },
   "repository": {
     "type": "git",
