@@ -47,9 +47,9 @@ This project provides a solid foundation for building high-quality JavaScript ap
 1. Clone the repository or use it as a template on GitHub.
 2. Navigate to the project directory and install the dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ## 📜 Available Scripts
 
