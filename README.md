@@ -6,24 +6,13 @@ A robust starter template for modern Node.js development, pre-configured with Je
 
 This project provides a solid foundation for building high-quality JavaScript applications, ensuring code consistency and best practices from the start.
 
-## ✨ Key Features
-
-- **Standard JavaScript**: Uses CommonJS (`require`/`module.exports`), the standard for many Node.js projects.
-- **Testing with Jest**: Comes with Jest set up for unit and integration testing.
-- **Linting with ESLint**: Includes a strict ESLint configuration to catch errors and enforce coding standards.
-- **Formatting with Prettier**: Integrated with Prettier for consistent, automatic code formatting.
-- **Markdown Support**: Lints and formats your `.md` files to keep your documentation clean.
-- **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and `.eslintignore`.
-- **Automated Project Structure**: Includes a script to automatically generate an accurate project structure diagram in the `README.md`.
-- **Automated Table of Contents**: Uses `doctoc` to generate and maintain a Table of Contents in the `README.md`.
-
-## Table of Contents
+## 📚 Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
-- [Table of Contents](#table-of-contents)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -35,6 +24,17 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [📄 License](#-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## ✨ Key Features
+
+- **Standard JavaScript**: Uses CommonJS (`require`/`module.exports`), the standard for many Node.js projects.
+- **Testing with Jest**: Comes with Jest set up for unit and integration testing.
+- **Linting with ESLint**: Includes a strict ESLint configuration to catch errors and enforce coding standards.
+- **Formatting with Prettier**: Integrated with Prettier for consistent, automatic code formatting.
+- **Markdown Support**: Lints and formats your `.md` files to keep your documentation clean.
+- **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and `.eslintignore`.
+- **Automated Project Structure**: Includes a script to automatically generate an accurate project structure diagram in the `README.md`.
+- **Automated Table of Contents**: Uses `doctoc` to generate and maintain a Table of Contents in the `README.md`.
 
 ## 🚀 Getting Started
 
