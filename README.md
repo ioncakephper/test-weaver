@@ -58,12 +58,14 @@ This project provides a solid foundation for building high-quality JavaScript ap
 | Script | Description |
 | --- | --- |
 | `npm run check` | A convenience script that runs the linter. |
+| `npm run docs:all` | A convenience script that updates the table of contents, available scripts, and project structure in the README. |
 | `npm run docs:scripts` | Updates the "Available Scripts" section in `README.md` with this script. |
 | `npm run docs:structure` | Updates the project structure tree in `README.md`. |
 | `npm run fix` | A convenience script that formats code and then fixes lint issues. |
 | `npm run format` | Formats all JavaScript, Markdown, and JSON files with Prettier. |
 | `npm run lint` | Lints all JavaScript and Markdown files using ESLint. |
 | `npm run lint:fix` | Automatically fixes linting issues in all JavaScript and Markdown files. |
+| `npm run ready` | A convenience script to run before committing: updates all documentation and then formats and fixes all files. |
 | `npm run start` | Runs the application using `node src/index.js`. |
 | `npm run test` | Runs all tests with Jest and generates a coverage report. |
 | `npm run test:watch` | Runs Jest in watch mode, re-running tests on file changes. |
