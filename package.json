@@ -12,9 +12,11 @@
     "format": "prettier --write \"**/*.{js,md,json}\"",
     "docs:structure": "node scripts/update-readme-structure.js",
     "docs:scripts": "node scripts/update-readme-scripts.js",
+    "docs:all": "npm run toc && npm run docs:scripts && npm run docs:structure",
     "toc": "doctoc --title \"## 📚 Table of Contents\" README.md",
     "check": "npm run lint",
-    "fix": "npm run format && npm run lint:fix"
+    "fix": "npm run format && npm run lint:fix",
+    "ready": "npm run docs:all && npm run fix"
   },
   "scriptDescriptions": {
     "start": "Runs the application using `node src/index.js`.",
@@ -25,9 +27,11 @@
     "format": "Formats all JavaScript, Markdown, and JSON files with Prettier.",
     "docs:structure": "Updates the project structure tree in `README.md`.",
     "docs:scripts": "Updates the \"Available Scripts\" section in `README.md` with this script.",
+    "docs:all": "A convenience script that updates the table of contents, available scripts, and project structure in the README.",
     "toc": "Generates a Table of Contents in `README.md` using `doctoc`.",
     "check": "A convenience script that runs the linter.",
-    "fix": "A convenience script that formats code and then fixes lint issues."
+    "fix": "A convenience script that formats code and then fixes lint issues.",
+    "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files."
   },
   "repository": {
     "type": "git",
