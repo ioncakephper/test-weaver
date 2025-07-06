@@ -1,7 +1,6 @@
 const main = require('../src/index');
 
 describe('main function from src/index.js', () => {
-
   it('should return the correct configuration object', () => {
     const expectedConfig = {
       files: ['**/*.{js,md,json}'],
@@ -19,5 +18,4 @@ describe('main function from src/index.js', () => {
     };
     expect(main()).toEqual(expectedConfig);
   });
-
 });

@@ -6,17 +6,16 @@ A robust starter template for modern Node.js development, pre-configured with Je
 
 This project provides a solid foundation for building high-quality JavaScript applications, ensuring code consistency and best practices from the start.
 
-
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [📜 Available Scripts](#-available-scripts)
+- [🚀 Available Scripts](#-available-scripts)
 - [📁 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
 - [⚖️ Code of Conduct](#-code-of-conduct)
@@ -51,36 +50,26 @@ This project provides a solid foundation for building high-quality JavaScript ap
    npm install
    ```
 
-## 📜 Available Scripts
+## 🚀 Available Scripts
 
-This project includes a set of useful scripts to streamline your development workflow:
+<!-- START AVAILABLE SCRIPTS -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->
 
-- `npm start`
-  - Starts the application by running the main entry file (`src/index.js`).
+| Script | Description |
+| --- | --- |
+| `npm run check` | A convenience script that runs the linter. |
+| `npm run docs:scripts` | Updates the "Available Scripts" section in `README.md` with this script. |
+| `npm run docs:structure` | Updates the project structure tree in `README.md`. |
+| `npm run fix` | A convenience script that formats code and then fixes lint issues. |
+| `npm run format` | Formats all JavaScript, Markdown, and JSON files with Prettier. |
+| `npm run lint` | Lints all JavaScript and Markdown files using ESLint. |
+| `npm run lint:fix` | Automatically fixes linting issues in all JavaScript and Markdown files. |
+| `npm run start` | Runs the application using `node src/index.js`. |
+| `npm run test` | Runs all tests with Jest and generates a coverage report. |
+| `npm run test:watch` | Runs Jest in watch mode, re-running tests on file changes. |
+| `npm run toc` | Generates a Table of Contents in `README.md` using `doctoc`. |
 
-- `npm test`
-  - Runs all tests using Jest and generates a coverage report.
-
-- `npm run test:watch`
-  - Runs tests in watch mode, re-running them on file changes.
-
-- `npm run lint`
-  - Lints all JavaScript and Markdown files for code quality and style issues.
-
-- `npm run format`
-  - Formats all JavaScript, Markdown, and JSON files using Prettier.
-
-- `npm run check`
-  - Runs the linter to check for issues without making any changes. Ideal for CI environments.
-
-- `npm run fix`
-  - Automatically formats all files and fixes all auto-fixable linting issues. Run this before committing your changes.
-
-- `npm run docs:structure`
-  - Updates the project structure section in the README file to reflect the current state of the project
-
-- `npm run toc`
-  - Generates or updates the Table of Contents in the `README.md` file. `
+<!-- END AVAILABLE SCRIPTS -->
 
 ## 📁 Project Structure
 
@@ -94,6 +83,8 @@ This project includes a set of useful scripts to streamline your development wor
 │       └── ci.yml # Continuous Integration (CI) workflow
 ├── src/               # Source code
 │   └── index.js # Main application entry point
+├── tests/
+│   └── index.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
 ├── .eslintrc.json     # ESLint configuration
 ├── .gitignore         # Files/folders for Git to ignore
