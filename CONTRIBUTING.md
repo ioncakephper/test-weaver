@@ -43,6 +43,10 @@ This document provides guidelines for contributing to the project. Please read i
       ```bash
       npm run docs:structure
       ```
+    - If you add, remove, or change section headers in `README.md`, please update the Table of Contents by running:
+      ```bash
+      npm run toc
+      ```
 
 6.  **Ensure Code Quality**
     - Before committing, make sure your code adheres to the project's standards by running our quality scripts. This will format your code and fix any auto-fixable linting issues.
