@@ -22,13 +22,15 @@ This project provides a solid foundation for building high-quality JavaScript ap
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [✨ Key Features](#-key-features)
+- [Table of Contents](#table-of-contents)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [📜 Available Scripts](#-available-scripts)
 - [📁 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
-- [⚖️ Code of Conduct](#-code-of-conduct)
+- [⚖️ Code of Conduct](#️-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 
@@ -42,8 +44,8 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ### Installation
 
-1.  Clone the repository or use it as a template on GitHub.
-2.  Navigate to the project directory and install the dependencies:
+1. Clone the repository or use it as a template on GitHub.
+2. Navigate to the project directory and install the dependencies:
 
     ```bash
     npm install
