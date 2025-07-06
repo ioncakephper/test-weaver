@@ -39,6 +39,10 @@ This document provides guidelines for contributing to the project. Please read i
 
 5.  **Make Your Changes**
     - Write your code and add any necessary tests.
+    - If you add, remove, or rename files, please update the project structure diagram in the `README.md` by running:
+      ```bash
+      npm run docs:structure
+      ```
 
 6.  **Ensure Code Quality**
     - Before committing, make sure your code adheres to the project's standards by running our quality scripts. This will format your code and fix any auto-fixable linting issues.
