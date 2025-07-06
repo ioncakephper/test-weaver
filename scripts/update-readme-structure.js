@@ -90,6 +90,7 @@ const regex = new RegExp(`(${START_MARKER})[\\s\\S]*?(${END_MARKER})`, 'm');
 
 // First, check if the markers exist at all.
 if (!regex.test(readmeContent)) {
+  // eslint-disable-next-line no-console
   console.error(
     `❌ Error: Could not find project structure markers in README.md.\nEnsure you have "${START_MARKER}" and "${END_MARKER}".`,
   );
@@ -110,8 +111,10 @@ if (
   readmeContent.replace(/\r\n/g, '\n') ===
   newReadmeContent.replace(/\r\n/g, '\n')
 ) {
+  // eslint-disable-next-line no-console
   console.log('✅ Project structure in README.md is already up-to-date.');
 } else {
   fs.writeFileSync(README_PATH, newReadmeContent, 'utf8');
+  // eslint-disable-next-line no-console
   console.log('✅ Successfully updated the project structure in README.md');
 }
