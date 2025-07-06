@@ -59,6 +59,9 @@ This project includes a set of useful scripts to streamline your development wor
 - `npm run fix`
   - Automatically formats all files and fixes all auto-fixable linting issues. Run this before committing your changes.
 
+- `npm run docs:structure`
+  - Updates the project structure section in the README file to reflect the current state of the project
+
 ## 📁 Project Structure
 
 ```plaintext
