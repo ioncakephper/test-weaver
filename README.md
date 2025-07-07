@@ -11,6 +11,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## 📚 Table of Contents
 
+- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -19,21 +20,21 @@ This project provides a solid foundation for building high-quality JavaScript ap
     - [For an Existing Repository](#for-an-existing-repository)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
-  - [Code Quality & Formatting](#code-quality--formatting)
+  - [Code Quality \& Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
-  - [The Cost of Stale Documentation & Broken Links](#the-cost-of-stale-documentation--broken-links)
+  - [The Cost of Stale Documentation \& Broken Links](#the-cost-of-stale-documentation--broken-links)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
-- [📦 Release & Versioning](#-release--versioning)
+- [📦 Release \& Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
   - [Creating a New Release](#creating-a-new-release)
 - [📁 Project Structure](#-project-structure)
-- [✍️ Linting for Documentation](#-linting-for-documentation)
+- [✍️ Linting for Documentation](#️-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
 - [🤝 Contributing](#-contributing)
-- [⚖️ Code of Conduct](#-code-of-conduct)
+- [⚖️ Code of Conduct](#️-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 
@@ -46,8 +47,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Enforced Documentation Standards**: Integrated `eslint-plugin-jsdoc` to require JSDoc comments for all functions, improving code clarity and long-term maintainability.
 - **Living Documentation**: Custom automation scripts (`npm run docs:all`) that keep your `README.md` perpetually up-to-date by generating the project structure, a table of contents, and a list of available scripts. This eliminates documentation drift.
 - **Reliable Documentation Links**: An automated link checker (`npm run docs:links`) that scans all Markdown files for broken hyperlinks, ensuring your documentation remains professional and trustworthy.
-- **Professional Release Workflow**: Integrated `standard-version` to automate version bumping and `CHANGELOG.md` generation based on the Conventional Commits specification.
-- **Automated GitHub Releases**: A GitHub Action that automatically creates a new release on GitHub with generated notes whenever a version tag is pushed.
+- **Automated Release Workflow**: Integrated `release-please` to automate version bumping, `CHANGELOG.md` generation, and GitHub releases based on the Conventional Commits specification.
 - **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional. This command is designed to be run before every commit.
 - **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
 - **Automated Dependency Updates**: Dependabot integration to keep your dependencies up-to-date and secure.
@@ -206,7 +206,6 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── .markdown-link-check.json
 ├── .prettierignore           # Files/folders for Prettier to ignore
 ├── .prettierrc.json          # Prettier configuration
-├── .versionrc
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md        # Community standards
 ├── CONTRIBUTING.md           # Guidelines for contributors
