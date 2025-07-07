@@ -169,7 +169,7 @@ This project uses [`release-please`](https://github.com/googleapis/release-pleas
 ### How it Works
 
 1.  **Conventional Commits**: All changes merged into the `main` branch should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification (e.g., `feat: add new feature`, `fix: resolve bug`).
-2.  **Release Pull Request**: `release-please` runs as a GitHub Action and monitors the `main` branch for new Conventional Commits. When it detects changes that warrant a new release (e.g., a `feat` commit for a minor version, a `fix` commit for a patch version), it automatically creates a "Release PR" (Pull Request).
+2.  **Release Pull Request**: `release-please` runs as a GitHub Action and monitors the `main` branch for new Conventional Commits. When it detects changes that warrant a new release (e.g., a `feat` commit for a minor version, a `fix` commit for a patch version), it automatically creates a "Release PR" with a title like `chore(release): 1.2.3`.
 3.  **Review and Merge**: This Release PR contains:
     - An updated `CHANGELOG.md` with all changes since the last release.
     - A bumped version number in `package.json`.
