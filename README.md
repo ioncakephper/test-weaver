@@ -1,6 +1,6 @@
 # JS Starter Template
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/js-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/js-starter) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/js-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/js-starter) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
 
 A robust starter template for modern Node.js development, pre-configured with Jest for testing, ESLint for linting, and Prettier for code formatting.
 
@@ -8,6 +8,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
@@ -20,10 +21,12 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
+  - [Release Management](#release-management)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
   - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
+- [📦 Release & Versioning](#-release--versioning)
 - [📁 Project Structure](#-project-structure)
 - [✍️ Linting for Documentation](#-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
@@ -37,12 +40,14 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## ✨ Key Features
 
-- **Testing with Jest**: A complete testing framework for unit and integration tests, with coverage reports enabled.
-- **Linting with ESLint & Prettier**: A strict, pre-configured setup to catch errors, enforce best practices, and maintain a consistent code style across all files (`.js`, `.md`, `.json`).
-- **JSDoc Enforcement**: Integrated `eslint-plugin-jsdoc` to ensure all functions are documented, improving code clarity and maintainability from the start.
-- **Always-Accurate Documentation**: Custom scripts (`npm run docs:all`) automatically generate the project structure, a table of contents, and a list of available scripts. This prevents documentation drift and saves hours of tedious manual updates.
-- **Commit-Ready with One Command**: A single `npm run ready` command formats, lints, and updates all documentation, ensuring every commit is clean, consistent, and professional.
-- **Sensible Defaults**: Pre-configured with `.gitignore`, `.prettierignore`, and a CI workflow for GitHub Actions.
+- **Comprehensive Testing Suite**: Pre-configured with Jest for unit and integration testing. Includes coverage reporting out-of-the-box to ensure code quality.
+- **Automated Code Quality**: A strict, pre-configured setup using ESLint and Prettier to catch errors, enforce best practices, and maintain a consistent code style across all files (`.js`, `.md`, `.json`).
+- **Enforced Documentation Standards**: Integrated `eslint-plugin-jsdoc` to require JSDoc comments for all functions, improving code clarity and long-term maintainability.
+- **Living Documentation**: Custom automation scripts (`npm run docs:all`) that keep your `README.md` perpetually up-to-date by generating the project structure, a table of contents, and a list of available scripts. This eliminates documentation drift.
+- **Reliable Documentation Links**: An automated link checker (`npm run docs:links`) that scans all Markdown files for broken hyperlinks, ensuring your documentation remains professional and trustworthy.
+- **Professional Release Workflow**: Integrated `standard-version` to automate version bumping and `CHANGELOG.md` generation based on the Conventional Commits specification.
+- **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional.
+- **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
 
 ## 🚀 Getting Started
 
@@ -102,26 +107,34 @@ This template includes a set of scripts designed to streamline development, enfo
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->
 
 ### Automated Documentation
-*   `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
-*   `npm run docs:links`: Validates all hyperlinks in Markdown files to ensure they are not broken.
-*   `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
-*   `npm run docs:structure`: Updates the project structure tree in `README.md`.
-*   `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
+
+- `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
+- `npm run docs:links`: Validates all hyperlinks in Markdown files to ensure they are not broken.
+- `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
+- `npm run docs:structure`: Updates the project structure tree in `README.md`.
+- `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
 
 ### Code Quality & Formatting
-*   `npm run check`: A convenience script that runs the linter.
-*   `npm run fix`: A convenience script that formats code and then fixes lint issues.
-*   `npm run format`: Formats all JavaScript, Markdown, and JSON files with Prettier.
-*   `npm run lint`: Lints all JavaScript and Markdown files using ESLint.
-*   `npm run lint:fix`: Automatically fixes linting issues in all JavaScript and Markdown files.
+
+- `npm run check`: A convenience script that runs the linter.
+- `npm run fix`: A convenience script that formats code and then fixes lint issues.
+- `npm run format`: Formats all JavaScript, Markdown, and JSON files with Prettier.
+- `npm run lint`: Lints all JavaScript and Markdown files using ESLint.
+- `npm run lint:fix`: Automatically fixes linting issues in all JavaScript and Markdown files.
 
 ### Core Development
-*   `npm run start`: Runs the application using `node src/index.js`.
-*   `npm run test`: Runs all tests with Jest and generates a coverage report.
-*   `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
+
+- `npm run start`: Runs the application using `node src/index.js`.
+- `npm run test`: Runs all tests with Jest and generates a coverage report.
+- `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
+
+### Release Management
+
+- `npm run release`: Automates versioning and changelog generation using Conventional Commits.
 
 ### The "One-Click" Pre-Commit Workflow
-*   `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
+
+- `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
 
 <!-- END AVAILABLE SCRIPTS -->
 
@@ -131,12 +144,13 @@ This starter template is more than just a collection of files; it's a workflow d
 
 ### The Cost of Stale Documentation
 
-In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. A stale README misleads new contributors and creates a perception of a poorly maintained project.
+In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. Similarly, broken links in documentation can frustrate users and create a perception of a poorly maintained project.
 
 `js-starter` solves this problem with its custom documentation scripts:
 
 - `scripts/update-readme-structure.js`: Saves you from manually drawing out file trees. What might take 5-10 minutes of careful, manual work (and is often forgotten) is now an instant, accurate, and repeatable command.
 - `scripts/update-readme-scripts.js`: Ensures that your project's capabilities are always documented. It reads directly from `package.json`, so the documentation can't lie. It even reminds you to describe your scripts, promoting good habits.
+- `scripts/check-links.js`: Automatically validates every hyperlink in your Markdown files. This prevents the "link rot" that plagues many documentation sites, ensuring that every reference is a trustworthy one.
 
 ### The Power of Workflow Scripts
 
@@ -147,6 +161,24 @@ Chaining commands together is a simple but powerful concept. The `fix`, `docs:al
 - And most importantly, before you commit, you run `npm run ready`. This single command is your pre-flight check. It guarantees that every commit you push is not only functional but also perfectly formatted, linted, and documented. This discipline saves countless hours in code review and prevents messy commit histories.
 
 By embracing this automation, `js-starter` helps you build better software, faster.
+
+## 📦 Release & Versioning
+
+This project uses `standard-version` to automate the release process. This tool simplifies versioning by automatically:
+
+1.  Bumping the version number in `package.json` according to semantic versioning rules.
+2.  Generating and updating the `CHANGELOG.md` file based on your commit history.
+3.  Creating a new Git tag for the release.
+
+This process relies on commit messages following the Conventional Commits specification.
+
+To create a new release, simply run:
+
+```bash
+npm run release
+```
+
+For a dry run to see what changes would be made without actually changing any files, you can use `npm run release -- --dry-run`.
 
 ## 📁 Project Structure
 
@@ -168,6 +200,8 @@ By embracing this automation, `js-starter` helps you build better software, fast
 ├── .markdown-link-check.json
 ├── .prettierignore           # Files/folders for Prettier to ignore
 ├── .prettierrc.json          # Prettier configuration
+├── .versionrc
+├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md        # Community standards
 ├── CONTRIBUTING.md           # Guidelines for contributors
 ├── jest.config.mjs
@@ -175,6 +209,7 @@ By embracing this automation, `js-starter` helps you build better software, fast
 ├── package.json              # Project metadata and dependencies
 └── README.md                 # This file
 ```
+
 <!-- END PROJECT STRUCTURE -->
 
 ## ✍️ Linting for Documentation

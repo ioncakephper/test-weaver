@@ -17,7 +17,8 @@
     "toc": "doctoc --title \"## 📚 Table of Contents\" README.md",
     "check": "npm run lint",
     "fix": "npm run format && npm run lint:fix",
-    "ready": "npm run docs:all && npm run fix"
+    "ready": "npm run docs:all && npm run fix",
+    "release": "standard-version"
   },
   "scriptDescriptions": {
     "start": "Runs the application using `node src/index.js`.",
@@ -33,7 +34,8 @@
     "toc": "Generates a Table of Contents in `README.md` using `doctoc`.",
     "check": "A convenience script that runs the linter.",
     "fix": "A convenience script that formats code and then fixes lint issues.",
-    "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files."
+    "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files.",
+    "release": "Automates versioning and changelog generation using Conventional Commits."
   },
   "scriptCategories": {
     "Core Development": [
@@ -57,6 +59,9 @@
     ],
     "The \"One-Click\" Pre-Commit Workflow": [
       "ready"
+    ],
+    "Release Management": [
+      "release"
     ]
   },
   "repository": {
@@ -68,7 +73,7 @@
     "starter",
     "node"
   ],
-  "author": "Your Name <youremail@example.com>",
+  "author": "Ion Gireada (https://github.com/ioncakephper)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ioncakephper/js-starter/issues"
@@ -83,9 +88,10 @@
     "markdown-link-check": "^3.12.1",
     "eslint-plugin-markdown": "^4.0.1",
     "jest": "^29.7.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "standard-version": "^9.5.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.18.1"
   }
 }
