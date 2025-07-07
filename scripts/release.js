@@ -19,7 +19,9 @@ function release() {
       console.log('\nDry run complete. No files were changed.');
     } else {
       // After standard-version completes, run the interactive script
-      console.log('\nStandard-version complete. Starting interactive prompts...');
+      console.log(
+        '\nStandard-version complete. Starting interactive prompts...',
+      );
       execSync('node scripts/prompt-publish.js', { stdio: 'inherit' });
     }
   } catch (error) {
