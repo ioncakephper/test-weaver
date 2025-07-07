@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/ioncakephper/js-starter/compare/v1.0.3...v1.1.0) (2025-07-07)
+
+
+### Features
+
+* update README.md and src/index.js ([0d57d58](https://github.com/ioncakephper/js-starter/commit/0d57d589ff929dfdd5fad06c6b709d81f613e205))
+
+
+### Bug Fixes
+
+* :zap: create better documentation ([b83f628](https://github.com/ioncakephper/js-starter/commit/b83f628b930d9c4f27420ed35df45d334d76912f))
+
+## Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
