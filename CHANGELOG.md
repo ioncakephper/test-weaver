@@ -1,32 +1,5 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
-### [1.0.2](https://github.com/ioncakephper/js-starter/compare/v1.0.1...v1.0.2) (2025-07-07)
-
-### 1.0.1 (2025-07-07)
-
-
-### Continuous Integration
-
-* update ci.yml ([0f6b4d3](https://github.com/ioncakephper/js-starter/commit/0f6b4d3cfe429a541cc6e50777aadf8c0fbebcb3))
-
-
-### Build System
-
-* **deps:** update package-lock.json ([e396748](https://github.com/ioncakephper/js-starter/commit/e396748cabb75bd4c074c5cc7c445a9652c94849))
-* update package.json ([61a9e84](https://github.com/ioncakephper/js-starter/commit/61a9e8459d3a65fe40d23a1562de16e469f853a9))
-
-
-### Documentation
-
-* :art: update README and several other files ([9f0397c](https://github.com/ioncakephper/js-starter/commit/9f0397c82b3541c9bde4f22b83420b87bac409d3))
-* update 8 files ([0c1161f](https://github.com/ioncakephper/js-starter/commit/0c1161f1778bd901f0af1808f7060fbe2f89e947))
-* update CODE_OF_CONDUCT.md, CONTRIBUTING.md and README.md ([fb5f299](https://github.com/ioncakephper/js-starter/commit/fb5f299169ceadac5e6d2e33c603efabee55235c))
-* update README.md ([4f6986b](https://github.com/ioncakephper/js-starter/commit/4f6986b191a17d341724d34fbe2a62b56507a7a9))
-
-# Changelog
-
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
