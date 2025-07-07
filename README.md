@@ -115,7 +115,6 @@ This template includes a set of scripts designed to streamline development, enfo
 ### Automated Documentation
 
 - `npm run docs:all`: A convenience script that updates all documentation sections: table of contents, available scripts, project structure, and validates links.
-- `npm run docs:links`: Validates all hyperlinks in Markdown files to ensure they are not broken.
 - `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
 - `npm run docs:structure`: Updates the project structure tree in `README.md`.
 - `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
@@ -210,6 +209,8 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── src/                      # Source code
 │   └── index.js # Main application entry point
 ├── tests/
+│   ├── check-links.test.js
+│   ├── fix-toc-links.test.js
 │   └── index.test.js
 ├── .eslintignore             # Files/folders for ESLint to ignore
 ├── .eslintrc.json            # ESLint configuration

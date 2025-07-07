@@ -7,7 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:jsdoc/recommended",
-    "plugin:markdown/recommended-legacy",
+    "plugin:markdown/recommended",
     "prettier"
   ],
   "parserOptions": {
