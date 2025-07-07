@@ -21,10 +21,9 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
-  - [Release Management](#release-management)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
-  - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
+  - [The Cost of Stale Documentation & Broken Links](#the-cost-of-stale-documentation--broken-links)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
 - [📦 Release & Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
@@ -49,8 +48,9 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Reliable Documentation Links**: An automated link checker (`npm run docs:links`) that scans all Markdown files for broken hyperlinks, ensuring your documentation remains professional and trustworthy.
 - **Professional Release Workflow**: Integrated `standard-version` to automate version bumping and `CHANGELOG.md` generation based on the Conventional Commits specification.
 - **Automated GitHub Releases**: A GitHub Action that automatically creates a new release on GitHub with generated notes whenever a version tag is pushed.
-- **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional.
+- **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional. This command is designed to be run before every commit.
 - **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
+- **Automated Dependency Updates**: Dependabot integration to keep your dependencies up-to-date and secure.
 
 ## 🚀 Getting Started
 
@@ -60,7 +60,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ### Using this Template
 
-There are two ways to use this template: for a brand new project or to standardize an existing one.
+There are two ways to use this template: for a brand new project or to standardize an existing one. For new projects, using the GitHub template feature is highly recommended.
 
 #### For a New Repository
 
@@ -131,10 +131,6 @@ This template includes a set of scripts designed to streamline development, enfo
 - `npm run test`: Runs all tests with Jest and generates a coverage report.
 - `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
 
-### Release Management
-
-- `npm run release`: Automates versioning and changelog generation using Conventional Commits.
-
 ### The "One-Click" Pre-Commit Workflow
 
 - `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
@@ -145,9 +141,9 @@ This template includes a set of scripts designed to streamline development, enfo
 
 This starter template is more than just a collection of files; it's a workflow designed to maximize developer productivity and enforce high-quality standards from day one. The core philosophy is to **automate the tedious and error-prone tasks** so you can focus on what matters: building great software.
 
-### The Cost of Stale Documentation
+### The Cost of Stale Documentation & Broken Links
 
-In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. Similarly, broken links in documentation can frustrate users and create a perception of a poorly maintained project.
+In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. Similarly, broken links in documentation can frustrate users and create a perception of a poorly maintained project. This leads to a poor developer experience and a perception of a poorly maintained project.
 
 `js-starter` solves this problem with its custom documentation scripts:
 
@@ -167,40 +163,26 @@ By embracing this automation, `js-starter` helps you build better software, fast
 
 ## 📦 Release & Versioning
 
-This project uses a combination of `standard-version` and GitHub Actions to provide a seamless, automated release process.
-
-This workflow relies on commit messages following the Conventional Commits specification.
+This project uses [`release-please`](https://github.com/googleapis/release-please) to automate releases, versioning, and changelog generation. This ensures a consistent and hands-off release process, relying on the Conventional Commits specification.
 
 ### How it Works
 
-1.  **Local Release Preparation**: Running `npm run release` uses `standard-version` to:
-    - Bump the version number in `package.json`.
-    - Update `CHANGELOG.md` with all the new changes.
-    - Commit the changes and create a new version tag locally (e.g., `v1.1.0`).
-2.  **Optional Publishing**: A `posttag` hook then prompts you, asking if you want to publish the new version to the npm registry.
-3.  **Automated GitHub Release**: When you push the new tag to GitHub (`git push --follow-tags`), a workflow is automatically triggered to:
-    - Create a new "Release" on your repository's Releases page.
-    - Use the tag as the release title.
-    - Generate polished release notes from your commit history.
+1.  **Conventional Commits**: All changes merged into the `main` branch should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification (e.g., `feat: add new feature`, `fix: resolve bug`).
+2.  **Release Pull Request**: `release-please` runs as a GitHub Action and monitors the `main` branch for new Conventional Commits. When it detects changes that warrant a new release (e.g., a `feat` commit for a minor version, a `fix` commit for a patch version), it automatically creates a "Release PR" (Pull Request).
+3.  **Review and Merge**: This Release PR contains:
+    - An updated `CHANGELOG.md` with all changes since the last release.
+    - A bumped version number in `package.json`.
+    - Proposed release notes. Review this PR, and once satisfied, merge it into `main`.
+4.  **Automated GitHub Release**: Merging the Release PR triggers another `release-please` action. This action:
+    - Creates a new GitHub Release with the generated notes.
+    - Creates a corresponding Git tag (e.g., `v1.1.0`).
+    - (Optional) Publishes the package to npm if configured.
 
 ### Creating a New Release
 
-The following steps should be performed by a project maintainer with push access to the `main` branch:
+To create a new release, simply merge changes into the `main` branch using Conventional Commits. `release-please` will handle the rest by creating a Release PR. Once that PR is merged, the new version will be released automatically.
 
-1.  **Ensure your local `main` branch is up-to-date** with all the changes you want to release.
-2.  **Run the release command**. This will start the interactive release process.
-
-    ```bash
-    npm run release
-    ```
-
-3.  **Follow the Prompts**: The script will guide you through the release:
-    - First, it will ask if you want to **publish the package to npm**.
-    - Second, it will ask if you want to **push the new commit and tag to GitHub**. This step is what triggers the automated GitHub Release creation.
-
-If you answer "yes" to both prompts, the entire release process is handled for you. If you choose to skip a step, the script will provide instructions on how to complete it manually later.
-
-For a dry run to see what changes would be made without actually changing any files, you can use `npm run release -- --dry-run`.
+For more details, refer to the [release-please documentation](https://github.com/googleapis/release-please#how-it-works).
 
 ## 📁 Project Structure
 
@@ -211,8 +193,9 @@ For a dry run to see what changes would be made without actually changing any fi
 .
 ├── .github/                  # GitHub Actions workflows
 │   └── workflows/
-│       ├── ci.yml      # Continuous Integration (CI) workflow
-│       └── release.yml
+│       ├── ci.yml             # Continuous Integration (CI) workflow
+│       ├── publish.yml
+│       └── release-please.yml
 ├── src/                      # Source code
 │   └── index.js # Main application entry point
 ├── tests/
