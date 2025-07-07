@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.7](https://github.com/ioncakephper/js-starter/compare/v1.0.8...v1.0.7) (2025-07-07)
+
+
+### Documentation
+
+* update CHANGELOG.md, README.md, package.json and release.js ([80113de](https://github.com/ioncakephper/js-starter/commit/80113de95ac372b4089d7a0993f35cc8d76e1625))
+
+
+
+>>>>>>> a2ae11f844b58c9f7fe22d28414fda60092eecb9
 # Changelog
 
 All notable changes to this project will be documented in this file.
