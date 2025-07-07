@@ -46,6 +46,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Living Documentation**: Custom automation scripts (`npm run docs:all`) that keep your `README.md` perpetually up-to-date by generating the project structure, a table of contents, and a list of available scripts. This eliminates documentation drift.
 - **Reliable Documentation Links**: An automated link checker (`npm run docs:links`) that scans all Markdown files for broken hyperlinks, ensuring your documentation remains professional and trustworthy.
 - **Professional Release Workflow**: Integrated `standard-version` to automate version bumping and `CHANGELOG.md` generation based on the Conventional Commits specification.
+- **Automated GitHub Releases**: A GitHub Action that automatically creates a new release on GitHub with generated notes whenever a version tag is pushed.
 - **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional.
 - **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
 
@@ -164,16 +165,24 @@ By embracing this automation, `js-starter` helps you build better software, fast
 
 ## 📦 Release & Versioning
 
-This project uses `standard-version` to automate the release process. This tool simplifies versioning by automatically:
+This project uses a combination of `standard-version` and GitHub Actions to provide a seamless, automated release process.
 
-1.  Bumping the version number in `package.json` according to semantic versioning rules.
-2.  Generating and updating the `CHANGELOG.md` file based on your commit history.
-3.  Creating a new Git tag for the release.
+This workflow relies on commit messages following the Conventional Commits specification.
 
-This process relies on commit messages following the Conventional Commits specification.
+### How it Works
 
-To create a new release, simply run:
+1.  **Local Release Preparation**: Running `npm run release` uses `standard-version` to:
+    -   Bump the version number in `package.json`.
+    -   Update `CHANGELOG.md` with all the new changes.
+    -   Commit the changes and create a new version tag locally (e.g., `v1.1.0`).
+2.  **Automated GitHub Release**: When you push the new tag to GitHub, a workflow is automatically triggered to:
+    -   Create a new "Release" on your repository's Releases page.
+    -   Use the tag as the release title.
+    -   Generate polished release notes from your commit history.
 
+### Creating a New Release
+
+1.  **Prepare the release locally**:
 ```bash
 npm run release
 ```
