@@ -20,6 +20,11 @@
     "ready": "npm run docs:all && npm run fix",
     "release": "standard-version"
   },
+  "standard-version": {
+    "scripts": {
+      "posttag": "node scripts/prompt-publish.js"
+    }
+  },
   "scriptDescriptions": {
     "start": "Runs the application using `node src/index.js`.",
     "test": "Runs all tests with Jest and generates a coverage report.",

@@ -177,7 +177,8 @@ This workflow relies on commit messages following the Conventional Commits speci
     - Bump the version number in `package.json`.
     - Update `CHANGELOG.md` with all the new changes.
     - Commit the changes and create a new version tag locally (e.g., `v1.1.0`).
-2.  **Automated GitHub Release**: When you push the new tag to GitHub, a workflow is automatically triggered to:
+2.  **Optional Publishing**: A `posttag` hook then prompts you, asking if you want to publish the new version to the npm registry.
+3.  **Automated GitHub Release**: When you push the new tag to GitHub (`git push --follow-tags`), a workflow is automatically triggered to:
     - Create a new "Release" on your repository's Releases page.
     - Use the tag as the release title.
     - Generate polished release notes from your commit history.
@@ -189,9 +190,16 @@ The following steps should be performed by a project maintainer with push access
 1.  **Ensure your local `main` branch is up-to-date** with all the changes you want to release.
 2.  **Run the release command**. This will bump the version, update the changelog, and create a local Git commit and tag.
 
-```bash
-npm run release
-```
+    ```bash
+    npm run release
+    ```
+
+3.  **Confirm Publishing**: After the tag is created, you will be prompted to publish the new version to the npm registry.
+4.  **Push to GitHub**: After the script completes, push the commit and tag to GitHub to trigger the automated GitHub Release creation.
+
+    ```bash
+    git push --follow-tags origin main
+    ```
 
 For a dry run to see what changes would be made without actually changing any files, you can use `npm run release -- --dry-run`.
 
@@ -221,8 +229,7 @@ For a dry run to see what changes would be made without actually changing any fi
 ├── CODE_OF_CONDUCT.md        # Community standards
 ├── CONTRIBUTING.md           # Guidelines for contributors
 ├── jest.config.mjs
-├── license
-├── LICENSE.md
+├── LICENSE                   # Project license
 ├── package.json              # Project metadata and dependencies
 └── README.md                 # This file
 ```
@@ -297,4 +304,4 @@ This project was built upon the shoulders of giants. We'd like to thank the crea
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](LICENSE).
