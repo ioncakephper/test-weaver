@@ -17,5 +17,5 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }} # Use a PAT to allow triggering other workflows
           release-type: node
-          package-name: js-starter
-          pull-request-title-pattern: "chore(release): ${version}"
+          # package-name: js-starter
+          # pull-request-title-pattern: "chore(release): ${version}"
