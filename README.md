@@ -16,7 +16,6 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [Prerequisites](#prerequisites)
   - [Using this Template](#using-this-template)
     - [For a New Repository](#for-a-new-repository)
-    - [For an Existing Repository](#for-an-existing-repository)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
@@ -60,11 +59,9 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ### Using this Template
 
-There are two ways to use this template: for a brand new project or to standardize an existing one. For new projects, using the GitHub template feature is highly recommended.
+The recommended way to use this template is with the GitHub "Use this template" feature.
 
 #### For a New Repository
-
-This is the recommended approach for new projects.
 
 1.  Click the green **"Use this template"** button on the [main repository page](https://github.com/ioncakephper/js-starter).
 2.  Select **"Create a new repository"**.
@@ -75,35 +72,6 @@ This is the recommended approach for new projects.
     npm install
     ```
 6.  You're all set! Start building your application in the `src` directory.
-
-#### For an Existing Repository
-
-You can also apply this template's configuration and workflow to an existing project. This is a manual process, but it's a great way to standardize your tooling.
-
-1.  **Clone this template** to a separate directory.
-2.  **Copy configuration and workflow files** into your project's root. Be careful to **merge** files like `.gitignore` rather than overwriting them.
-    - `.github/` (for GitHub Actions workflows)
-    - `scripts/` (for documentation automation)
-    - `.eslintignore`
-    - `.eslintrc.json`
-    - `.gitignore` (merge with your existing file)
-    - `.markdown-link-check.json`
-    - `.prettierignore`
-    - `.prettierrc.json`
-    - `CODE_OF_CONDUCT.md`
-    - `CONTRIBUTING.md`
-    - `jest.config.mjs`
-3.  **Merge `package.json` settings** into your existing file:
-    - **Dependencies**: Copy the `devDependencies` from this template.
-    - **Scripts**: Copy the `scripts`, `scriptDescriptions`, and `scriptCategories` objects. You may need to merge them with your existing scripts.
-    - **Node Version**: Copy the `engines` block to enforce a consistent Node.js version.
-4.  **Install the new dependencies** in your project:
-    ```bash
-    npm install
-    ```
-5.  **Update Your `README.md`**:
-    - Manually copy the key sections from this template's `README.md` into your own. Good candidates are "Available Scripts", "Release & Versioning", and "Project Structure".
-    - Run `npm run docs:all` to automatically generate the Table of Contents, Scripts list, and Project Structure diagram based on your project's new setup.
 
 ## 🚀 Available Scripts
 
