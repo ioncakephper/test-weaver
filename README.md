@@ -11,7 +11,6 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## 📚 Table of Contents
 
-- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -20,22 +19,22 @@ This project provides a solid foundation for building high-quality JavaScript ap
     - [For an Existing Repository](#for-an-existing-repository)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
-  - [Code Quality \& Formatting](#code-quality--formatting)
+  - [Code Quality & Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
-  - [The Cost of Stale Documentation \& Broken Links](#the-cost-of-stale-documentation--broken-links)
+  - [The Cost of Stale Documentation & Broken Links](#the-cost-of-stale-documentation--broken-links)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
-- [📦 Release \& Versioning](#-release--versioning)
+- [📦 Release & Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
   - [Creating a New Release](#creating-a-new-release)
     - [Your First Release](#your-first-release)
 - [📁 Project Structure](#-project-structure)
-- [✍️ Linting for Documentation](#️-linting-for-documentation)
+- [✍️ Linting for Documentation](#-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
 - [🤝 Contributing](#-contributing)
-- [⚖️ Code of Conduct](#️-code-of-conduct)
+- [⚖️ Code of Conduct](#-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 
@@ -81,27 +80,30 @@ This is the recommended approach for new projects.
 
 You can also apply this template's configuration and workflow to an existing project. This is a manual process, but it's a great way to standardize your tooling.
 
-1.  **Clone this template** to a separate directory on your local machine.
-2.  **Copy the configuration files** from the template's root into your project's root. This includes:
-    - `.github/` (for GitHub Actions CI)
+1.  **Clone this template** to a separate directory.
+2.  **Copy configuration and workflow files** into your project's root. Be careful to **merge** files like `.gitignore` rather than overwriting them.
+    - `.github/` (for GitHub Actions workflows)
     - `scripts/` (for documentation automation)
     - `.eslintignore`
     - `.eslintrc.json`
-    - `.gitignore`
+    - `.gitignore` (merge with your existing file)
+    - `.markdown-link-check.json`
     - `.prettierignore`
     - `.prettierrc.json`
+    - `CODE_OF_CONDUCT.md`
+    - `CONTRIBUTING.md`
     - `jest.config.mjs`
-3.  **Merge `package.json` settings**:
-    - Copy the `devDependencies` from this template into your project's `package.json`.
-    - Copy the `scripts`, `scriptDescriptions`, and `scriptCategories` objects into your `package.json`. You may need to merge them with your existing scripts.
-    - Copy the `engines` block to enforce the Node.js version.
-4.  **Install the new dependencies**:
+3.  **Merge `package.json` settings** into your existing file:
+    - **Dependencies**: Copy the `devDependencies` from this template.
+    - **Scripts**: Copy the `scripts`, `scriptDescriptions`, and `scriptCategories` objects. You may need to merge them with your existing scripts.
+    - **Node Version**: Copy the `engines` block to enforce a consistent Node.js version.
+4.  **Install the new dependencies** in your project:
     ```bash
     npm install
     ```
-5.  **Update Documentation**:
-    - Copy or merge the contents of this `README.md` and `CONTRIBUTING.md` into your own project's documentation.
-    - Run `npm run docs:all` to generate the documentation sections based on your project's new structure and scripts.
+5.  **Update Your `README.md`**:
+    - Manually copy the key sections from this template's `README.md` into your own. Good candidates are "Available Scripts", "Release & Versioning", and "Project Structure".
+    - Run `npm run docs:all` to automatically generate the Table of Contents, Scripts list, and Project Structure diagram based on your project's new setup.
 
 ## 🚀 Available Scripts
 
@@ -112,7 +114,7 @@ This template includes a set of scripts designed to streamline development, enfo
 
 ### Automated Documentation
 
-- `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
+- `npm run docs:all`: A convenience script that updates all documentation sections: table of contents, available scripts, project structure, and validates links.
 - `npm run docs:links`: Validates all hyperlinks in Markdown files to ensure they are not broken.
 - `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
 - `npm run docs:structure`: Updates the project structure tree in `README.md`.
@@ -144,7 +146,7 @@ This starter template is more than just a collection of files; it's a workflow d
 
 ### The Cost of Stale Documentation & Broken Links
 
-In many projects, the `README.md` is the first thing to become outdated. Manually updating the project structure diagram or the list of available scripts is a chore that is easily forgotten. Similarly, broken links in documentation can frustrate users and create a perception of a poorly maintained project. This leads to a poor developer experience and a perception of a poorly maintained project.
+In many projects, the `README.md` quickly becomes outdated. Manually updating the project structure or list of scripts is an easily forgotten chore, and broken links frustrate users, creating the perception of a poorly maintained project.
 
 `js-starter` solves this problem with its custom documentation scripts:
 
@@ -213,6 +215,7 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── .eslintrc.json            # ESLint configuration
 ├── .gitignore                # Files/folders for Git to ignore
 ├── .markdown-link-check.json
+├── .npmrc
 ├── .prettierignore           # Files/folders for Prettier to ignore
 ├── .prettierrc.json          # Prettier configuration
 ├── CHANGELOG.md
@@ -285,12 +288,20 @@ To ensure a welcoming and inclusive community, this project adheres to a [Code o
 
 ## 🙏 Acknowledgements
 
-This project was built upon the shoulders of giants. We'd like to thank the creators and maintainers of these amazing open-source tools:
+This project was built upon the shoulders of giants. We'd like to thank the creators and maintainers of these amazing open-source tools and specifications that make this template possible:
 
 - [Node.js](https://nodejs.org/)
 - [Jest](https://jestjs.io/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
+- [Release Please](https://github.com/googleapis/release-please)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Doctoc](https://github.com/thlorenz/doctoc)
+- [markdown-link-check](https://github.com/tcort/markdown-link-check)
+- [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)
+- [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+- [Semantic Versioning](https://semver.org/)
+- [Contributor Covenant](https://www.contributor-covenant.org/)
 
 ## 📄 License
 

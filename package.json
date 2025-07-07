@@ -29,7 +29,7 @@
     "docs:structure": "Updates the project structure tree in `README.md`.",
     "docs:scripts": "Updates the \"Available Scripts\" section in `README.md` with this script.",
     "docs:links": "Validates all hyperlinks in Markdown files to ensure they are not broken.",
-    "docs:all": "A convenience script that updates the table of contents, available scripts, and project structure in the README.",
+    "docs:all": "A convenience script that updates all documentation sections: table of contents, available scripts, project structure, and validates links.",
     "toc": "Generates a Table of Contents in `README.md` using `doctoc`.",
     "check": "A convenience script that runs the linter.",
     "fix": "A convenience script that formats code and then fixes lint issues.",
@@ -86,6 +86,6 @@
     "prettier": "^3.2.5"
   },
   "engines": {
-    "node": ">=20.18.1"
+    "node": ">=18.0.0"
   }
 }
