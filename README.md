@@ -29,6 +29,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [📦 Release \& Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
   - [Creating a New Release](#creating-a-new-release)
+    - [Your First Release](#your-first-release)
 - [📁 Project Structure](#-project-structure)
 - [✍️ Linting for Documentation](#️-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
@@ -173,14 +174,22 @@ This project uses [`release-please`](https://github.com/googleapis/release-pleas
     - An updated `CHANGELOG.md` with all changes since the last release.
     - A bumped version number in `package.json`.
     - Proposed release notes. Review this PR, and once satisfied, merge it into `main`.
-4.  **Automated GitHub Release**: Merging the Release PR triggers another `release-please` action. This action:
-    - Creates a new GitHub Release with the generated notes.
-    - Creates a corresponding Git tag (e.g., `v1.1.0`).
-    - (Optional) Publishes the package to npm if configured.
+4.  **Automated GitHub Release & Publish**: Merging the Release PR triggers two final, sequential actions:
+    - The `release-please` action creates a formal GitHub Release and a corresponding Git tag (e.g., `v1.1.0`).
+    - The creation of this release then triggers the `publish.yml` workflow, which automatically publishes the package to the npm registry.
 
 ### Creating a New Release
 
-To create a new release, simply merge changes into the `main` branch using Conventional Commits. `release-please` will handle the rest by creating a Release PR. Once that PR is merged, the new version will be released automatically.
+To create subsequent releases, simply merge changes into the `main` branch using Conventional Commits. `release-please` will handle the rest by creating a Release PR. Once that PR is merged, the new version will be released automatically.
+
+#### Your First Release
+
+To bootstrap the process and create your very first release:
+
+1.  Ensure your `package.json` version is at a sensible starting point (e.g., `1.0.0`).
+2.  Make at least one commit to the `main` branch that follows the Conventional Commits specification. A good first commit would be: `feat: Initial release`.
+3.  Push your commit(s) to `main`. The `release-please` action will run and create your first Release PR.
+4.  Review and merge this PR. This will trigger the creation of your `v1.0.0` GitHub Release and publish the package to npm.
 
 For more details, refer to the [release-please documentation](https://github.com/googleapis/release-please#how-it-works).
 
