@@ -27,6 +27,8 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
 - [📦 Release & Versioning](#-release--versioning)
+  - [How it Works](#how-it-works)
+  - [Creating a New Release](#creating-a-new-release)
 - [📁 Project Structure](#-project-structure)
 - [✍️ Linting for Documentation](#-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
@@ -172,17 +174,21 @@ This workflow relies on commit messages following the Conventional Commits speci
 ### How it Works
 
 1.  **Local Release Preparation**: Running `npm run release` uses `standard-version` to:
-    -   Bump the version number in `package.json`.
-    -   Update `CHANGELOG.md` with all the new changes.
-    -   Commit the changes and create a new version tag locally (e.g., `v1.1.0`).
+    - Bump the version number in `package.json`.
+    - Update `CHANGELOG.md` with all the new changes.
+    - Commit the changes and create a new version tag locally (e.g., `v1.1.0`).
 2.  **Automated GitHub Release**: When you push the new tag to GitHub, a workflow is automatically triggered to:
-    -   Create a new "Release" on your repository's Releases page.
-    -   Use the tag as the release title.
-    -   Generate polished release notes from your commit history.
+    - Create a new "Release" on your repository's Releases page.
+    - Use the tag as the release title.
+    - Generate polished release notes from your commit history.
 
 ### Creating a New Release
 
-1.  **Prepare the release locally**:
+The following steps should be performed by a project maintainer with push access to the `main` branch:
+
+1.  **Ensure your local `main` branch is up-to-date** with all the changes you want to release.
+2.  **Run the release command**. This will bump the version, update the changelog, and create a local Git commit and tag.
+
 ```bash
 npm run release
 ```
@@ -198,7 +204,8 @@ For a dry run to see what changes would be made without actually changing any fi
 .
 ├── .github/                  # GitHub Actions workflows
 │   └── workflows/
-│       └── ci.yml # Continuous Integration (CI) workflow
+│       ├── ci.yml      # Continuous Integration (CI) workflow
+│       └── release.yml
 ├── src/                      # Source code
 │   └── index.js # Main application entry point
 ├── tests/
@@ -214,7 +221,8 @@ For a dry run to see what changes would be made without actually changing any fi
 ├── CODE_OF_CONDUCT.md        # Community standards
 ├── CONTRIBUTING.md           # Guidelines for contributors
 ├── jest.config.mjs
-├── LICENSE                   # Project license
+├── license
+├── LICENSE.md
 ├── package.json              # Project metadata and dependencies
 └── README.md                 # This file
 ```
@@ -289,4 +297,4 @@ This project was built upon the shoulders of giants. We'd like to thank the crea
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
