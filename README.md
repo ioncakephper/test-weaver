@@ -8,14 +8,19 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Using this Template](#using-this-template)
+    - [For a New Repository](#for-a-new-repository)
+    - [For an Existing Repository](#for-an-existing-repository)
 - [🚀 Available Scripts](#-available-scripts)
+  - [Automated Documentation](#automated-documentation)
+  - [Code Quality & Formatting](#code-quality--formatting)
+  - [Core Development](#core-development)
+  - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
   - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
@@ -43,16 +48,51 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ### Prerequisites
 
-- Node.js version 18.0.0 or higher.
+- Node.js version 18.0.0 or higher
 
-### Installation
+### Using this Template
 
-1. Clone the repository or use it as a template on GitHub.
-2. Navigate to the project directory and install the dependencies:
+There are two ways to use this template: for a brand new project or to standardize an existing one.
 
-   ```bash
-   npm install
-   ```
+#### For a New Repository
+
+This is the recommended approach for new projects.
+
+1.  Click the green **"Use this template"** button on the [main repository page](https://github.com/ioncakephper/js-starter).
+2.  Select **"Create a new repository"**.
+3.  Give your new repository a name and description.
+4.  Clone your newly created repository to your local machine.
+5.  Navigate into the project directory and install the dependencies:
+    ```bash
+    npm install
+    ```
+6.  You're all set! Start building your application in the `src` directory.
+
+#### For an Existing Repository
+
+You can also apply this template's configuration and workflow to an existing project. This is a manual process, but it's a great way to standardize your tooling.
+
+1.  **Clone this template** to a separate directory on your local machine.
+2.  **Copy the configuration files** from the template's root into your project's root. This includes:
+    - `.github/` (for GitHub Actions CI)
+    - `scripts/` (for documentation automation)
+    - `.eslintignore`
+    - `.eslintrc.json`
+    - `.gitignore`
+    - `.prettierignore`
+    - `.prettierrc.json`
+    - `jest.config.mjs`
+3.  **Merge `package.json` settings**:
+    - Copy the `devDependencies` from this template into your project's `package.json`.
+    - Copy the `scripts`, `scriptDescriptions`, and `scriptCategories` objects into your `package.json`. You may need to merge them with your existing scripts.
+    - Copy the `engines` block to enforce the Node.js version.
+4.  **Install the new dependencies**:
+    ```bash
+    npm install
+    ```
+5.  **Update Documentation**:
+    - Copy or merge the contents of this `README.md` and `CONTRIBUTING.md` into your own project's documentation.
+    - Run `npm run docs:all` to generate the documentation sections based on your project's new structure and scripts.
 
 ## 🚀 Available Scripts
 
@@ -62,29 +102,26 @@ This template includes a set of scripts designed to streamline development, enfo
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->
 
 ### Automated Documentation
-
-- `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
-- `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
-- `npm run docs:structure`: Updates the project structure tree in `README.md`.
-- `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
+*   `npm run docs:all`: A convenience script that updates the table of contents, available scripts, and project structure in the README.
+*   `npm run docs:links`: Validates all hyperlinks in Markdown files to ensure they are not broken.
+*   `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
+*   `npm run docs:structure`: Updates the project structure tree in `README.md`.
+*   `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
 
 ### Code Quality & Formatting
-
-- `npm run check`: A convenience script that runs the linter.
-- `npm run fix`: A convenience script that formats code and then fixes lint issues.
-- `npm run format`: Formats all JavaScript, Markdown, and JSON files with Prettier.
-- `npm run lint`: Lints all JavaScript and Markdown files using ESLint.
-- `npm run lint:fix`: Automatically fixes linting issues in all JavaScript and Markdown files.
+*   `npm run check`: A convenience script that runs the linter.
+*   `npm run fix`: A convenience script that formats code and then fixes lint issues.
+*   `npm run format`: Formats all JavaScript, Markdown, and JSON files with Prettier.
+*   `npm run lint`: Lints all JavaScript and Markdown files using ESLint.
+*   `npm run lint:fix`: Automatically fixes linting issues in all JavaScript and Markdown files.
 
 ### Core Development
-
-- `npm run start`: Runs the application using `node src/index.js`.
-- `npm run test`: Runs all tests with Jest and generates a coverage report.
-- `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
+*   `npm run start`: Runs the application using `node src/index.js`.
+*   `npm run test`: Runs all tests with Jest and generates a coverage report.
+*   `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
 
 ### The "One-Click" Pre-Commit Workflow
-
-- `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
+*   `npm run ready`: A convenience script to run before committing: updates all documentation and then formats and fixes all files.
 
 <!-- END AVAILABLE SCRIPTS -->
 
@@ -118,26 +155,26 @@ By embracing this automation, `js-starter` helps you build better software, fast
 
 ```plaintext
 .
-├── .github/           # GitHub Actions workflows
+├── .github/                  # GitHub Actions workflows
 │   └── workflows/
 │       └── ci.yml # Continuous Integration (CI) workflow
-├── src/               # Source code
+├── src/                      # Source code
 │   └── index.js # Main application entry point
 ├── tests/
 │   └── index.test.js
-├── .eslintignore      # Files/folders for ESLint to ignore
-├── .eslintrc.json     # ESLint configuration
-├── .gitignore         # Files/folders for Git to ignore
-├── .prettierignore    # Files/folders for Prettier to ignore
-├── .prettierrc.json   # Prettier configuration
-├── CODE_OF_CONDUCT.md # Community standards
-├── CONTRIBUTING.md    # Guidelines for contributors
+├── .eslintignore             # Files/folders for ESLint to ignore
+├── .eslintrc.json            # ESLint configuration
+├── .gitignore                # Files/folders for Git to ignore
+├── .markdown-link-check.json
+├── .prettierignore           # Files/folders for Prettier to ignore
+├── .prettierrc.json          # Prettier configuration
+├── CODE_OF_CONDUCT.md        # Community standards
+├── CONTRIBUTING.md           # Guidelines for contributors
 ├── jest.config.mjs
-├── LICENSE            # Project license
-├── package.json       # Project metadata and dependencies
-└── README.md          # This file
+├── LICENSE                   # Project license
+├── package.json              # Project metadata and dependencies
+└── README.md                 # This file
 ```
-
 <!-- END PROJECT STRUCTURE -->
 
 ## ✍️ Linting for Documentation
