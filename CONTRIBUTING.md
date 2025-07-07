@@ -57,11 +57,21 @@ This document provides guidelines for contributing to the project. Please read i
      ```
 
 7. **Commit Your Changes**
-   - Commit your changes with a clear and concise commit message.
+   - Commit your changes using a descriptive commit message that follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification. This is crucial as it allows for automated changelog generation.
 
      ```bash
      git commit -m "feat: Add your new feature"
      ```
+
+   - The basic format is `<type>: <description>`. Common types include:
+     - `feat`: A new feature
+     - `fix`: A bug fix
+     - `docs`: Documentation only changes
+     - `style`: Changes that do not affect the meaning of the code (white-space, formatting, etc)
+     - `refactor`: A code change that neither fixes a bug nor adds a feature
+     - `perf`: A code change that improves performance
+     - `test`: Adding missing tests or correcting existing tests
+     - `chore`: Changes to the build process or auxiliary tools and libraries
 
 8. **Push to Your Fork**
    - Push your changes to your forked repository.
