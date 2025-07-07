@@ -11,6 +11,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## 📚 Table of Contents
 
+- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -19,22 +20,22 @@ This project provides a solid foundation for building high-quality JavaScript ap
     - [For an Existing Repository](#for-an-existing-repository)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
-  - [Code Quality & Formatting](#code-quality--formatting)
+  - [Code Quality \& Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
   - [Release Management](#release-management)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
   - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
-- [📦 Release & Versioning](#-release--versioning)
+- [📦 Release \& Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
   - [Creating a New Release](#creating-a-new-release)
 - [📁 Project Structure](#-project-structure)
-- [✍️ Linting for Documentation](#-linting-for-documentation)
+- [✍️ Linting for Documentation](#️-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
 - [🤝 Contributing](#-contributing)
-- [⚖️ Code of Conduct](#-code-of-conduct)
+- [⚖️ Code of Conduct](#️-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 
@@ -188,18 +189,17 @@ This workflow relies on commit messages following the Conventional Commits speci
 The following steps should be performed by a project maintainer with push access to the `main` branch:
 
 1.  **Ensure your local `main` branch is up-to-date** with all the changes you want to release.
-2.  **Run the release command**. This will bump the version, update the changelog, and create a local Git commit and tag.
+2.  **Run the release command**. This will start the interactive release process.
 
     ```bash
     npm run release
     ```
 
-3.  **Confirm Publishing**: After the tag is created, you will be prompted to publish the new version to the npm registry.
-4.  **Push to GitHub**: After the script completes, push the commit and tag to GitHub to trigger the automated GitHub Release creation.
+3.  **Follow the Prompts**: The script will guide you through the release:
+    - First, it will ask if you want to **publish the package to npm**.
+    - Second, it will ask if you want to **push the new commit and tag to GitHub**. This step is what triggers the automated GitHub Release creation.
 
-    ```bash
-    git push --follow-tags origin main
-    ```
+If you answer "yes" to both prompts, the entire release process is handled for you. If you choose to skip a step, the script will provide instructions on how to complete it manually later.
 
 For a dry run to see what changes would be made without actually changing any files, you can use `npm run release -- --dry-run`.
 
