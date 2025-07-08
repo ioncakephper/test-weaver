@@ -15,14 +15,15 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Using this Template](#using-this-template)
-    - [For a New Repository](#for-a-new-repository)
+    - [Method 1: GitHub Template (Recommended)](#method-1-github-template-recommended)
+    - [Method 2: Using `degit` (for a local copy)](#method-2-using-degit-for-a-local-copy)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
-  - [The Cost of Stale Documentation & Broken Links](#the-cost-of-stale-documentation--broken-links)
+  - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
 - [📦 Release & Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
@@ -45,7 +46,6 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Automated Code Quality**: A strict, pre-configured setup using ESLint and Prettier to catch errors, enforce best practices, and maintain a consistent code style across all files (`.js`, `.md`, `.json`).
 - **Enforced Documentation Standards**: Integrated `eslint-plugin-jsdoc` to require JSDoc comments for all functions, improving code clarity and long-term maintainability.
 - **Living Documentation**: Custom automation scripts (`npm run docs:all`) that keep your `README.md` perpetually up-to-date by generating the project structure, a table of contents, and a list of available scripts. This eliminates documentation drift.
-- **Reliable Documentation Links**: An automated link checker (`npm run docs:links`) that scans all Markdown files for broken hyperlinks, ensuring your documentation remains professional and trustworthy.
 - **Automated Release Workflow**: Integrated `release-please` to automate version bumping, `CHANGELOG.md` generation, and GitHub releases based on the Conventional Commits specification.
 - **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional. This command is designed to be run before every commit.
 - **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
@@ -59,19 +59,40 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ### Using this Template
 
-The recommended way to use this template is with the GitHub "Use this template" feature.
+There are two recommended ways to use this template to start your project.
 
-#### For a New Repository
+#### Method 1: GitHub Template (Recommended)
+
+This is the best approach for creating a new repository on GitHub that is linked to this template.
 
 1.  Click the green **"Use this template"** button on the [main repository page](https://github.com/ioncakephper/js-starter).
 2.  Select **"Create a new repository"**.
-3.  Give your new repository a name and description.
-4.  Clone your newly created repository to your local machine.
+3.  Give your new repository a name and description, then create it.
+4.  Clone your newly created repository to your local machine, replacing `YOUR_USERNAME` and `YOUR_REPOSITORY_NAME`:
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+    ```
 5.  Navigate into the project directory and install the dependencies:
     ```bash
+    cd YOUR_REPOSITORY_NAME
     npm install
     ```
 6.  You're all set! Start building your application in the `src` directory.
+
+#### Method 2: Using `degit` (for a local copy)
+
+If you want a clean copy of the template files on your local machine without the full Git history, you can use `degit`.
+
+1.  Run the following command in your terminal, replacing `my-new-project` with your desired folder name:
+    ```bash
+    npx degit ioncakephper/js-starter my-new-project
+    ```
+2.  Navigate into your new project directory and install the dependencies:
+    ```bash
+    cd my-new-project
+    npm install
+    ```
+3.  You're all set! You can now initialize a new Git repository (`git init`) and start building.
 
 ## 🚀 Available Scripts
 
@@ -111,15 +132,14 @@ This template includes a set of scripts designed to streamline development, enfo
 
 This starter template is more than just a collection of files; it's a workflow designed to maximize developer productivity and enforce high-quality standards from day one. The core philosophy is to **automate the tedious and error-prone tasks** so you can focus on what matters: building great software.
 
-### The Cost of Stale Documentation & Broken Links
+### The Cost of Stale Documentation
 
-In many projects, the `README.md` quickly becomes outdated. Manually updating the project structure or list of scripts is an easily forgotten chore, and broken links frustrate users, creating the perception of a poorly maintained project.
+In many projects, the `README.md` quickly becomes outdated. Manually updating the project structure or list of scripts is an easily forgotten chore.
 
 `js-starter` solves this problem with its custom documentation scripts:
 
 - `scripts/update-readme-structure.js`: Saves you from manually drawing out file trees. What might take 5-10 minutes of careful, manual work (and is often forgotten) is now an instant, accurate, and repeatable command.
 - `scripts/update-readme-scripts.js`: Ensures that your project's capabilities are always documented. It reads directly from `package.json`, so the documentation can't lie. It even reminds you to describe your scripts, promoting good habits.
-- `scripts/check-links.js`: Automatically validates every hyperlink in your Markdown files. This prevents the "link rot" that plagues many documentation sites, ensuring that every reference is a trustworthy one.
 
 ### The Power of Workflow Scripts
 
@@ -263,7 +283,6 @@ This project was built upon the shoulders of giants. We'd like to thank the crea
 - [Release Please](https://github.com/googleapis/release-please)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Doctoc](https://github.com/thlorenz/doctoc)
-- [markdown-link-check](https://github.com/tcort/markdown-link-check)
 - [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)
 - [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [Semantic Versioning](https://semver.org/)
