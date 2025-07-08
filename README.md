@@ -37,6 +37,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [🗺️ Roadmap](#-roadmap)
 - [⚖️ Code of Conduct](#-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
+- [👨‍💻 About the Author](#-about-the-author)
 - [📄 License](#-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -299,6 +300,14 @@ This project was built upon the shoulders of giants. We'd like to thank the crea
 - [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [Semantic Versioning](https://semver.org/)
 - [Contributor Covenant](https://www.contributor-covenant.org/)
+
+## 👨‍💻 About the Author
+
+This template was created and is maintained by **Ion Gireada**.
+
+- **GitHub**: [@ioncakephper](https://github.com/ioncakephper)
+- **Website**: Feel free to add your personal website or blog here.
+- **LinkedIn**: Connect with me on [LinkedIn](https://www.linkedin.com/in/ion-gireada-223929/)!
 
 ## 📄 License
 
