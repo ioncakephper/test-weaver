@@ -34,6 +34,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
 - [🤝 Contributing](#-contributing)
+- [🗺️ Roadmap](#-roadmap)
 - [⚖️ Code of Conduct](#-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
@@ -267,6 +268,17 @@ After adding the docblock, running `npm run lint` again will no longer show the 
 ## 🤝 Contributing
 
 Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
+
+## 🗺️ Roadmap
+
+This project is actively maintained, and we have a clear vision for its future. Here are some of the features and improvements we are planning:
+
+- **TypeScript Support**: Add a separate branch or configuration for a TypeScript version of this template.
+- **Monorepo Example**: Provide guidance and an example setup for using this template within a monorepo structure.
+- **Containerization**: Include a `Dockerfile` and `docker-compose.yml` for easy container-based development.
+- **Additional CI/CD Examples**: Add examples for other CI/CD providers like CircleCI or GitLab CI.
+
+If you have ideas for other features, please open an issue to discuss them!
 
 ## ⚖️ Code of Conduct
 
