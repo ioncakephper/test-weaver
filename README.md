@@ -11,6 +11,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## 📚 Table of Contents
 
+- [📚 Table of Contents](#-table-of-contents)
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -19,24 +20,25 @@ This project provides a solid foundation for building high-quality JavaScript ap
     - [Method 2: Using `degit` (for a local copy)](#method-2-using-degit-for-a-local-copy)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
-  - [Code Quality & Formatting](#code-quality--formatting)
+  - [Code Quality \& Formatting](#code-quality--formatting)
   - [Core Development](#core-development)
   - [The "One-Click" Pre-Commit Workflow](#the-one-click-pre-commit-workflow)
 - [A Focus on Quality and Productivity](#a-focus-on-quality-and-productivity)
   - [The Cost of Stale Documentation](#the-cost-of-stale-documentation)
   - [The Power of Workflow Scripts](#the-power-of-workflow-scripts)
-- [📦 Release & Versioning](#-release--versioning)
+- [📦 Release \& Versioning](#-release--versioning)
   - [How it Works](#how-it-works)
   - [Creating a New Release](#creating-a-new-release)
     - [Your First Release](#your-first-release)
 - [📁 Project Structure](#-project-structure)
-- [✍️ Linting for Documentation](#-linting-for-documentation)
+- [✍️ Linting for Documentation](#️-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
 - [🤝 Contributing](#-contributing)
-- [🗺️ Roadmap](#-roadmap)
-- [⚖️ Code of Conduct](#-code-of-conduct)
+- [🗺️ Roadmap](#️-roadmap)
+- [⚖️ Code of Conduct](#️-code-of-conduct)
 - [🙏 Acknowledgements](#-acknowledgements)
+- [👨‍💻 About the Author](#-about-the-author)
 - [📄 License](#-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -299,6 +301,14 @@ This project was built upon the shoulders of giants. We'd like to thank the crea
 - [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [Semantic Versioning](https://semver.org/)
 - [Contributor Covenant](https://www.contributor-covenant.org/)
+
+## 👨‍💻 About the Author
+
+This template was created and is maintained by **Ion Gireada**.
+
+- **GitHub**: [@ioncakephper](https://github.com/ioncakephper)
+- **Website**: Feel free to add your personal website or blog here.
+- **LinkedIn**: Connect with me on [LinkedIn](https://www.linkedin.com/in/ion-gireada-223929/)!
 
 ## 📄 License
 
