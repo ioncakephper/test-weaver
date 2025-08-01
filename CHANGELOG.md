@@ -2,17 +2,15 @@
 
 ## [1.1.0](https://github.com/ioncakephper/test-weaver/compare/v1.0.3...v1.1.0) (2025-08-01)
 
-
 ### Features
 
-* Enhance README with detailed usage and workflow documentation ([f8d5070](https://github.com/ioncakephper/test-weaver/commit/f8d507077d144da399a29351f513b34daab40c29))
+- Enhance README with detailed usage and workflow documentation ([f8d5070](https://github.com/ioncakephper/test-weaver/commit/f8d507077d144da399a29351f513b34daab40c29))
 
 ## [1.0.3](https://github.com/ioncakephper/test-weaver/compare/v1.0.2...v1.0.3) (2025-08-01)
 
-
 ### Bug Fixes
 
-* **fileProcessor:** Fix redundant .test extension in generated files ([461d917](https://github.com/ioncakephper/test-weaver/commit/461d917afad89785a98ce69dbe5b8b98e304d0ac))
+- **fileProcessor:** Fix redundant .test extension in generated files ([461d917](https://github.com/ioncakephper/test-weaver/commit/461d917afad89785a98ce69dbe5b8b98e304d0ac))
 
 ## [1.0.2](https://github.com/ioncakephper/test-weaver/compare/v1.0.1...v1.0.2) (2025-08-01)
 
