@@ -5,15 +5,15 @@
  * Now includes an interactive mode using Inquirer.js when --quick is false,
  * and supports a --no-defaults flag to only output changed settings.
  * Includes validation for the output filename.
- * @author Your Name/AI Assistant
+ * @author Ion Gireada/AI Assistant
  * @license MIT
  */
 
-const fs = require("fs");
-const path = require("path");
-const inquirer = require("inquirer");
+const fs = require('fs');
+const path = require('path');
+const inquirer = require('inquirer');
 
-const { LOG_LEVELS, log } = require("../utils/logger");
+const { LOG_LEVELS, log } = require('../utils/logger');
 
 /**
  * Helper function to compare two arrays for equality (order-independent).
@@ -39,39 +39,38 @@ function arraysEqual(arr1, arr2) {
  * hardcoded fallbacks if the default config is unavailable.
  * It supports an interactive mode or quick generation based on flags,
  * and can optionally only write non-default settings.
- *
  * @param {Command} program - The Commander.js program instance.
  */
 module.exports = (program) => {
   program
-    .command("init")
-    .alias("i")
-    .argument("[filename]", "name of configuration file to create")
-    .description("create a configuration file in the current directory") // Changed to lowercase
+    .command('init')
+    .alias('i')
+    .argument('[filename]', 'name of configuration file to create')
+    .description('create a configuration file in the current directory') // Changed to lowercase
     .option(
-      "-q, --quick",
-      "skip asking questions and generate the configuration file with default values"
+      '-q, --quick',
+      'skip asking questions and generate the configuration file with default values',
     ) // Changed to lowercase
     .option(
-      "-f, --force",
-      "force overwriting the configuration file if it already exists"
+      '-f, --force',
+      'force overwriting the configuration file if it already exists',
     ) // Changed to lowercase
     .option(
-      "--no-defaults",
-      "only include settings in the generated file whose values differ from defaults"
+      '--no-defaults',
+      'only include settings in the generated file whose values differ from defaults',
     ) // Changed to lowercase
     .action(async (filename, options) => {
       // Made action async for inquirer
-      const cliConfigFileName = "testweaver.json";
+      const cliConfigFileName = 'testweaver.json';
       let actualConfigFileName = filename || cliConfigFileName;
 
       // --- Filename Validation and Correction ---
       // 1. Append .json extension if missing
-      if (path.extname(actualConfigFileName).toLowerCase() !== ".json") {
-        actualConfigFileName += ".json";
+      if (path.extname(actualConfigFileName).toLowerCase() !== '.json') {
+        actualConfigFileName += '.json';
         log(
           `ℹ️ appending '.json' extension to filename. new filename: '${actualConfigFileName}'`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
       }
 
@@ -82,12 +81,12 @@ module.exports = (program) => {
       const relativePath = path.relative(process.cwd(), resolvedPath);
 
       if (
-        relativePath.startsWith("..") ||
-        relativePath.includes(path.sep + "..")
+        relativePath.startsWith('..') ||
+        relativePath.includes(path.sep + '..')
       ) {
         log(
           `\n❌ error: cannot save configuration file outside the current project directory.`,
-          LOG_LEVELS.ERROR
+          LOG_LEVELS.ERROR,
         ); // Adjusted for lowercase consistency
         log(`attempted path: '${projectConfigPath}'`, LOG_LEVELS.ERROR); // Adjusted for lowercase consistency
         process.exit(1);
@@ -96,45 +95,45 @@ module.exports = (program) => {
 
       const defaultConfigPathForInit = path.join(
         __dirname,
-        "../../config",
-        "default.json"
+        '../../config',
+        'default.json',
       );
 
       let defaultConfigFileContent;
       // Updated hardcodedDefaultContent to match the latest default.json
       const hardcodedDefaultContent = {
         patterns: [
-          "**/__tests__/**/*.{yaml,yml}",
-          "**/*.test.{yaml,yml}",
-          "**/*.spec.{yaml,yml}",
-          "tests/**/*.{yaml,yml}",
-          "features/**/*.{yaml,yml}",
+          '**/__tests__/**/*.{yaml,yml}',
+          '**/*.test.{yaml,yml}',
+          '**/*.spec.{yaml,yml}',
+          'tests/**/*.{yaml,yml}',
+          'features/**/*.{yaml,yml}',
         ],
-        ignore: ["node_modules", ".git", "temp_files/**/*.{yaml,yml}"],
+        ignore: ['node_modules', '.git', 'temp_files/**/*.{yaml,yml}'],
         verbose: false,
         debug: false,
         silent: false,
         dryRun: false,
-        testKeyword: "it",
+        testKeyword: 'it',
         noCleanup: false,
         quick: false,
         force: false,
-        "no-defaults": false,
+        'no-defaults': false,
       };
 
       try {
         defaultConfigFileContent = JSON.parse(
-          fs.readFileSync(defaultConfigPathForInit, "utf8")
+          fs.readFileSync(defaultConfigPathForInit, 'utf8'),
         );
         log(
           `\n✅ using settings from 'config/default.json' for initialization.`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
       } catch (error) {
         defaultConfigFileContent = hardcodedDefaultContent;
         log(
           `\n⚠️ warning: could not read or parse default configuration from '${defaultConfigPathForInit}'.`,
-          LOG_LEVELS.WARN
+          LOG_LEVELS.WARN,
         ); // Adjusted for lowercase consistency
         log(`initializing with hardcoded fallback defaults.`, LOG_LEVELS.WARN); // Adjusted for lowercase consistency
       }
@@ -143,12 +142,12 @@ module.exports = (program) => {
         if (options.force) {
           log(
             `\n⚠️ warning: '${actualConfigFileName}' already exists at '${projectConfigPath}'. forcing overwrite due to --force flag.`,
-            LOG_LEVELS.WARN
+            LOG_LEVELS.WARN,
           ); // Adjusted for lowercase consistency
         } else {
           log(
             `\n⚠️ warning: '${actualConfigFileName}' already exists at '${projectConfigPath}'. not overwriting.`,
-            LOG_LEVELS.WARN
+            LOG_LEVELS.WARN,
           ); // Adjusted for lowercase consistency
           log(`to force overwrite, use the '--force' flag.`, LOG_LEVELS.WARN); // Adjusted for lowercase consistency
           process.exit(0);
@@ -160,18 +159,18 @@ module.exports = (program) => {
       if (!options.quick) {
         log(
           `\nstarting interactive configuration for '${actualConfigFileName}'...`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
         log(
           `(press enter to accept default, or modify values)`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
 
         const questions = [
           {
-            type: "checkbox",
-            name: "patterns",
-            message: "select glob patterns for yaml test definition files:", // Changed to lowercase
+            type: 'checkbox',
+            name: 'patterns',
+            message: 'select glob patterns for yaml test definition files:', // Changed to lowercase
             choices: defaultConfigFileContent.patterns.map((p) => ({
               name: p,
               checked: true,
@@ -179,21 +178,21 @@ module.exports = (program) => {
             default: defaultConfigFileContent.patterns,
           },
           {
-            type: "input",
-            name: "customPatterns",
+            type: 'input',
+            name: 'customPatterns',
             message:
               'enter any additional patterns (comma-separated, e.g., "src/**/*.yaml"):', // Changed to lowercase
-            default: "",
+            default: '',
             filter: (input) =>
               input
-                .split(",")
+                .split(',')
                 .map((s) => s.trim())
                 .filter(Boolean),
           },
           {
-            type: "checkbox",
-            name: "ignore",
-            message: "select glob patterns to ignore during processing:", // Changed to lowercase
+            type: 'checkbox',
+            name: 'ignore',
+            message: 'select glob patterns to ignore during processing:', // Changed to lowercase
             choices: defaultConfigFileContent.ignore.map((i) => ({
               name: i,
               checked: true,
@@ -201,64 +200,64 @@ module.exports = (program) => {
             default: defaultConfigFileContent.ignore,
           },
           {
-            type: "input",
-            name: "customIgnore",
+            type: 'input',
+            name: 'customIgnore',
             message:
               'enter any additional ignore patterns (comma-separated, e.g., "temp/**/*.yaml"):', // Changed to lowercase
-            default: "",
+            default: '',
             filter: (input) =>
               input
-                .split(",")
+                .split(',')
                 .map((s) => s.trim())
                 .filter(Boolean),
           },
           {
-            type: "list",
-            name: "testKeyword",
+            type: 'list',
+            name: 'testKeyword',
             message:
-              "choose the keyword for generated test blocks (it or test):", // Changed to lowercase
-            choices: ["it", "test"],
+              'choose the keyword for generated test blocks (it or test):', // Changed to lowercase
+            choices: ['it', 'test'],
             default: defaultConfigFileContent.testKeyword,
           },
           {
-            type: "confirm",
-            name: "dryRun",
+            type: 'confirm',
+            name: 'dryRun',
             message:
-              "enable dry run mode (simulate generation without writing files)?", // Changed to lowercase
+              'enable dry run mode (simulate generation without writing files)?', // Changed to lowercase
             default: defaultConfigFileContent.dryRun,
           },
           {
-            type: "confirm",
-            name: "noCleanup",
+            type: 'confirm',
+            name: 'noCleanup',
             message:
-              "disable automatic cleanup of generated files when source yaml is deleted?", // Changed to lowercase
+              'disable automatic cleanup of generated files when source yaml is deleted?', // Changed to lowercase
             default: defaultConfigFileContent.noCleanup,
           },
           {
-            type: "confirm",
-            name: "verbose",
-            message: "enable verbose logging for detailed output?", // Changed to lowercase
+            type: 'confirm',
+            name: 'verbose',
+            message: 'enable verbose logging for detailed output?', // Changed to lowercase
             default: defaultConfigFileContent.verbose,
           },
           {
-            type: "confirm",
-            name: "debug",
+            type: 'confirm',
+            name: 'debug',
             message:
-              "enable debug logging for highly detailed debugging (most verbose)?", // Changed to lowercase
+              'enable debug logging for highly detailed debugging (most verbose)?', // Changed to lowercase
             default: defaultConfigFileContent.debug,
           },
           {
-            type: "confirm",
-            name: "silent",
-            message: "suppress all output except critical errors?", // Changed to lowercase
+            type: 'confirm',
+            name: 'silent',
+            message: 'suppress all output except critical errors?', // Changed to lowercase
             default: defaultConfigFileContent.silent,
           },
           {
-            type: "confirm",
-            name: "noDefaults", // Inquirer property name remains camelCase, Commander maps it
+            type: 'confirm',
+            name: 'noDefaults', // Inquirer property name remains camelCase, Commander maps it
             message:
-              "only include settings in the generated file whose values differ from defaults?", // Changed to lowercase
-            default: defaultConfigFileContent["no-defaults"], // Access with kebab-case from defaultConfigFileContent
+              'only include settings in the generated file whose values differ from defaults?', // Changed to lowercase
+            default: defaultConfigFileContent['no-defaults'], // Access with kebab-case from defaultConfigFileContent
           },
         ];
 
@@ -277,7 +276,7 @@ module.exports = (program) => {
         finalConfig.verbose = answers.verbose;
         finalConfig.debug = answers.debug;
         finalConfig.silent = answers.silent;
-        finalConfig["no-defaults"] = answers.noDefaults; // Assign to kebab-case property
+        finalConfig['no-defaults'] = answers.noDefaults; // Assign to kebab-case property
       } // End of interactive mode
 
       let configToSave = { ...finalConfig };
@@ -285,12 +284,13 @@ module.exports = (program) => {
       // Determine if we should apply the --no-defaults logic.
       // The `--no-defaults` flag sets `options.defaults` to `false`.
       // If the flag is not present, we defer to the interactive answer.
-      const shouldApplyNoDefaults = options.defaults === false ? true : finalConfig["no-defaults"];
+      const shouldApplyNoDefaults =
+        options.defaults === false ? true : finalConfig['no-defaults'];
 
       if (shouldApplyNoDefaults) {
         log(
           `\nfiltering configuration to include only non-default settings (--no-defaults enabled)...`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
         const sparseConfig = {};
 
@@ -300,15 +300,15 @@ module.exports = (program) => {
           ) {
             // Handle the 'no-defaults' key specifically for comparison
             const defaultValue =
-              key === "no-defaults"
-                ? defaultConfigFileContent["no-defaults"]
+              key === 'no-defaults'
+                ? defaultConfigFileContent['no-defaults']
                 : defaultConfigFileContent[key];
             const finalValue =
-              key === "no-defaults"
-                ? finalConfig["no-defaults"]
+              key === 'no-defaults'
+                ? finalConfig['no-defaults']
                 : finalConfig[key];
 
-            if (key === "quick" || key === "force" || key === "no-defaults") {
+            if (key === 'quick' || key === 'force' || key === 'no-defaults') {
               continue; // These are init command-specific flags, not core config for 'generate'
             }
 
@@ -317,8 +317,8 @@ module.exports = (program) => {
                 sparseConfig[key] = finalValue;
               }
             } else if (
-              typeof defaultValue === "boolean" ||
-              typeof defaultValue === "string"
+              typeof defaultValue === 'boolean' ||
+              typeof defaultValue === 'string'
             ) {
               if (finalValue !== defaultValue) {
                 sparseConfig[key] = finalValue;
@@ -333,21 +333,21 @@ module.exports = (program) => {
         fs.writeFileSync(
           projectConfigPath,
           JSON.stringify(configToSave, null, 2),
-          "utf8"
+          'utf8',
         );
         log(
           `\n✅ successfully created '${actualConfigFileName}' at '${projectConfigPath}'.`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
         log(
           `you can now customize this file or run 'testweaver generate' without patterns.`,
-          LOG_LEVELS.INFO
+          LOG_LEVELS.INFO,
         ); // Adjusted for lowercase consistency
         process.exit(0);
       } catch (error) {
         log(
           `\n❌ error creating '${actualConfigFileName}': ${error.message}`,
-          LOG_LEVELS.ERROR
+          LOG_LEVELS.ERROR,
         ); // Adjusted for lowercase consistency
         process.exit(1);
       }

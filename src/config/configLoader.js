@@ -3,15 +3,15 @@
  * @description Handles loading and consolidating CLI configuration from cascaded sources:
  * command-line options, project config file (testweaver.json), and default config file.
  * Includes JSON Schema validation for loaded configuration files.
- * @author Your Name/AI Assistant
+ * @author Ion Gireada/AI Assistant
  * @license MIT
  */
 
-const fs = require("fs");
-const path = require("path");
-const Ajv = require("ajv"); // Import Ajv
+const fs = require('fs');
+const path = require('path');
+const Ajv = require('ajv'); // Import Ajv
 
-const { log, LOG_LEVELS } = require("../utils/logger");
+const { log, LOG_LEVELS } = require('../utils/logger');
 
 // Initialize Ajv validator
 const ajv = new Ajv({ allErrors: true });
@@ -24,16 +24,16 @@ let validateSchema; // Will hold the compiled schema validator
  */
 function loadAndCompileSchema(schemaPath) {
   try {
-    const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
+    const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
     validateSchema = ajv.compile(schema);
     log(
       `JSON Schema loaded and compiled from: ${schemaPath}`,
-      LOG_LEVELS.DEBUG
+      LOG_LEVELS.DEBUG,
     );
   } catch (error) {
     log(
       `❌ Error: Could not load or compile JSON schema from '${schemaPath}'. ${error.message}`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
     process.exit(1);
   }
@@ -49,7 +49,7 @@ function validateConfig(config, sourceDescription) {
   if (!validateSchema) {
     log(
       `❌ error: json schema validator not initialized. cannot validate configuration.`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
     process.exit(1);
   }
@@ -58,19 +58,19 @@ function validateConfig(config, sourceDescription) {
   if (!isValid) {
     log(
       `\n❌ error: configuration from '${sourceDescription}' is invalid according to the schema:`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
     validateSchema.errors.forEach((err) => {
       log(
-        `    - ${err.instancePath || "root"} ${err.message}`,
-        LOG_LEVELS.ERROR
+        `    - ${err.instancePath || 'root'} ${err.message}`,
+        LOG_LEVELS.ERROR,
       );
     });
     process.exit(1);
   }
   log(
     `configuration from '${sourceDescription}' successfully validated against schema.`,
-    LOG_LEVELS.DEBUG
+    LOG_LEVELS.DEBUG,
   );
 }
 
@@ -84,13 +84,13 @@ function loadConfigFile(configPath) {
     return null;
   }
   try {
-    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     return config;
   } catch (e) {
     // This catch block handles JSON parsing errors. Schema validation errors are handled by validateConfig.
     log(
       `⚠️ warning: could not parse config file '${configPath}'. error: ${e.message}`,
-      LOG_LEVELS.WARN
+      LOG_LEVELS.WARN,
     );
     return null;
   }
@@ -126,16 +126,18 @@ function determineLogLevel(options, loadedConfig) {
  * configuration (`cliConfig`) and a string indicating the source of the configuration.
  */
 function loadConfig(cliPatterns, options, mainModuleDir) {
-  const cliConfigFileName = "testweaver.json";
-  const defaultConfigFileName = "default.json";
+  const cliConfigFileName = 'testweaver.json';
+  const defaultConfigFileName = 'default.json';
   const defaultConfigPath = path.join(
-    mainModuleDir, "../config", defaultConfigFileName
+    mainModuleDir,
+    '../config',
+    defaultConfigFileName,
   );
   const cliConfigPath = path.join(process.cwd(), cliConfigFileName);
   const schemaPath = path.join(
     mainModuleDir,
-    "../config",
-    "default-config.schema.json"
+    '../config',
+    'default-config.schema.json',
   );
 
   // Load and compile the schema once
@@ -148,7 +150,7 @@ function loadConfig(cliPatterns, options, mainModuleDir) {
   if (!defaultConfig) {
     log(
       `❌ error: default configuration file '${defaultConfigPath}' not found or is invalid. cannot proceed.`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
     process.exit(1);
   }
@@ -174,7 +176,7 @@ function loadConfig(cliPatterns, options, mainModuleDir) {
     // If a custom config was specified with --config but not found, it's an error.
     log(
       `❌ error: custom configuration file specified with --config was not found at '${projectConfigPath}'.`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
     process.exit(1);
   }
@@ -192,22 +194,26 @@ function loadConfig(cliPatterns, options, mainModuleDir) {
     effectivePatterns:
       cliPatterns.length > 0 ? cliPatterns : mergedConfig.patterns || [],
     effectiveIgnorePatterns: (() => {
-      const baseRequiredIgnores = ["**/*.test.js"];
+      const baseRequiredIgnores = ['**/*.test.js'];
       if (options.ignore && options.ignore.length > 0) {
         return [...baseRequiredIgnores, ...options.ignore];
       }
       return [...baseRequiredIgnores, ...(mergedConfig.ignore || [])];
     })(),
-    isDryRun: options.dryRun !== undefined ? options.dryRun : mergedConfig.dryRun,
+    isDryRun:
+      options.dryRun !== undefined ? options.dryRun : mergedConfig.dryRun,
     testKeyword: options.testKeyword || mergedConfig.testKeyword,
     watchMode: options.watch || false,
-    noCleanup: options.noCleanup !== undefined ? options.noCleanup : mergedConfig.noCleanup,
+    noCleanup:
+      options.noCleanup !== undefined
+        ? options.noCleanup
+        : mergedConfig.noCleanup,
     quick:
-      typeof options.quick !== "undefined"
+      typeof options.quick !== 'undefined'
         ? options.quick
         : mergedConfig.quick || false,
     force:
-      typeof options.force !== "undefined"
+      typeof options.force !== 'undefined'
         ? options.force
         : mergedConfig.force || false,
   };

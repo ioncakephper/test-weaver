@@ -2,22 +2,21 @@
  * @file src/core/fileProcessor.js
  * @description Handles the processing of a single YAML file: reading, parsing,
  * generating test code, and writing (or simulating) the .test.js output.
- * @author Your Name/AI Assistant
+ * @author Ion Gireada/AI Assistant
  * @license MIT
  */
 
-const fs = require("fs");
-const path = require("path");
-const yaml = require("js-yaml");
-const { log, LOG_LEVELS } = require("../utils/logger"); // Import logger
-const { generateTestCode } = require("./testGenerator"); // Import test generator
+const fs = require('fs');
+const path = require('path');
+const yaml = require('js-yaml');
+const { log, LOG_LEVELS } = require('../utils/logger'); // Import logger
+const { generateTestCode } = require('./testGenerator'); // Import test generator
 
 /**
  * Processes a single YAML file.
  * Reads the YAML content, parses it, generates Jest-compatible test code,
  * and then writes the generated code to a `.test.js` file in the same directory
  * as the source YAML. Supports dry run mode.
- *
  * @param {string} yamlFilePath - The full path to the YAML file to process.
  * @param {object} cliConfig - The consolidated configuration object for the CLI,
  * containing properties like `testKeyword`, `isDryRun`.
@@ -25,13 +24,13 @@ const { generateTestCode } = require("./testGenerator"); // Import test generato
 function processFile(yamlFilePath, cliConfig) {
   try {
     log(`Processing file: ${yamlFilePath}`, LOG_LEVELS.DEBUG);
-    const fileContent = fs.readFileSync(yamlFilePath, "utf8");
+    const fileContent = fs.readFileSync(yamlFilePath, 'utf8');
     const parsedYaml = yaml.load(fileContent);
 
-    if (typeof parsedYaml !== "object" || parsedYaml === null) {
+    if (typeof parsedYaml !== 'object' || parsedYaml === null) {
       log(
         `⚠️ Warning: YAML file '${yamlFilePath}' is empty or does not contain a valid object structure. Skipping.`,
-        LOG_LEVELS.WARN
+        LOG_LEVELS.WARN,
       );
       return;
     }
@@ -56,23 +55,23 @@ function processFile(yamlFilePath, cliConfig) {
     if (cliConfig.isDryRun) {
       log(
         `Would generate test file: ${outputFilePath} (Dry Run)`,
-        LOG_LEVELS.INFO
+        LOG_LEVELS.INFO,
       );
       log(
         `--- Content Preview for ${outputFilePath} ---\n${fileHeader}${generatedCode}\n--- End Preview ---`,
-        LOG_LEVELS.DEBUG
+        LOG_LEVELS.DEBUG,
       );
     } else {
-      fs.writeFileSync(outputFilePath, fileHeader + generatedCode, "utf8");
+      fs.writeFileSync(outputFilePath, fileHeader + generatedCode, 'utf8');
       log(
         `✅ Successfully generated test file: ${outputFilePath}`,
-        LOG_LEVELS.INFO
+        LOG_LEVELS.INFO,
       );
     }
   } catch (error) {
     log(
       `❌ Error processing file '${yamlFilePath}': ${error.message}`,
-      LOG_LEVELS.ERROR
+      LOG_LEVELS.ERROR,
     );
   }
 }

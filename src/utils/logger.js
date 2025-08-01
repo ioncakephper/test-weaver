@@ -2,7 +2,7 @@
  * @file src/utils/logger.js
  * @description Centralized logging utility for the CLI.
  * Defines log levels and a function to log messages based on the current verbosity.
- * @author Your Name/AI Assistant
+ * @author Ion Gireada/AI Assistant
  * @license MIT
  */
 
@@ -30,7 +30,7 @@ function setLogLevel(level) {
  * Logs a message to the console if its level is less than or equal to the current global log level.
  * Uses console.error for ERROR, console.warn for WARN, and console.log for others.
  * @param {string} message - The message text to log.
- * @param {number} [level=LOG_LEVELS.INFO] - The log level of the message. Defaults to INFO.
+ * @param {number} [level] - The log level of the message. Defaults to INFO.
  */
 function log(message, level = LOG_LEVELS.INFO) {
   if (level <= currentLogLevel) {

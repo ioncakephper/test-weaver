@@ -1,11 +1,6 @@
 # Test Weaver
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Node.js CI](https://github.com/ioncakephper/test-weaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions)
-[![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver)
-[![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues)
-[![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/js-starter/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/js-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/js-starter) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Node.js CI](https://github.com/ioncakephper/test-weaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
 
 A command-line utility that skillfully weaves Jest-compatible test files from simple, declarative YAML threads.
 
@@ -19,9 +14,10 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [Using this Template](#using-this-template)
-    - [Method 1: GitHub Template (Recommended)](#method-1-github-template-recommended)
-    - [Method 2: Using `degit` (for a local copy)](#method-2-using-degit-for-a-local-copy)
+  - [Installation](#installation)
+    - [Install via npm (recommended)](#install-via-npm-recommended)
+    - [Or use npx (no global install required)](#or-use-npx-no-global-install-required)
+    - [Or clone and run locally](#or-clone-and-run-locally)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
@@ -89,7 +85,7 @@ npm link
 
 ## 🚀 Available Scripts
 
-This template includes a set of scripts designed to streamline development, enforce quality, and automate documentation.
+This repository includes a set of scripts designed to streamline development, enforce quality, and automate documentation.
 
 <!-- START AVAILABLE SCRIPTS -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN npm run docs:scripts TO UPDATE -->
@@ -129,7 +125,7 @@ This starter template is more than just a collection of files; it's a workflow d
 
 In many projects, the `README.md` quickly becomes outdated. Manually updating the project structure or list of scripts is an easily forgotten chore.
 
-`js-starter` solves this problem with its custom documentation scripts:
+`test-weaver` solves this problem with its custom documentation scripts:
 
 - `scripts/update-readme-structure.js`: Saves you from manually drawing out file trees. What might take 5-10 minutes of careful, manual work (and is often forgotten) is now an instant, accurate, and repeatable command.
 - `scripts/update-readme-scripts.js`: Ensures that your project's capabilities are always documented. It reads directly from `package.json`, so the documentation can't lie. It even reminds you to describe your scripts, promoting good habits.
@@ -142,7 +138,7 @@ Chaining commands together is a simple but powerful concept. The `fix`, `docs:al
 - Instead of running three separate documentation commands, you just run `npm run docs:all`.
 - And most importantly, before you commit, you run `npm run ready`. This single command is your pre-flight check. It guarantees that every commit you push is not only functional but also perfectly formatted, linted, and documented. This discipline saves countless hours in code review and prevents messy commit histories.
 
-By embracing this automation, `js-starter` helps you build better software, faster.
+By embracing this automation, `test-weaver` helps you build better software, faster.
 
 ## 📦 Release & Versioning
 
@@ -150,15 +146,15 @@ This project uses [`release-please`](https://github.com/googleapis/release-pleas
 
 ### How it Works
 
-1.  **Conventional Commits**: All changes merged into the `main` branch should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification (e.g., `feat: add new feature`, `fix: resolve bug`).
-2.  **Release Pull Request**: `release-please` runs as a GitHub Action and monitors the `main` branch for new Conventional Commits. When it detects changes that warrant a new release (e.g., a `feat` commit for a minor version, a `fix` commit for a patch version), it automatically creates a "Release PR" with a title like `chore(release): 1.2.3`.
-3.  **Review and Merge**: This Release PR contains:
-    - An updated `CHANGELOG.md` with all changes since the last release.
-    - A bumped version number in `package.json`.
-    - Proposed release notes. Review this PR, and once satisfied, merge it into `main`.
-4.  **Automated GitHub Release & Publish**: Merging the Release PR triggers two final, sequential actions:
-    - The `release-please` action creates a formal GitHub Release and a corresponding Git tag (e.g., `v1.1.0`).
-    - The creation of this release then triggers the `publish.yml` workflow, which automatically publishes the package to the npm registry.
+1. **Conventional Commits**: All changes merged into the `main` branch should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification (e.g., `feat: add new feature`, `fix: resolve bug`).
+2. **Release Pull Request**: `release-please` runs as a GitHub Action and monitors the `main` branch for new Conventional Commits. When it detects changes that warrant a new release (e.g., a `feat` commit for a minor version, a `fix` commit for a patch version), it automatically creates a "Release PR" with a title like `chore(release): 1.2.3`.
+3. **Review and Merge**: This Release PR contains:
+   - An updated `CHANGELOG.md` with all changes since the last release.
+   - A bumped version number in `package.json`.
+   - Proposed release notes. Review this PR, and once satisfied, merge it into `main`.
+4. **Automated GitHub Release & Publish**: Merging the Release PR triggers two final, sequential actions:
+   - The `release-please` action creates a formal GitHub Release and a corresponding Git tag (e.g., `v1.1.0`).
+   - The creation of this release then triggers the `publish.yml` workflow, which automatically publishes the package to the npm registry.
 
 ### Creating a New Release
 
@@ -168,10 +164,10 @@ To create subsequent releases, simply merge changes into the `main` branch using
 
 To bootstrap the process and create your very first release:
 
-1.  Ensure your `package.json` version is at a sensible starting point (e.g., `1.0.0`).
-2.  Make at least one commit to the `main` branch that follows the Conventional Commits specification. A good first commit would be: `feat: Initial release`.
-3.  Push your commit(s) to `main`. The `release-please` action will run and create your first Release PR.
-4.  Review and merge this PR. This will trigger the creation of your `v1.0.0` GitHub Release and publish the package to npm.
+1. Ensure your `package.json` version is at a sensible starting point (e.g., `1.0.0`).
+2. Make at least one commit to the `main` branch that follows the Conventional Commits specification. A good first commit would be: `feat: Initial release`.
+3. Push your commit(s) to `main`. The `release-please` action will run and create your first Release PR.
+4. Review and merge this PR. This will trigger the creation of your `v1.0.0` GitHub Release and publish the package to npm.
 
 For more details, refer to the [release-please documentation](https://github.com/googleapis/release-please#how-it-works).
 
@@ -187,8 +183,26 @@ For more details, refer to the [release-please documentation](https://github.com
 │       ├── ci.yml             # Continuous Integration (CI) workflow
 │       ├── publish.yml
 │       └── release-please.yml
+├── .qodo/
+│   └── testConfig.toml
+├── config/
+│   ├── default-config.schema.json
+│   └── default.json
 ├── src/               # Source code
-│   └── index.js # Main application entry point
+│   ├── commands/
+│   │   ├── generate.js
+│   │   └── init.js
+│   ├── config/
+│   │   └── configLoader.js
+│   ├── core/
+│   │   ├── fileProcessor.js
+│   │   ├── testGenerator.js
+│   │   └── watcher.js
+│   ├── utils/
+│   │   ├── commandLoader.js
+│   │   └── logger.js
+│   ├── cli.js
+│   └── index.js  # Main application entry point
 ├── tests/
 │   └── index.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
@@ -200,6 +214,7 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md # Community standards
 ├── CONTRIBUTING.md    # Guidelines for contributors
+├── jest.config.js
 ├── jest.config.mjs
 ├── LICENSE            # Project license
 ├── package.json       # Project metadata and dependencies

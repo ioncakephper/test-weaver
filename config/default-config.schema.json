@@ -24,11 +24,7 @@
       "items": {
         "type": "string"
       },
-      "default": [
-        "node_modules",
-        ".git",
-        "temp_files/**/*.{yaml,yml}"
-      ]
+      "default": ["node_modules", ".git", "temp_files/**/*.{yaml,yml}"]
     },
     "verbose": {
       "type": "boolean",
@@ -53,10 +49,7 @@
     "testKeyword": {
       "type": "string",
       "description": "Specify keyword for test blocks ('it' or 'test').",
-      "enum": [
-        "it",
-        "test"
-      ],
+      "enum": ["it", "test"],
       "default": "it"
     },
     "noCleanup": {
