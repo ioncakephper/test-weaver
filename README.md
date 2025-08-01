@@ -18,6 +18,14 @@ This project provides a solid foundation for building high-quality JavaScript ap
     - [Install via npm (recommended)](#install-via-npm-recommended)
     - [Or use npx (no global install required)](#or-use-npx-no-global-install-required)
     - [Or clone and run locally](#or-clone-and-run-locally)
+- [Usage](#usage)
+  - [Default Command: `generate`](#default-command-generate)
+  - [`init` Command](#init-command)
+- [API](#api)
+  - [Global Options](#global-options)
+  - [Commands](#commands)
+    - [`generate` (Default Command)](#generate-default-command)
+    - [`init`](#init)
 - [🚀 Available Scripts](#-available-scripts)
   - [Automated Documentation](#automated-documentation)
   - [Code Quality & Formatting](#code-quality--formatting)
@@ -45,14 +53,11 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 ## ✨ Key Features
 
-- **Comprehensive Testing Suite**: Pre-configured with Jest for unit and integration testing. Includes coverage reporting out-of-the-box to ensure code quality.
-- **Automated Code Quality**: A strict, pre-configured setup using ESLint and Prettier to catch errors, enforce best practices, and maintain a consistent code style across all files (`.js`, `.md`, `.json`).
-- **Enforced Documentation Standards**: Integrated `eslint-plugin-jsdoc` to require JSDoc comments for all functions, improving code clarity and long-term maintainability.
-- **Living Documentation**: Custom automation scripts (`npm run docs:all`) that keep your `README.md` perpetually up-to-date by generating the project structure, a table of contents, and a list of available scripts. This eliminates documentation drift.
-- **Automated Release Workflow**: Integrated `release-please` to automate version bumping, `CHANGELOG.md` generation, and GitHub releases based on the Conventional Commits specification.
-- **One-Command Pre-Commit Preparation**: A single `npm run ready` command that formats, lints, and updates all documentation, guaranteeing every commit is clean, consistent, and professional. This command is designed to be run before every commit.
-- **Robust Project Defaults**: Thoughtfully pre-configured with `.gitignore`, `.prettierignore`, and a ready-to-use Continuous Integration (CI) workflow for GitHub Actions.
-- **Automated Dependency Updates**: Dependabot integration to keep your dependencies up-to-date and secure.
+- **Declarative Test Generation**: Define your Jest tests in simple, human-readable YAML files. No more boilerplate.
+- **YAML to Jest**: Automatically converts your YAML test definitions into fully functional `*.test.js` files, ready to be run by Jest.
+- **Watch Mode**: Automatically re-generate test files whenever your YAML definitions change.
+- **Customizable Configuration**: Use a `.testweaver.json` file to configure input/output directories and other options.
+- **Configuration Schema**: Auto-generate a JSON schema for your configuration file to enable validation and autocompletion in your editor.
 
 ## 🚀 Getting Started
 
@@ -83,6 +88,162 @@ npm install
 npm link
 ```
 
+## Usage
+
+`test-weaver` is a command-line utility that can be invoked using `testweaver` (if installed globally via `npm install -g test-weaver`) or `npx test-weaver` (for one-off use without global installation).
+
+### Default Command: `generate`
+
+When no specific command is provided, `test-weaver` defaults to the `generate` command. This means you can omit `generate` from your command line.
+
+```bash
+# Generates test files based on configuration or default patterns
+testweaver
+
+# Same as above, explicitly calling the generate command
+testweaver generate
+
+# Using the alias for generate
+testweaver g
+
+# Generate with specific patterns (long form)
+testweaver generate "src/**/*.yaml" "features/**/*.yml"
+
+# Generate with specific patterns (short form)
+testweaver g "src/**/*.yaml"
+
+# Generate with a custom config file
+testweaver generate --config my-custom-config.json
+testweaver g -c my-custom-config.json
+
+# Generate and watch for changes
+testweaver generate --watch
+testweaver g -w
+
+# Generate with patterns and watch for changes
+testweaver generate "src/**/*.yaml" --watch
+testweaver g "src/**/*.yaml" -w
+
+# Perform a dry run (simulate generation without writing files)
+testweaver generate --dry-run
+testweaver g -n
+
+# Specify a different test keyword (e.g., 'test' instead of 'it')
+testweaver generate --test-keyword test
+testweaver g -k test
+
+# Disable cleanup of generated files when source YAML is unlinked in watch mode
+testweaver generate --no-cleanup
+```
+
+### `init` Command
+
+Initializes a new project by creating a `.testweaver.json` configuration file.
+
+```bash
+# Create a default testweaver.json in the current directory (interactive mode)
+testweaver init
+testweaver i
+
+# Create a default testweaver.json without interactive prompts
+testweaver init --quick
+testweaver i -q
+
+# Create a custom config file named 'my-config.json'
+testweaver init my-config.json
+testweaver i my-config.json
+
+# Force overwrite an existing config file
+testweaver init --force
+testweaver i -f
+
+# Create a config file with only non-default settings
+testweaver init --no-defaults
+testweaver i --no-defaults
+
+# Combine options: quick, force, and custom filename
+testweaver init my-config.json --quick --force
+testweaver i my-config.json -q -f
+```
+
+## API
+
+### Global Options
+
+`testweaver` supports the following global options, which can be applied before any command:
+
+- `--verbose`: Enable verbose logging for detailed output.
+- `--debug`: Enable debug logging for highly detailed debugging (most verbose).
+- `--silent`: Suppress all output except critical errors.
+
+### Commands
+
+#### `generate` (Default Command)
+
+Generates Jest-compatible test files from YAML definitions.
+
+**Arguments**
+
+- `[patterns...]`: One or more glob patterns for YAML files to process. If provided, these patterns override any patterns specified in the configuration file.
+
+**Options**
+
+- `-c, --config <path>`: Specify a custom configuration file to load patterns from. This overrides the default configuration cascade.
+- `-n, --dry-run`: Perform a dry run: simulate file generation without writing to disk.
+- `-i, --ignore <patterns...>`: A list of glob file patterns to exclude from matched files. These patterns override any ignore patterns specified in the configuration file.
+- `--no-cleanup`: Do not delete generated `.test.js` files when the source YAML file is unlinked in watch mode.
+- `-k, --test-keyword <keyword>`: Specify the keyword for test blocks (`it` or `test`). Defaults to `it`.
+- `-w, --watch`: Enable watch mode, which automatically regenerates test files whenever changes are detected in the YAML files.
+
+**Examples**
+
+```bash
+# Generate tests from all YAML files in the 'tests' directory
+testweaver generate "tests/**/*.yaml"
+
+# Generate tests from a specific YAML file and enable watch mode
+testweaver generate my-feature.yaml --watch
+
+# Generate tests using a custom configuration file and ignore specific patterns
+testweaver generate -c custom-config.json -i "temp/**/*.yaml"
+
+# Perform a dry run for all YAML files in the 'features' directory
+testweaver generate "features/**/*.yml" --dry-run
+```
+
+#### `init`
+
+Initializes a new project by creating a `.testweaver.json` configuration file in the current directory.
+
+**Arguments**
+
+- `[filename]`: The name of the configuration file to create. Defaults to `testweaver.json`.
+
+**Options**
+
+- `-f, --force`: Force overwrite the configuration file if it already exists.
+- `--no-defaults`: Only include settings in the generated file whose values differ from the default values.
+- `-q, --quick`: Skip interactive questions and generate the configuration file with default values.
+
+**Examples**
+
+```bash
+# Create a default testweaver.json interactively
+testweaver init
+
+# Create a default testweaver.json without prompts
+testweaver init --quick
+
+# Create a custom config file named 'my-project-config.json'
+testweaver init my-project-config.json
+
+# Force overwrite an existing config file without prompts
+testweaver init --quick --force
+
+# Create a config file with only non-default settings
+testweaver init --no-defaults
+```
+
 ## 🚀 Available Scripts
 
 This repository includes a set of scripts designed to streamline development, enforce quality, and automate documentation.
@@ -95,6 +256,7 @@ This repository includes a set of scripts designed to streamline development, en
 - `npm run docs:all`: A convenience script that updates all documentation sections: table of contents, available scripts, and project structure.
 - `npm run docs:scripts`: Updates the "Available Scripts" section in `README.md` with this script.
 - `npm run docs:structure`: Updates the project structure tree in `README.md`.
+- `npm run generate-schema`: Generates a JSON schema for the configuration file.
 - `npm run toc`: Generates a Table of Contents in `README.md` using `doctoc`.
 
 ### Code Quality & Formatting
@@ -119,7 +281,7 @@ This repository includes a set of scripts designed to streamline development, en
 
 ## A Focus on Quality and Productivity
 
-This starter template is more than just a collection of files; it's a workflow designed to maximize developer productivity and enforce high-quality standards from day one. The core philosophy is to **automate the tedious and error-prone tasks** so you can focus on what matters: building great software.
+This repository is more than just a collection of files; it's a workflow designed to maximize developer productivity and enforce high-quality standards from day one. The core philosophy is to **automate the tedious and error-prone tasks** so you can focus on what matters: building great software.
 
 ### The Cost of Stale Documentation
 
@@ -201,7 +363,6 @@ For more details, refer to the [release-please documentation](https://github.com
 │   ├── utils/
 │   │   ├── commandLoader.js
 │   │   └── logger.js
-│   ├── cli.js
 │   └── index.js  # Main application entry point
 ├── tests/
 │   └── index.test.js
@@ -215,7 +376,6 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── CODE_OF_CONDUCT.md # Community standards
 ├── CONTRIBUTING.md    # Guidelines for contributors
 ├── jest.config.js
-├── jest.config.mjs
 ├── LICENSE            # Project license
 ├── package.json       # Project metadata and dependencies
 └── README.md          # This file

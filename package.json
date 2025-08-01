@@ -35,7 +35,8 @@
     "toc": "Generates a Table of Contents in `README.md` using `doctoc`.",
     "check": "A convenience script that runs the linter.",
     "fix": "A convenience script that formats code and then fixes lint issues.",
-    "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files."
+    "ready": "A convenience script to run before committing: updates all documentation and then formats and fixes all files.",
+    "generate-schema": "Generates a JSON schema for the configuration file."
   },
   "scriptCategories": {
     "Core Development": [
@@ -54,7 +55,8 @@
       "docs:all",
       "docs:scripts",
       "docs:structure",
-      "toc"
+      "toc",
+      "generate-schema"
     ],
     "The \"One-Click\" Pre-Commit Workflow": [
       "ready"
