@@ -45,11 +45,11 @@ We love pull requests! If you're ready to contribute code, please follow the Pul
 1.  **Fork the repository** on GitHub.
 2.  **Clone your fork** locally:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/testweaver.git
+    git clone https://github.com/YOUR_USERNAME/test-weaver.git
     ```
 3.  **Navigate to the project directory**:
     ```bash
-    cd testweaver
+    cd test-weaver
     ```
 4.  **Install dependencies**:
     ```bash
@@ -59,7 +59,7 @@ We love pull requests! If you're ready to contribute code, please follow the Pul
     ```bash
     npm link
     ```
-    Now you can run `testweaver` commands in your terminal, and it will use your local code.
+    Now you can run `test-weaver` commands in your terminal, and it will use your local code.
 
 6.  **Run tests** to make sure everything is set up correctly:
     ```bash
@@ -80,7 +80,7 @@ We love pull requests! If you're ready to contribute code, please follow the Pul
     ```bash
     git push origin feature/your-amazing-feature
     ```
-7.  Open a pull request to the `main` branch of the original `ioncakephper/testweaver` repository.
+7.  Open a pull request to the `main` branch of the original `ioncakephper/test-weaver` repository.
 8.  In your pull request description, clearly explain the changes you've made and link to any relevant issues.
 
 ## Coding Standards
@@ -105,4 +105,4 @@ Common types include: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore
 
 ## Code of Conduct
 
-To ensure a welcoming and inclusive environment, we expect all contributors to adhere to a code of conduct. Please be respectful and considerate in all your interactions within the community. Harassment or exclusionary behavior will not be tolerated.
+This project and everyone participating in it is governed by the [TestWeaver Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.

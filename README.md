@@ -1,10 +1,10 @@
-# TestWeaver
+# Test Weaver
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Node.js CI](https://github.com/ioncakephper/testweaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/testweaver/actions)
-[![npm version](https://img.shields.io/npm/v/testweaver.svg)](https://www.npmjs.com/package/testweaver)
-[![Issues](https://img.shields.io/github/issues/ioncakephper/testweaver.svg)](https://github.com/ioncakephper/testweaver/issues)
-[![Discussions](https://img.shields.io/github/discussions/ioncakephper/testweaver.svg)](https://github.com/ioncakephper/testweaver/discussions)
+[![Node.js CI](https://github.com/ioncakephper/test-weaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions)
+[![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver)
+[![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues)
+[![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions)
 
 A command-line utility that skillfully weaves Jest-compatible test files from simple, declarative YAML threads.
 
@@ -12,7 +12,7 @@ A command-line utility that skillfully weaves Jest-compatible test files from si
 
 ## Table of Contents
 
-- [TestWeaver](#testweaver)
+- [Test Weaver](#test-weaver)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Installation](#installation)
@@ -52,20 +52,20 @@ A command-line utility that skillfully weaves Jest-compatible test files from si
 #### Install via npm (recommended):
 
 ```bash
-npm install -g testweaver
+npm install -g test-weaver
 ```
 
 #### Or use npx (no global install required):
 
 ```bash
-npx yaml-to-test input.yaml output.test
+npx test-weaver input.yaml output.test
 ```
 
 #### Or clone and run locally:
 
 ```bash
-git clone https://github.com/ioncakephper/yaml-to-test.git
-cd yaml-to-test
+git clone https://github.com/ioncakephper/test-weaver.git
+cd test-weaver
 npm install
 npm link
 ```
