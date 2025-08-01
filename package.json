@@ -68,8 +68,12 @@
     "yaml",
     "testing",
     "javascript",
-    "starter",
-    "node"
+    "node",
+    "test-automation",
+    "code-generation",
+    "scaffolding",
+    "automation",
+    "developer-tools"
   ],
   "author": "ioncakephper",
   "license": "MIT",
