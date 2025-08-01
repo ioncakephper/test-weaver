@@ -8,6 +8,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
@@ -172,7 +173,7 @@ testweaver i my-config.json -q -f
 
 ## ⚙️ Configuration
 
-`test-weaver` is designed to work out-of-the-box with zero configuration, but you can customize its behavior by creating a `.testweaver.json` file in your project root. When you run the `init` command, a configuration file is created with the default settings.
+`test-weaver` is designed to work out-of-the-box with zero configuration, but you can customize its behavior by creating a `testweaver.json` file in your project root. When you run the `init` command, a configuration file is created with the default settings.
 
 The default settings are defined in [`config/default.json`](config/default.json). Let's break down what they mean:
 
@@ -180,16 +181,16 @@ The default settings are defined in [`config/default.json`](config/default.json)
 
 This is an array of glob patterns that `test-weaver` uses to find your YAML test definition files. By default, it looks for files that:
 
--   Are in any `__tests__` directory and end with `.yaml` or `.yml`.
-    -   *Example Match*: `src/components/__tests__/button.yaml`
--   End with `.test.yaml` or `.test.yml`.
-    -   *Example Match*: `src/utils/parser.test.yml`
--   End with `.spec.yaml` or `.spec.yml`.
-    -   *Example Match*: `src/api/user.spec.yaml`
--   Are inside a top-level `tests` directory and end with `.yaml` or `.yml`.
-    -   *Example Match*: `tests/integration/auth.yml`
--   Are inside a top-level `features` directory and end with `.yaml` or `.yml`.
-    -   *Example Match*: `features/login.yaml`
+- Are in any `__tests__` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `src/components/__tests__/button.yaml`
+- End with `.test.yaml` or `.test.yml`.
+  - _Example Match_: `src/utils/parser.test.yml`
+- End with `.spec.yaml` or `.spec.yml`.
+  - _Example Match_: `src/api/user.spec.yaml`
+- Are inside a top-level `tests` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `tests/integration/auth.yml`
+- Are inside a top-level `features` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `features/login.yaml`
 
 You can override these patterns in your own `.testweaver.json` or by providing them directly on the command line.
 
@@ -197,17 +198,17 @@ You can override these patterns in your own `.testweaver.json` or by providing t
 
 This array tells `test-weaver` which files or directories to exclude, even if they match the `patterns` above. The default ignore patterns are:
 
--   `node_modules`: To avoid scanning dependency folders.
--   `.git`: To avoid scanning Git-related folders.
--   `temp_files/**/*.{yaml,yml}`: A sample pattern to exclude temporary test files.
+- `node_modules`: To avoid scanning dependency folders.
+- `.git`: To avoid scanning Git-related folders.
+- `temp_files/**/*.{yaml,yml}`: A sample pattern to exclude temporary test files.
 
 ### Other Settings
 
--   `testKeyword`: Specifies the Jest test function to use. Can be `"it"` (default) or `"test"`.
--   `verbose`, `debug`, `silent`: Control the logging level. These are typically set via command-line flags (`--verbose`, `--debug`, `--silent`).
--   `dryRun`: If `true`, simulates test generation without writing any files. Set via `--dry-run`.
--   `noCleanup`: If `true`, prevents the deletion of generated test files when a source YAML is removed in watch mode. Set via `--no-cleanup`.
--   `quick`, `force`, `no-defaults`: These relate to the `init` command for generating configuration files.
+- `testKeyword`: Specifies the Jest test function to use. Can be `"it"` (default) or `"test"`.
+- `verbose`, `debug`, `silent`: Control the logging level. These are typically set via command-line flags (`--verbose`, `--debug`, `--silent`).
+- `dryRun`: If `true`, simulates test generation without writing any files. Set via `--dry-run`.
+- `noCleanup`: If `true`, prevents the deletion of generated test files when a source YAML is removed in watch mode. Set via `--no-cleanup`.
+- `quick`, `force`, `no-defaults`: These relate to the `init` command for generating configuration files.
 
 ## API
 
