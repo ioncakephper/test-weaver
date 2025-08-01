@@ -2,10 +2,9 @@
 
 ## [1.3.2](https://github.com/ioncakephper/test-weaver/compare/v1.3.1...v1.3.2) (2025-08-01)
 
-
 ### Bug Fixes
 
-* **cli:** Update entry point in package-lock.json ([8b789a7](https://github.com/ioncakephper/test-weaver/commit/8b789a731dc08716bd92c43ff91c22513dc4760d))
+- **cli:** Update entry point in package-lock.json ([8b789a7](https://github.com/ioncakephper/test-weaver/commit/8b789a731dc08716bd92c43ff91c22513dc4760d))
 
 ## [1.3.1](https://github.com/ioncakephper/test-weaver/compare/v1.3.0...v1.3.1) (2025-08-01)
 

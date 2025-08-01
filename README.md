@@ -232,7 +232,7 @@ testweaver generate --no-cleanup
 
 ### `init` Command
 
-Initializes a new project by creating a `.testweaver.json` configuration file.
+Initializes a new project by creating a `testweaver.json` configuration file.
 
 ```bash
 # Create a default testweaver.json in the current directory (interactive mode)
@@ -281,7 +281,7 @@ This is an array of glob patterns that `test-weaver` uses to find your YAML test
 - Are inside a top-level `features` directory and end with `.yaml` or `.yml`.
   - _Example Match_: `features/login.yaml`
 
-You can override these patterns in your own `.testweaver.json` or by providing them directly on the command line.
+You can override these patterns in your own `testweaver.json` or by providing them directly on the command line.
 
 ### `ignore`
 
