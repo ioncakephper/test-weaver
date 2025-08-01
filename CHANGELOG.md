@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ioncakephper/test-weaver/compare/v1.0.3...v1.1.0) (2025-08-01)
+
+
+### Features
+
+* Enhance README with detailed usage and workflow documentation ([f8d5070](https://github.com/ioncakephper/test-weaver/commit/f8d507077d144da399a29351f513b34daab40c29))
+
 ## [1.0.3](https://github.com/ioncakephper/test-weaver/compare/v1.0.2...v1.0.3) (2025-08-01)
 
 
