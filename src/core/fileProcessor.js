@@ -38,7 +38,9 @@ function processFile(yamlFilePath, cliConfig) {
     const generatedCode = generateTestCode(parsedYaml, cliConfig.testKeyword);
 
     const dirName = path.dirname(yamlFilePath);
-    const baseName = path.basename(yamlFilePath, path.extname(yamlFilePath));
+    const baseName = path
+      .basename(yamlFilePath, path.extname(yamlFilePath))
+      .replace(/\.test$/, '');
     const outputFileName = `${baseName}.test.js`;
     const outputFilePath = path.join(dirName, outputFileName);
 
