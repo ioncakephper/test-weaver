@@ -8,10 +8,13 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
+- [How It Works: From YAML to Jest](#how-it-works-from-yaml-to-jest)
+  - [Example YAML Input](#example-yaml-input)
+  - [Generated `.test.js` Output](#generated-testjs-output)
+  - [Jest Output](#jest-output)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -63,6 +66,91 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Watch Mode**: Automatically re-generate test files whenever your YAML definitions change.
 - **Customizable Configuration**: Use a `testweaver.json` file to configure input/output directories and other options. See the [default configuration](config/default.json) for all available settings.
 - **Configuration Schema**: Auto-generate a JSON schema for your configuration file to enable validation and autocompletion in your editor.
+
+## How It Works: From YAML to Jest
+
+`test-weaver` simplifies test creation by transforming a clear, human-readable YAML file into a standard Jest test file. It interprets nested structures as test suites (`describe`) and leaf items as individual tests (`it`), with bullet points serving as assertions.
+
+### Example YAML Input
+
+This YAML file, `cli-tests.test.yaml`, demonstrates how `test-weaver` interprets a free-form, nested YAML structure to generate Jest tests.
+
+```yaml
+'Given a CLI':
+  'When invoked without arguments':
+    - 'It should display the help screen'
+    - 'process should exit with code 0'
+  'When invoked with --version':
+    - 'It should display the current version'
+    - 'process should exit with code 0'
+  'Given a command "generate"':
+    'When invoked with valid patterns':
+      - 'It should create test files'
+      - 'It should log success messages'
+    'When invoked with invalid patterns':
+      - 'It should log an error'
+      - 'process should exit with code 1'
+```
+
+### Generated `.test.js` Output
+
+After running `test-weaver`, the following `cli-tests.test.js` file is generated, perfectly mirroring the structure of the YAML input, with unit tests marked as `it.todo`.
+
+```javascript
+describe('Given a CLI', () => {
+  describe('When invoked without arguments', () => {
+    it.todo('It should display the help screen');
+    it.todo('process should exit with code 0');
+  });
+
+  describe('When invoked with --version', () => {
+    it.todo('It should display the current version');
+    it.todo('process should exit with code 0');
+  });
+
+  describe('Given a command "generate"', () => {
+    describe('When invoked with valid patterns', () => {
+      it.todo('It should create test files');
+      it.todo('It should log success messages');
+    });
+
+    describe('When invoked with invalid patterns', () => {
+      it.todo('It should log an error');
+      it.todo('process should exit with code 1');
+    });
+  });
+});
+```
+
+### Jest Output
+
+When Jest executes the generated `.test.js` file, it will report the `it.todo` tests as follows:
+
+```plaintext
+PASS  ./cli-tests.test.js
+  Given a CLI
+    When invoked without arguments
+      ✓ It should display the help screen (todo)
+      ✓ process should exit with code 0 (todo)
+    When invoked with --version
+      ✓ It should display the current version (todo)
+      ✓ process should exit with code 0 (todo)
+    Given a command "generate"
+      When invoked with valid patterns
+        ✓ It should create test files (todo)
+        ✓ It should log success messages (todo)
+      When invoked with invalid patterns
+        ✓ It should log an error (todo)
+        ✓ process should exit with code 1 (todo)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 todo, 8 total
+Snapshots:   0 total
+Time:        0.XXX s
+Ran all test suites.
+```
+
+This example illustrates how `test-weaver` bridges the gap between simple, declarative definitions and executable test code, maintaining a clean and organized testing structure.
 
 ## 🚀 Getting Started
 
