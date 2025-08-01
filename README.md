@@ -1,6 +1,6 @@
 # Test Weaver
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Node.js CI](https://github.com/ioncakephper/test-weaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
 
 A command-line utility that skillfully weaves Jest-compatible test files from simple, declarative YAML threads.
 
@@ -8,7 +8,6 @@ This project provides a solid foundation for building high-quality JavaScript ap
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## 📚 Table of Contents
 
 - [✨ Key Features](#-key-features)
@@ -42,6 +41,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [✍️ Linting for Documentation](#-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
+- [🐞 Bug Reports](#-bug-reports)
 - [🤝 Contributing](#-contributing)
 - [🗺️ Roadmap](#-roadmap)
 - [⚖️ Code of Conduct](#-code-of-conduct)
@@ -431,6 +431,10 @@ function calculateArea(width, height) {
 ```
 
 After adding the docblock, running `npm run lint` again will no longer show the warning for this function.
+
+## 🐞 Bug Reports
+
+Found a bug? We'd love to hear about it. Please raise an issue on our [GitHub Issues](https://github.com/ioncakephper/test-weaver/issues) page.
 
 ## 🤝 Contributing
 
