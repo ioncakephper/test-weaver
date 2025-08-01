@@ -1,6 +1,6 @@
 # Test Weaver
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Node.js CI](https://github.com/ioncakephper/test-weaver/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
 
 A command-line utility that skillfully weaves Jest-compatible test files from simple, declarative YAML threads.
 
@@ -21,6 +21,10 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [Usage](#usage)
   - [Default Command: `generate`](#default-command-generate)
   - [`init` Command](#init-command)
+- [⚙️ Configuration](#-configuration)
+  - [`patterns`](#patterns)
+  - [`ignore`](#ignore)
+  - [Other Settings](#other-settings)
 - [API](#api)
   - [Global Options](#global-options)
   - [Commands](#commands)
@@ -42,6 +46,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [✍️ Linting for Documentation](#-linting-for-documentation)
   - [How to Check for Missing Documentation](#how-to-check-for-missing-documentation)
   - [Example](#example)
+- [🐞 Bug Reports](#-bug-reports)
 - [🤝 Contributing](#-contributing)
 - [🗺️ Roadmap](#-roadmap)
 - [⚖️ Code of Conduct](#-code-of-conduct)
@@ -56,7 +61,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Declarative Test Generation**: Define your Jest tests in simple, human-readable YAML files. No more boilerplate.
 - **YAML to Jest**: Automatically converts your YAML test definitions into fully functional `*.test.js` files, ready to be run by Jest.
 - **Watch Mode**: Automatically re-generate test files whenever your YAML definitions change.
-- **Customizable Configuration**: Use a `.testweaver.json` file to configure input/output directories and other options.
+- **Customizable Configuration**: Use a `testweaver.json` file to configure input/output directories and other options. See the [default configuration](config/default.json) for all available settings.
 - **Configuration Schema**: Auto-generate a JSON schema for your configuration file to enable validation and autocompletion in your editor.
 
 ## 🚀 Getting Started
@@ -165,6 +170,45 @@ testweaver i --no-defaults
 testweaver init my-config.json --quick --force
 testweaver i my-config.json -q -f
 ```
+
+## ⚙️ Configuration
+
+`test-weaver` is designed to work out-of-the-box with zero configuration, but you can customize its behavior by creating a `testweaver.json` file in your project root. When you run the `init` command, a configuration file is created with the default settings.
+
+The default settings are defined in [`config/default.json`](config/default.json). Let's break down what they mean:
+
+### `patterns`
+
+This is an array of glob patterns that `test-weaver` uses to find your YAML test definition files. By default, it looks for files that:
+
+- Are in any `__tests__` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `src/components/__tests__/button.yaml`
+- End with `.test.yaml` or `.test.yml`.
+  - _Example Match_: `src/utils/parser.test.yml`
+- End with `.spec.yaml` or `.spec.yml`.
+  - _Example Match_: `src/api/user.spec.yaml`
+- Are inside a top-level `tests` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `tests/integration/auth.yml`
+- Are inside a top-level `features` directory and end with `.yaml` or `.yml`.
+  - _Example Match_: `features/login.yaml`
+
+You can override these patterns in your own `.testweaver.json` or by providing them directly on the command line.
+
+### `ignore`
+
+This array tells `test-weaver` which files or directories to exclude, even if they match the `patterns` above. The default ignore patterns are:
+
+- `node_modules`: To avoid scanning dependency folders.
+- `.git`: To avoid scanning Git-related folders.
+- `temp_files/**/*.{yaml,yml}`: A sample pattern to exclude temporary test files.
+
+### Other Settings
+
+- `testKeyword`: Specifies the Jest test function to use. Can be `"it"` (default) or `"test"`.
+- `verbose`, `debug`, `silent`: Control the logging level. These are typically set via command-line flags (`--verbose`, `--debug`, `--silent`).
+- `dryRun`: If `true`, simulates test generation without writing any files. Set via `--dry-run`.
+- `noCleanup`: If `true`, prevents the deletion of generated test files when a source YAML is removed in watch mode. Set via `--no-cleanup`.
+- `quick`, `force`, `no-defaults`: These relate to the `init` command for generating configuration files.
 
 ## API
 
@@ -431,6 +475,10 @@ function calculateArea(width, height) {
 ```
 
 After adding the docblock, running `npm run lint` again will no longer show the warning for this function.
+
+## 🐞 Bug Reports
+
+Found a bug? We'd love to hear about it. Please raise an issue on our [GitHub Issues](https://github.com/ioncakephper/test-weaver/issues) page.
 
 ## 🤝 Contributing
 
