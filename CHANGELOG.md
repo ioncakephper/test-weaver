@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/ioncakephper/test-weaver/compare/v1.1.0...v1.2.0) (2025-08-01)
+
+
+### Features
+
+* Add unit tests for testGenerator ([ce97ac9](https://github.com/ioncakephper/test-weaver/commit/ce97ac9148cf2540bf48e29fe793eb1aecf8fae8))
+
 ## [1.1.0](https://github.com/ioncakephper/test-weaver/compare/v1.0.3...v1.1.0) (2025-08-01)
 
 ### Features
