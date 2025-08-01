@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0 (2025-08-01)
+
+
+### Features
+
+* :zap: update README, release-please.yml ([9eb09b2](https://github.com/ioncakephper/test-weaver/commit/9eb09b2d1a151d075a1f75eec615e0e25b2f9997))
+* Add code of conduct and update project references ([1015cdc](https://github.com/ioncakephper/test-weaver/commit/1015cdc7afd6eba382025f87e24a07035eca9876))
+* initial commit of testweaver ([f4f900e](https://github.com/ioncakephper/test-weaver/commit/f4f900ec4353daeb23881ef544918021e09883f7))
+* Setup ESLint, Prettier, CI/CD, automated docs and release ([97bdbc9](https://github.com/ioncakephper/test-weaver/commit/97bdbc9de4eea3cb818afbda685c2835f2373cb8))
+* update README.md and src/index.js ([0d57d58](https://github.com/ioncakephper/test-weaver/commit/0d57d589ff929dfdd5fad06c6b709d81f613e205))
+
+
+### Bug Fixes
+
+* :zap: create better documentation ([b83f628](https://github.com/ioncakephper/test-weaver/commit/b83f628b930d9c4f27420ed35df45d334d76912f))
+* Correct project name and repository references ([faabac7](https://github.com/ioncakephper/test-weaver/commit/faabac7d1cea7377acec21040e465e440bc65fbd))
+* remove docs:links related file, update 7 files and delete 2 files ([2869905](https://github.com/ioncakephper/test-weaver/commit/286990585a28b1fa3963e515397c7c5616612d5c))
+* Update project name to test-weaver and correct repo URLs ([e9bbb75](https://github.com/ioncakephper/test-weaver/commit/e9bbb75b6d1aed35ccfe979bf537dcce272408e8))
+* update README.md, removed docs:links ([4efcdc4](https://github.com/ioncakephper/test-weaver/commit/4efcdc4c6962f20c189aabca86cc3d36053013dd))
+
 ## [1.2.0](https://github.com/ioncakephper/js-starter/compare/v1.1.0...v1.2.0) (2025-07-07)
 
 ### Features
