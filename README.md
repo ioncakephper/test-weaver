@@ -20,6 +20,10 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - [Usage](#usage)
   - [Default Command: `generate`](#default-command-generate)
   - [`init` Command](#init-command)
+- [⚙️ Configuration](#-configuration)
+  - [`patterns`](#patterns)
+  - [`ignore`](#ignore)
+  - [Other Settings](#other-settings)
 - [API](#api)
   - [Global Options](#global-options)
   - [Commands](#commands)
@@ -56,7 +60,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Declarative Test Generation**: Define your Jest tests in simple, human-readable YAML files. No more boilerplate.
 - **YAML to Jest**: Automatically converts your YAML test definitions into fully functional `*.test.js` files, ready to be run by Jest.
 - **Watch Mode**: Automatically re-generate test files whenever your YAML definitions change.
-- **Customizable Configuration**: Use a `.testweaver.json` file to configure input/output directories and other options.
+- **Customizable Configuration**: Use a `testweaver.json` file to configure input/output directories and other options. See the [default configuration](config/default.json) for all available settings.
 - **Configuration Schema**: Auto-generate a JSON schema for your configuration file to enable validation and autocompletion in your editor.
 
 ## 🚀 Getting Started
@@ -165,6 +169,45 @@ testweaver i --no-defaults
 testweaver init my-config.json --quick --force
 testweaver i my-config.json -q -f
 ```
+
+## ⚙️ Configuration
+
+`test-weaver` is designed to work out-of-the-box with zero configuration, but you can customize its behavior by creating a `.testweaver.json` file in your project root. When you run the `init` command, a configuration file is created with the default settings.
+
+The default settings are defined in [`config/default.json`](config/default.json). Let's break down what they mean:
+
+### `patterns`
+
+This is an array of glob patterns that `test-weaver` uses to find your YAML test definition files. By default, it looks for files that:
+
+-   Are in any `__tests__` directory and end with `.yaml` or `.yml`.
+    -   *Example Match*: `src/components/__tests__/button.yaml`
+-   End with `.test.yaml` or `.test.yml`.
+    -   *Example Match*: `src/utils/parser.test.yml`
+-   End with `.spec.yaml` or `.spec.yml`.
+    -   *Example Match*: `src/api/user.spec.yaml`
+-   Are inside a top-level `tests` directory and end with `.yaml` or `.yml`.
+    -   *Example Match*: `tests/integration/auth.yml`
+-   Are inside a top-level `features` directory and end with `.yaml` or `.yml`.
+    -   *Example Match*: `features/login.yaml`
+
+You can override these patterns in your own `.testweaver.json` or by providing them directly on the command line.
+
+### `ignore`
+
+This array tells `test-weaver` which files or directories to exclude, even if they match the `patterns` above. The default ignore patterns are:
+
+-   `node_modules`: To avoid scanning dependency folders.
+-   `.git`: To avoid scanning Git-related folders.
+-   `temp_files/**/*.{yaml,yml}`: A sample pattern to exclude temporary test files.
+
+### Other Settings
+
+-   `testKeyword`: Specifies the Jest test function to use. Can be `"it"` (default) or `"test"`.
+-   `verbose`, `debug`, `silent`: Control the logging level. These are typically set via command-line flags (`--verbose`, `--debug`, `--silent`).
+-   `dryRun`: If `true`, simulates test generation without writing any files. Set via `--dry-run`.
+-   `noCleanup`: If `true`, prevents the deletion of generated test files when a source YAML is removed in watch mode. Set via `--no-cleanup`.
+-   `quick`, `force`, `no-defaults`: These relate to the `init` command for generating configuration files.
 
 ## API
 
