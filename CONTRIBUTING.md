@@ -1,6 +1,6 @@
 # Contributing to TestWeaver
 
-First off, thank you for considering contributing to `testweaver`! It's people like you that make open source such a great community. We welcome any form of contribution, from reporting bugs and suggesting features to submitting code changes.
+First off, thank you for considering contributing to `test-weaver`! It's people like you that make open source such a great community. We welcome any form of contribution, from reporting bugs and suggesting features to submitting code changes.
 
 ## Table of Contents
 

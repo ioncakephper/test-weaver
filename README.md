@@ -18,9 +18,9 @@ A command-line utility that skillfully weaves Jest-compatible test files from si
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
     - [Steps](#steps)
-      - [Install via npm (recommended):](#install-via-npm-recommended)
-      - [Or use npx (no global install required):](#or-use-npx-no-global-install-required)
-      - [Or clone and run locally:](#or-clone-and-run-locally)
+      - [Install via npm (recommended)](#install-via-npm-recommended)
+      - [Or use npx (no global install required)](#or-use-npx-no-global-install-required)
+      - [Or clone and run locally](#or-clone-and-run-locally)
   - [Usage](#usage)
   - [Examples](#examples)
   - [Configuration](#configuration)
@@ -49,19 +49,19 @@ A command-line utility that skillfully weaves Jest-compatible test files from si
 
 ### Steps
 
-#### Install via npm (recommended):
+#### Install via npm (recommended)
 
 ```bash
 npm install -g test-weaver
 ```
 
-#### Or use npx (no global install required):
+#### Or use npx (no global install required)
 
 ```bash
 npx test-weaver input.yaml output.test
 ```
 
-#### Or clone and run locally:
+#### Or clone and run locally
 
 ```bash
 git clone https://github.com/ioncakephper/test-weaver.git
@@ -75,16 +75,19 @@ npm link
 ## Usage
 
 Convert a single YAML file:
+
 ```bash
 yaml-to-test input.yaml output.test
 ```
 
 Batch convert all YAML files in a directory:
+
 ```bash
 yaml-to-test ./input_folder/*.yaml --output-dir ./output_folder/
 ```
 
 Display help and all available options:
+
 ```bash
 yaml-to-test --help
 ```
@@ -94,11 +97,13 @@ yaml-to-test --help
 ## Examples
 
 Convert a single file:
+
 ```bash
 yaml-to-test config.yaml config.test
 ```
 
 Convert all YAML files in a directory:
+
 ```bash
 yaml-to-test ./yamls/*.yaml --output-dir ./tests/
 ```
@@ -108,6 +113,7 @@ yaml-to-test ./yamls/*.yaml --output-dir ./tests/
 ## Configuration
 
 You can customize the conversion process using command-line flags or a configuration file. For all available options, run:
+
 ```bash
 testweaver --help
 ```
