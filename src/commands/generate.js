@@ -15,7 +15,6 @@ const { processFile } = require('../core/fileProcessor');
 const { startWatcher } = require('../core/watcher');
 const { Option } = require('commander');
 
-
 /**
  * Logs the effective configuration and any command-line overrides.
  * @param {object} cliConfig - The final configuration object.
@@ -191,11 +190,13 @@ module.exports = (program) => {
       '-n, --dry-run',
       'perform a dry run: simulate file generation without writing to disk', // Changed to lowercase
     )
-    .addOption(new Option(
-      '-k, --test-keyword <keyword>',
-      'specify keyword for test blocks', // Changed to lowercase
-      // 'it',
-    ).choices(['it', 'test']))
+    .addOption(
+      new Option(
+        '-k, --test-keyword <keyword>',
+        'specify keyword for test blocks', // Changed to lowercase
+        // 'it',
+      ).choices(['it', 'test']),
+    )
     .option(
       '--no-cleanup',
       'do not delete generated .test.js files when source yaml is unlinked in watch mode', // Changed to lowercase
