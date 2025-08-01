@@ -499,7 +499,8 @@ For more details, refer to the [release-please documentation](https://github.com
 │   └── index.js  # Main application entry point
 ├── tests/
 │   ├── fileProcessor.test.js
-│   └── index.test.js
+│   ├── index.test.js
+│   └── testGenerator.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
 ├── .eslintrc.json     # ESLint configuration
 ├── .gitignore         # Files/folders for Git to ignore

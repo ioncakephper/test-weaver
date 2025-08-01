@@ -4,10 +4,7 @@ describe('generateTestCode', () => {
   // Test case 1: Basic YAML with a single describe block and it.todo tests
   test('should generate correct code for a simple YAML structure', () => {
     const yamlContent = {
-      'My Feature': [
-        'should do something',
-        'should do something else'
-      ]
+      'My Feature': ['should do something', 'should do something else'],
     };
     const expectedCode = `describe('My Feature', () => {
   it.todo('should do something');
@@ -22,16 +19,11 @@ describe('generateTestCode', () => {
   test('should generate correct code for nested describe blocks', () => {
     const yamlContent = {
       'Parent Suite': {
-        'Child Suite 1': [
-          'test 1.1',
-          'test 1.2'
-        ],
+        'Child Suite 1': ['test 1.1', 'test 1.2'],
         'Child Suite 2': {
-          'Grandchild Suite': [
-            'test 2.1.1'
-          ]
-        }
-      }
+          'Grandchild Suite': ['test 2.1.1'],
+        },
+      },
     };
     const expectedCode = `describe('Parent Suite', () => {
   describe('Child Suite 1', () => {
@@ -55,9 +47,7 @@ describe('generateTestCode', () => {
   // Test case 3: Using 'test' as the testKeyword
   test('should use the specified testKeyword', () => {
     const yamlContent = {
-      'Another Feature': [
-        'should work with test keyword'
-      ]
+      'Another Feature': ['should work with test keyword'],
     };
     const expectedCode = `describe('Another Feature', () => {
   test.todo('should work with test keyword');
@@ -84,10 +74,8 @@ describe('generateTestCode', () => {
     const yamlContent = [
       'top level test',
       {
-        'Mixed Suite': [
-          'nested mixed test'
-        ]
-      }
+        'Mixed Suite': ['nested mixed test'],
+      },
     ];
     const expectedCode = `it.todo('top level test');
 describe('Mixed Suite', () => {
@@ -104,11 +92,9 @@ describe('Mixed Suite', () => {
       'Main Functionality': [
         'should initialize',
         {
-          'Sub-Functionality': [
-            'should handle sub-case'
-          ]
-        }
-      ]
+          'Sub-Functionality': ['should handle sub-case'],
+        },
+      ],
     };
     const expectedCode = `describe('Main Functionality', () => {
   it.todo('should initialize');
@@ -125,7 +111,7 @@ describe('Mixed Suite', () => {
   // Test case 8: YAML with a key having a non-object/non-array value (should be it.todo)
   test('should handle non-object/non-array values as it.todo', () => {
     const yamlContent = {
-      'Simple Test': 'This is a simple test description'
+      'Simple Test': 'This is a simple test description',
     };
     const expectedCode = `it.todo('Simple Test: This is a simple test description');\n`;
     expect(generateTestCode(yamlContent, 'it')).toBe(expectedCode);
@@ -134,7 +120,7 @@ describe('Mixed Suite', () => {
   // Test case 9: YAML with a key having a null value
   test('should handle null values as it.todo with key as description', () => {
     const yamlContent = {
-      'Null Test': null
+      'Null Test': null,
     };
     const expectedCode = `it.todo('Null Test');\n`;
     expect(generateTestCode(yamlContent, 'it')).toBe(expectedCode);
@@ -143,7 +129,7 @@ describe('Mixed Suite', () => {
   // Test case 10: YAML with a key having a number value
   test('should handle number values as it.todo with key and value as description', () => {
     const yamlContent = {
-      'Number Test': 123
+      'Number Test': 123,
     };
     const expectedCode = `it.todo('Number Test: 123');\n`;
     expect(generateTestCode(yamlContent, 'it')).toBe(expectedCode);
@@ -152,7 +138,7 @@ describe('Mixed Suite', () => {
   // Test case 11: YAML with a key having a boolean value
   test('should handle boolean values as it.todo with key and value as description', () => {
     const yamlContent = {
-      'Boolean Test': true
+      'Boolean Test': true,
     };
     const expectedCode = `it.todo('Boolean Test: true');\n`;
     expect(generateTestCode(yamlContent, 'it')).toBe(expectedCode);
