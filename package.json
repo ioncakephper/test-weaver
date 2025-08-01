@@ -1,0 +1,36 @@
+{
+  "name": "test-weaver",
+  "version": "1.0.0",
+  "description": "A CLI tool that weaves Jest-compatible .test.js files from simple YAML definitions.",
+  "main": "src/cli.js",
+  "bin": {
+    "testweaver": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "generate-schema": "node scripts/generate-config-schema.js"
+  },
+  "keywords": [
+    "cli",
+    "jest",
+    "yaml",
+    "testing"
+  ],
+  "author": "ioncakephper",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ioncakephper/test-weaver.git"
+  },
+  "dependencies": {
+    "ajv": "^8.16.0",
+    "chokidar": "^3.6.0",
+    "commander": "^12.0.0",
+    "glob": "^10.4.0",
+    "inquirer": "^8.2.4",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}

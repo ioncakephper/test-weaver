@@ -1,0 +1,19 @@
+{
+  "patterns": [
+    "**/__tests__/**/*.{yaml,yml}",
+    "**/*.test.{yaml,yml}",
+    "**/*.spec.{yaml,yml}",
+    "tests/**/*.{yaml,yml}",
+    "features/**/*.{yaml,yml}"
+  ],
+  "ignore": ["node_modules", ".git", "temp_files/**/*.{yaml,yml}"],
+  "verbose": false,
+  "debug": false,
+  "silent": false,
+  "dryRun": false,
+  "testKeyword": "it",
+  "noCleanup": false,
+  "quick": false,
+  "force": false,
+  "no-defaults": false
+}
