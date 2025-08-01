@@ -95,5 +95,8 @@ function main() {
   program.parse(process.argv);
 }
 
+module.exports = main;
+
+
 // Execute the main function when the script is run
 main();
