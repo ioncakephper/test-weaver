@@ -1,10 +1,10 @@
 {
-  "name": "@shytiger/test-weaver",
+  "name": "test-weaver",
   "version": "1.0.0",
   "description": "CLI tool that weaves Jest-compatible .test.js files from simple YAML definitions.",
   "main": "src/index.js",
   "bin": {
-    "testweaver": "./src/index.js"
+    "testweaver": "src/index.js"
   },
   "scripts": {
     "start": "node src/index.js",
@@ -75,7 +75,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioncakephper/test-weaver.git"
+    "url": "git+https://github.com/ioncakephper/test-weaver.git"
   },
   "dependencies": {
     "ajv": "^8.16.0",
