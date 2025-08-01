@@ -2,17 +2,15 @@
 
 ## [1.3.1](https://github.com/ioncakephper/test-weaver/compare/v1.3.0...v1.3.1) (2025-08-01)
 
-
 ### Bug Fixes
 
-* **cli:** Update entry point in package-lock.json to src/index.js ([463fd49](https://github.com/ioncakephper/test-weaver/commit/463fd49a4aecf31c5f76bed8ddf1b4e61a11f4b3))
+- **cli:** Update entry point in package-lock.json to src/index.js ([463fd49](https://github.com/ioncakephper/test-weaver/commit/463fd49a4aecf31c5f76bed8ddf1b4e61a11f4b3))
 
 ## [1.3.0](https://github.com/ioncakephper/test-weaver/compare/v1.2.0...v1.3.0) (2025-08-01)
 
-
 ### Features
 
-* Add unit tests for testGenerator ([a02f6a1](https://github.com/ioncakephper/test-weaver/commit/a02f6a1a1e1cfcae5c95514b02f2d28510489c8d))
+- Add unit tests for testGenerator ([a02f6a1](https://github.com/ioncakephper/test-weaver/commit/a02f6a1a1e1cfcae5c95514b02f2d28510489c8d))
 
 ## [1.2.0](https://github.com/ioncakephper/test-weaver/compare/v1.1.0...v1.2.0) (2025-08-01)
 
