@@ -409,6 +409,7 @@ For more details, refer to the [release-please documentation](https://github.com
 │   │   └── logger.js
 │   └── index.js  # Main application entry point
 ├── tests/
+│   ├── fileProcessor.test.js
 │   └── index.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
 ├── .eslintrc.json     # ESLint configuration

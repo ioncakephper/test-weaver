@@ -39,7 +39,7 @@ describe('processFile', () => {
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       path.join('path', 'to', 'sample.test.js'),
       expect.any(String),
-      'utf8'
+      'utf8',
     );
   });
 
@@ -56,7 +56,7 @@ describe('processFile', () => {
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       path.join('path', 'to', 'sample.test.js'),
       expect.any(String),
-      'utf8'
+      'utf8',
     );
   });
 
@@ -73,22 +73,24 @@ describe('processFile', () => {
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       path.join('path', 'to', 'sample.test.js'),
       expect.any(String),
-      'utf8'
+      'utf8',
     );
   });
 
   it('should handle empty or invalid YAML files gracefully', () => {
     const yamlFilePath = path.join('path', 'to', 'empty.yaml');
     const fileContent = '';
-    
+
     fs.readFileSync.mockReturnValue(fileContent);
     yaml.load.mockReturnValue(null);
 
     processFile(yamlFilePath, cliConfig);
 
     expect(log).toHaveBeenCalledWith(
-      expect.stringContaining('is empty or does not contain a valid object structure'),
-      'warn'
+      expect.stringContaining(
+        'is empty or does not contain a valid object structure',
+      ),
+      'warn',
     );
     expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
@@ -106,7 +108,7 @@ describe('processFile', () => {
 
     expect(log).toHaveBeenCalledWith(
       `Would generate test file: ${path.join('path', 'to', 'sample.test.js')} (Dry Run)`,
-      'info'
+      'info',
     );
     expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
