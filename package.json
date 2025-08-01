@@ -6,6 +6,12 @@
   "bin": {
     "testweaver": "src/index.js"
   },
+  "files": [
+    "src",
+    "config/default.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "start": "node src/index.js",
     "test": "jest --passWithNoTests",
