@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/ioncakephper/test-weaver/compare/v1.3.2...v1.4.0) (2025-08-01)
+
+
+### Features
+
+* **commands:** Add option to specify test keyword ([c0cb864](https://github.com/ioncakephper/test-weaver/commit/c0cb86405b21bc2a59e8dd1d6d997da79e572bbd))
+* **commands:** Lowercase descriptions and add newline to option ([6cb5e11](https://github.com/ioncakephper/test-weaver/commit/6cb5e11d0abcca2b5d7be471bdbfa7fe318f935e))
+
 ## [1.3.2](https://github.com/ioncakephper/test-weaver/compare/v1.3.1...v1.3.2) (2025-08-01)
 
 ### Bug Fixes
