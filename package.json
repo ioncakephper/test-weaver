@@ -1,7 +1,7 @@
 {
   "name": "test-weaver",
   "version": "1.0.0",
-  "description": "A CLI tool that weaves Jest-compatible .test.js files from simple YAML definitions.",
+  "description": "CLI tool that weaves Jest-compatible .test.js files from simple YAML definitions.",
   "main": "src/cli.js",
   "bin": {
     "testweaver": "./src/cli.js"
