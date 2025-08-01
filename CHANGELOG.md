@@ -2,10 +2,9 @@
 
 ## [1.0.1](https://github.com/ioncakephper/test-weaver/compare/v1.0.0...v1.0.1) (2025-08-01)
 
-
 ### Bug Fixes
 
-* correct package name and bin path in package.json ([1d25d90](https://github.com/ioncakephper/test-weaver/commit/1d25d90292badad4a64cd913d27837bec87dc459))
+- correct package name and bin path in package.json ([1d25d90](https://github.com/ioncakephper/test-weaver/commit/1d25d90292badad4a64cd913d27837bec87dc459))
 
 ## 1.0.0 (2025-08-01)
 
