@@ -15,5 +15,6 @@
   "noCleanup": false,
   "quick": false,
   "force": false,
+  "outputDir": ".",
   "no-defaults": false
 }

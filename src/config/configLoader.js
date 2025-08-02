@@ -216,6 +216,7 @@ function loadConfig(cliPatterns, options, mainModuleDir) {
       typeof options.force !== 'undefined'
         ? options.force
         : mergedConfig.force || false,
+    outputDir: options.outputDir || mergedConfig.outputDir,
   };
 
   // Ensure uniqueness of ignore patterns

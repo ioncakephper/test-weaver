@@ -226,6 +226,10 @@ testweaver g -n
 testweaver generate --test-keyword test
 testweaver g -k test
 
+# Generate with a custom output directory
+testweaver generate --output-dir dist
+testweaver g -o dist
+
 # Disable cleanup of generated files when source YAML is unlinked in watch mode
 testweaver generate --no-cleanup
 ```
@@ -324,6 +328,7 @@ Generates Jest-compatible test files from YAML definitions.
 - `-c, --config <path>`: Specify a custom configuration file to load patterns from. This overrides the default configuration cascade.
 - `-n, --dry-run`: Perform a dry run: simulate file generation without writing to disk.
 - `-i, --ignore <patterns...>`: A list of glob file patterns to exclude from matched files. These patterns override any ignore patterns specified in the configuration file.
+- `-o, --output-dir <path>`: Specify the output directory for generated test files. This overrides the `outputDir` setting in the configuration file.
 - `--no-cleanup`: Do not delete generated `.test.js` files when the source YAML file is unlinked in watch mode.
 - `-k, --test-keyword <keyword>`: Specify the keyword for test blocks (`it` or `test`). Defaults to `it`.
 - `-w, --watch`: Enable watch mode, which automatically regenerates test files whenever changes are detected in the YAML files.
