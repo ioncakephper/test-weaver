@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
     "lint": "eslint \"**/*.{js,md}\"",
     "lint:fix": "eslint \"**/*.{js,md}\" --fix",
