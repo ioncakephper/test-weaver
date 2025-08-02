@@ -201,6 +201,10 @@ module.exports = (program) => {
       '--no-cleanup',
       'do not delete generated .test.js files when source yaml is unlinked in watch mode', // Changed to lowercase
     )
+    .option(
+      '-o, --output-dir <path>',
+      'specify the output directory for generated test files. overrides config',
+    )
     .configureHelp({ sortOptions: true })
     .action((cliPatterns, options) => {
       // Removed 'async' from action as runSinglePass is no longer async

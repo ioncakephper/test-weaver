@@ -67,6 +67,11 @@
       "description": "For the 'init' command: Force overwriting the configuration file if it already exists.",
       "default": false
     },
+    "outputDir": {
+      "type": "string",
+      "description": "Specify the output directory for generated test files. Overrides config.",
+      "default": "."
+    },
     "no-defaults": {
       "type": "boolean",
       "description": "For the 'init' command: Only include settings in the generated file whose values differ from defaults.",
@@ -85,6 +90,7 @@
     "noCleanup",
     "quick",
     "force",
+    "outputDir",
     "no-defaults"
   ]
 }

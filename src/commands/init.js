@@ -116,6 +116,7 @@ module.exports = (program) => {
         dryRun: false,
         testKeyword: 'it',
         noCleanup: false,
+        outputDir: '.',
         quick: false,
         force: false,
         'no-defaults': false,
@@ -220,6 +221,12 @@ module.exports = (program) => {
             default: defaultConfigFileContent.testKeyword,
           },
           {
+            type: 'input',
+            name: 'outputDir',
+            message: 'enter the output directory for generated test files:',
+            default: defaultConfigFileContent.outputDir,
+          },
+          {
             type: 'confirm',
             name: 'dryRun',
             message:
@@ -271,6 +278,7 @@ module.exports = (program) => {
           ...new Set([...answers.ignore, ...answers.customIgnore]),
         ];
         finalConfig.testKeyword = answers.testKeyword;
+        finalConfig.outputDir = answers.outputDir;
         finalConfig.dryRun = answers.dryRun;
         finalConfig.noCleanup = answers.noCleanup;
         finalConfig.verbose = answers.verbose;
