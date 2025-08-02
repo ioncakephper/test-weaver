@@ -2,12 +2,11 @@
 
 ## [1.5.0](https://github.com/ioncakephper/test-weaver/compare/v1.4.0...v1.5.0) (2025-08-02)
 
-
 ### Features
 
-* Add option to specify output directory for generated tests Fixes [#8](https://github.com/ioncakephper/test-weaver/issues/8) ([5acf44e](https://github.com/ioncakephper/test-weaver/commit/5acf44efa99ae996622eef81030003b235c74d52))
-* Add tests for init and generate commands ([f301bb9](https://github.com/ioncakephper/test-weaver/commit/f301bb953b0c885fdba1e33cd96968a3c0238f7b))
-* Enhance security and output directory handling ([196785f](https://github.com/ioncakephper/test-weaver/commit/196785f95b070f327c2e2d656f173569f2dcd74b))
+- Add option to specify output directory for generated tests Fixes [#8](https://github.com/ioncakephper/test-weaver/issues/8) ([5acf44e](https://github.com/ioncakephper/test-weaver/commit/5acf44efa99ae996622eef81030003b235c74d52))
+- Add tests for init and generate commands ([f301bb9](https://github.com/ioncakephper/test-weaver/commit/f301bb953b0c885fdba1e33cd96968a3c0238f7b))
+- Enhance security and output directory handling ([196785f](https://github.com/ioncakephper/test-weaver/commit/196785f95b070f327c2e2d656f173569f2dcd74b))
 
 ## [1.4.0](https://github.com/ioncakephper/test-weaver/compare/v1.3.2...v1.4.0) (2025-08-01)
 
