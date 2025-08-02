@@ -1,6 +1,6 @@
 # Test Weaver
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml/badge.svg)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![npm version](https://img.shields.io/npm/v/test-weaver.svg)](https://www.npmjs.com/package/test-weaver) [![Issues](https://img.shields.io/github/issues/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/issues) [![Discussions](https://img.shields.io/github/discussions/ioncakephper/test-weaver.svg)](https://github.com/ioncakephper/test-weaver/discussions) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://img.shields.io/github/actions/workflow/status/ioncakephper/test-weaver/ci.yml?branch=main)](https://github.com/ioncakephper/test-weaver/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/ioncakephper/test-weaver/branch/main/graph/badge.svg)](https://codecov.io/gh/ioncakephper/test-weaver) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Changelog](https://img.shields.io/badge/changelog-keep_a_changelog-blue.svg)](CHANGELOG.md)
 
 A command-line utility that skillfully weaves Jest-compatible test files from simple, declarative YAML threads.
 
@@ -67,6 +67,7 @@ This project provides a solid foundation for building high-quality JavaScript ap
 - **Watch Mode**: Automatically re-generate test files whenever your YAML definitions change.
 - **Customizable Configuration**: Use a `testweaver.json` file to configure input/output directories and other options. See the [default configuration](config/default.json) for all available settings.
 - **Configuration Schema**: Auto-generate a JSON schema for your configuration file to enable validation and autocompletion in your editor.
+- **Security**: Prevents writing generated files to unsafe locations outside the project directory, enhancing project integrity.
 
 ## How It Works: From YAML to Jest
 
@@ -226,9 +227,10 @@ testweaver g -n
 testweaver generate --test-keyword test
 testweaver g -k test
 
-# Generate with a custom output directory
-testweaver generate --output-dir dist
-testweaver g -o dist
+# Generate with a custom output directory, preserving the source folder structure
+# For a source file at 'tests/sample/cli.test.yaml', the output will be 'out/tests/sample/cli.test.js'
+testweaver generate --output-dir out
+testweaver g -o out
 
 # Disable cleanup of generated files when source YAML is unlinked in watch mode
 testweaver generate --no-cleanup
@@ -347,6 +349,10 @@ testweaver generate -c custom-config.json -i "temp/**/*.yaml"
 
 # Perform a dry run for all YAML files in the 'features' directory
 testweaver generate "features/**/*.yml" --dry-run
+
+# Generate tests with a custom output directory, preserving the source folder structure
+# For a source file at 'tests/sample/cli.test.yaml', the output will be 'out/tests/sample/cli.test.js'
+testweaver generate --output-dir out
 ```
 
 #### `init`
@@ -372,8 +378,8 @@ testweaver init
 # Create a default testweaver.json without prompts
 testweaver init --quick
 
-# Create a custom config file named 'my-project-config.json'
-testweaver init my-project-config.json
+# Create a custom config file named 'my-config.json'
+testweaver init my-config.json
 
 # Force overwrite an existing config file without prompts
 testweaver init --quick --force
@@ -408,7 +414,8 @@ This repository includes a set of scripts designed to streamline development, en
 ### Core Development
 
 - `npm run start`: Runs the application using `node src/index.js`.
-- `npm run test`: Runs all tests with Jest and generates a coverage report.
+- `npm run test`: Runs all tests with Jest.
+- `npm run test:coverage`: Runs all tests with Jest and generates a coverage report.
 - `npm run test:watch`: Runs Jest in watch mode, re-running tests on file changes.
 
 ### The "One-Click" Pre-Commit Workflow
@@ -488,6 +495,8 @@ For more details, refer to the [release-please documentation](https://github.com
 ├── config/
 │   ├── default-config.schema.json
 │   └── default.json
+├── docs/
+
 ├── src/               # Source code
 │   ├── commands/
 │   │   ├── generate.js
@@ -503,8 +512,12 @@ For more details, refer to the [release-please documentation](https://github.com
 │   │   └── logger.js
 │   └── index.js  # Main application entry point
 ├── tests/
+│   ├── fileProcessor.security.test.js
 │   ├── fileProcessor.test.js
+│   ├── generate-output-dir.test.js
+│   ├── generate.test.js
 │   ├── index.test.js
+│   ├── init.test.js
 │   └── testGenerator.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
 ├── .eslintrc.json     # ESLint configuration

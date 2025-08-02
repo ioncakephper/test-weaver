@@ -31,7 +31,8 @@
   },
   "scriptDescriptions": {
     "start": "Runs the application using `node src/index.js`.",
-    "test": "Runs all tests with Jest and generates a coverage report.",
+    "test": "Runs all tests with Jest.",
+    "test:coverage": "Runs all tests with Jest and generates a coverage report.",
     "test:watch": "Runs Jest in watch mode, re-running tests on file changes.",
     "lint": "Lints all JavaScript and Markdown files using ESLint.",
     "lint:fix": "Automatically fixes linting issues in all JavaScript and Markdown files.",
@@ -49,6 +50,7 @@
     "Core Development": [
       "start",
       "test",
+      "test:coverage",
       "test:watch"
     ],
     "Code Quality & Formatting": [

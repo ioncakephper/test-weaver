@@ -14,18 +14,20 @@ describe('init command', () => {
     program = new Command();
     initCommand(program);
     exitMock = jest.spyOn(process, 'exit').mockImplementation(() => {});
-    fs.readFileSync.mockReturnValue(JSON.stringify({
-      patterns: ['**/__tests__/**/*.{yaml,yml}'],
-      ignore: ['node_modules'],
-      testKeyword: 'it',
-      outputDir: '.',
-      dryRun: false,
-      noCleanup: false,
-      verbose: false,
-      debug: false,
-      silent: false,
-      'no-defaults': false,
-    }));
+    fs.readFileSync.mockReturnValue(
+      JSON.stringify({
+        patterns: ['**/__tests__/**/*.{yaml,yml}'],
+        ignore: ['node_modules'],
+        testKeyword: 'it',
+        outputDir: '.',
+        dryRun: false,
+        noCleanup: false,
+        verbose: false,
+        debug: false,
+        silent: false,
+        'no-defaults': false,
+      }),
+    );
     inquirer.prompt.mockResolvedValue({
       patterns: ['**/__tests__/**/*.{yaml,yml}'],
       customPatterns: [],
@@ -55,7 +57,7 @@ describe('init command', () => {
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       expect.stringContaining('testweaver.json'),
       expect.any(String),
-      'utf8'
+      'utf8',
     );
   });
 
