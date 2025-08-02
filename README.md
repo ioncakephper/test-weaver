@@ -187,6 +187,16 @@ npm link
 
 `test-weaver` is a command-line utility that can be invoked using `testweaver` (if installed globally via `npm install -g test-weaver`) or `npx test-weaver` (for one-off use without global installation).
 
+```bash
+# Display help information for the main command
+testweaver --help
+testweaver -h
+
+# Display version information for the main command
+testweaver --version
+testweaver -V
+```
+
 ### Default Command: `generate`
 
 When no specific command is provided, `test-weaver` defaults to the `generate` command. This means you can omit `generate` from your command line.
@@ -200,6 +210,12 @@ testweaver generate
 
 # Using the alias for generate
 testweaver g
+
+# Display help information for the generate command
+testweaver generate --help
+testweaver generate -h
+testweaver g --help
+testweaver g -h
 
 # Generate with specific patterns (long form)
 testweaver generate "src/**/*.yaml" "features/**/*.yml"
@@ -244,6 +260,12 @@ Initializes a new project by creating a `testweaver.json` configuration file.
 # Create a default testweaver.json in the current directory (interactive mode)
 testweaver init
 testweaver i
+
+# Display help information for the init command
+testweaver init --help
+testweaver init -h
+testweaver i --help
+testweaver i -h
 
 # Create a default testweaver.json without interactive prompts
 testweaver init --quick
@@ -311,6 +333,8 @@ This array tells `test-weaver` which files or directories to exclude, even if th
 
 `testweaver` supports the following global options, which can be applied before any command:
 
+- `-h, --help`: Display help for command
+- `-V, --version`: Output the version number
 - `--verbose`: Enable verbose logging for detailed output.
 - `--debug`: Enable debug logging for highly detailed debugging (most verbose).
 - `--silent`: Suppress all output except critical errors.
