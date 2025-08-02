@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestWeaver CLI</title>
+    <!-- Use Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Use a custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scroll behavior for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Sticky Navigation Menu -->
+    <header class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm shadow-lg p-4">
+        <nav class="container mx-auto flex justify-between items-center px-4 md:px-0">
+            <!-- Logo -->
+            <a href="#hero" class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
+                TM TestWeaver
+            </a>
+            <!-- Navigation Links -->
+            <ul class="flex space-x-6">
+                <li><a href="#features-section" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a></li>
+                <li><a href="#usage-section" class="text-gray-300 hover:text-white transition-colors duration-300">Usage</a></li>
+                <li><a href="#feedback-section" class="text-gray-300 hover:text-white transition-colors duration-300">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="container mx-auto py-24 px-4 md:px-0 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4">
+            Effortless Test Case Generation.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+            TestWeaver is a command-line tool that generates comprehensive test cases from simple YAML configurations.
+        </p>
+        <div class="flex justify-center space-x-4">
+            <a href="#usage-section" class="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                Get Started
+            </a>
+            <a href="https://github.com/your-username/testweaver" class="px-6 py-3 bg-gray-800 text-gray-300 font-semibold rounded-full border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors duration-300">
+                View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features-section" class="container mx-auto py-20 px-4 md:px-0">
+        <h2 class="text-4xl font-bold text-center mb-12 text-white">Features</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 hover:border-teal-500 transition-colors duration-300">
+                <div class="flex justify-center mb-4">
+                    <svg class="w-12 h-12 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white text-center mb-2">Fast Test Generation</h3>
+                <p class="text-gray-400 text-center">
+                    Quickly generate boilerplate test files and code from a simple configuration.
+                </p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 hover:border-blue-500 transition-colors duration-300">
+                <div class="flex justify-center mb-4">
+                    <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M10 16h.01"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white text-center mb-2">Language Agnostic</h3>
+                <p class="text-gray-400 text-center">
+                    Works with any programming language by using custom templates for your test files.
+                </p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 transition-colors duration-300">
+                <div class="flex justify-center mb-4">
+                    <svg class="w-12 h-12 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white text-center mb-2">Flexible Configuration</h3>
+                <p class="text-gray-400 text-center">
+                    Define test suites, units, and custom variables with a simple YAML file.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage Section -->
+    <section id="usage-section" class="container mx-auto py-20 px-4 md:px-0">
+        <h2 class="text-4xl font-bold text-center mb-12 text-white">How to Use TestWeaver</h2>
+        <div class="space-y-12">
+            <!-- Step 1 -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="text-2xl font-bold text-teal-400 mb-4">1. Install the CLI</h3>
+                <p class="text-gray-400 mb-4">
+                    Install TestWeaver globally via npm.
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <pre><code class="text-gray-200">npm install -g testweaver</code></pre>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="text-2xl font-bold text-teal-400 mb-4">2. Create Your YAML</h3>
+                <p class="text-gray-400 mb-4">
+                    Define your test suites and properties in a `your-file.yml`.
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <pre><code class="text-gray-200">When CLI Command:
+     Gets an empty line:
+             A default command defined:
+                 - execute the command
+                 - return no errors code
+            No default command defined:
+                 - display help screen
+                 - returns no error code
+     Gets flag -h or --help:
+          - display help screen
+          - return no errors code</code></pre>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="text-2xl font-bold text-teal-400 mb-4">3. Run the Generator</h3>
+                <p class="text-gray-400 mb-4">
+                    Execute the `generate` command with your YAML file.
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <pre><code class="text-gray-200">testweaver generate -f your-file.yml</code></pre>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="text-2xl font-bold text-teal-400 mb-4">4. See the Generated Test File</h3>
+                <p class="text-gray-400 mb-4">
+                    TestWeaver creates a `<span class="font-mono">test.js</span>` file with a structure that mirrors your YAML configuration.
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <pre><code class="text-gray-200">describe('When CLI Command', () => {
+
+      describe('Gets an empty line', () => {
+               describe('A default command defined', () => {
+                    it.todo('execute the command');
+                    it.todo('return no errors code');
+               })
+      })
+
+       describe('Gets flag -h or --help', () => {
+                it.todo('display help screen');
+                it.todo('return no errors code');
+       })
+})</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section (Canny.io Integration) -->
+    <section id="feedback-section" class="container mx-auto py-20 px-4 md:px-0">
+        <h2 class="text-4xl font-bold text-center mb-12 text-white">Give Us Your Feedback</h2>
+        <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 max-w-4xl mx-auto">
+            <div id="canny-board-div" class="min-h-[500px]">
+                <!-- The Canny.io widget will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 p-6 text-center text-gray-500">
+        &copy; 2024 TestWeaver CLI. All rights reserved.
+    </footer>
+
+    <!-- Canny.io integration script - Replace placeholders with your own keys -->
+    <script>
+        (function(w,d,i,s){function l(){if(!d.getElementById(i)){var f=d.getElementsByTagName(s)[0],e=d.createElement(s);e.type='text/javascript',e.async=true,e.src='https://canny.io/api/v1/sdk.js',f.parentNode.insertBefore(e,f)}}if('function'!=typeof w.Canny){var c=function(){c.q.push(arguments)};c.q=[],w.Canny=c}if(w.attachEvent){w.attachEvent('onload',l)}else{w.addEventListener('load',l,false)}})(window,document,'canny-jssdk','script');
+
+        Canny('render', {
+          base: 'https://canny.io',
+          boardToken: 'YOUR_BOARD_TOKEN',
+          apiKey: 'YOUR_API_KEY',
+          ssoToken: 'YOUR_SSO_TOKEN',
+          mainContainerSelector: '#canny-board-div'
+        });
+    </script>
+
+</body>
+</html>
