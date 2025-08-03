@@ -17,6 +17,23 @@
             scroll-behavior: smooth;
         }
     </style>
+        <script>
+        (function(l, e, n, b, a, i, s){
+        s = l[n] = l[n] || {};
+        s['push'] = function (m) {
+            (l[n].q = l[n].q || []).push([].concat([].slice.call(arguments, 0)))
+        }
+        s['c'] = ['core', 'widget'];
+        s['l'] = 1 * new Date();
+        s['ak'] = b;
+        v = new Date().getMonth()+'.'+new Date().getDate();
+        a = e.createElement('script'),
+            i = e.getElementsByTagName('script')[0];
+        a.async = 1;
+        a.src = 'https://app.productmix.com/embed/leanbe.js?v='+v;
+        i.parentNode.insertBefore(a, i);
+        })(window, document, 'leanbe', '02c7d779-b251-4888-af57-702dc776b1b7');
+    </script>
 </head>
 <body class="bg-gray-900 text-gray-200">
 
@@ -31,6 +48,7 @@
             <ul class="flex space-x-6">
                 <li><a href="#features-section" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a></li>
                 <li><a href="#usage-section" class="text-gray-300 hover:text-white transition-colors duration-300">Usage</a></li>
+                <li><a href="#SGBF-open-64de62bbc5882462a2f0843a" class="text-gray-300 hover:text-white transition-colors duration-300">Feedback</a></li>
                 <!-- <li><a href="https://skelosaurus.canny.io/feature-requests" class="text-gray-300 hover:text-white transition-colors duration-300">Feedback</a></li> -->
             </ul>
         </nav>
@@ -160,14 +178,14 @@
     </section>
 
     <!-- Feedback Section (Canny.io Integration) -->
-    <section id="feedback-section" class="container mx-auto py-20 px-4 md:px-0">
+    <!-- <section id="feedback-section" class="container mx-auto py-20 px-4 md:px-0">
         <h2 class="text-4xl font-bold text-center mb-12 text-white">Give Us Your Feedback</h2>
         <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 max-w-4xl mx-auto">
             <div id="canny-board-div" class="min-h-[500px]">
                 
             </div>
         </div>
-    </section>
+    </section> -->
    
 
     <!-- Footer -->
@@ -176,7 +194,7 @@
     </footer>
 
     <!-- Canny.io integration script - Replace placeholders with your own keys -->
-    <script>
+    <!-- <script>
         (function(w,d,i,s){function l(){if(!d.getElementById(i)){var f=d.getElementsByTagName(s)[0],e=d.createElement(s);e.type='text/javascript',e.async=true,e.src='https://canny.io/api/v1/sdk.js',f.parentNode.insertBefore(e,f)}}if('function'!=typeof w.Canny){var c=function(){c.q.push(arguments)};c.q=[],w.Canny=c}if(w.attachEvent){w.attachEvent('onload',l)}else{w.addEventListener('load',l,false)}})(window,document,'canny-jssdk','script');
 
         Canny('render', {
@@ -186,7 +204,9 @@
           ssoToken: null,
           mainContainerSelector: '#canny-board-div'
         });
-    </script>
+    </script> -->
+
+
 
 </body>
 </html>
