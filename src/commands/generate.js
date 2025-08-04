@@ -217,7 +217,8 @@ module.exports = (program) => {
         process.exit(1);
       }
 
-      // Pass __dirname to loadConfig to ensure it can find default.json
+      // Pass CLI directory path (__dirname) to loadConfig to ensure it can locate and load
+      // the fallback default.json configuration when no user config is present
       const { cliConfig, configSource } = loadConfig(
         cliPatterns,
         options,

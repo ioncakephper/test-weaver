@@ -55,7 +55,12 @@ describe('generate command', () => {
 
     expect(loadConfig).toHaveBeenCalledWith(
       cliPatterns,
-      expect.objectContaining({ ...options, cleanup: true, ignore: [], testKeyword: 'it' }),
+      expect.objectContaining({
+        ...options,
+        cleanup: true,
+        ignore: [],
+        testKeyword: 'it',
+      }),
     );
   });
 
