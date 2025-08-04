@@ -549,7 +549,6 @@ For more details, refer to the [release-please documentation](https://github.com
 │   ├── generate-output-dir.test.js
 │   ├── generate.test.js
 │   ├── index.test.js
-│   ├── init.test.js
 │   └── testGenerator.test.js
 ├── .eslintignore      # Files/folders for ESLint to ignore
 ├── .eslintrc.json     # ESLint configuration
