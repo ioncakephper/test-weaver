@@ -7,13 +7,11 @@
  */
 
 const glob = require('glob');
-const path = require('path'); // Needed for __dirname in loadConfig call
-
 const { LOG_LEVELS, setLogLevel, log } = require('../utils/logger');
 const { loadConfig } = require('../config/configLoader');
 const { processFile } = require('../core/fileProcessor');
 const { startWatcher } = require('../core/watcher');
-const { Option } = require('commander');
+// const { Option: CommanderOption } = require('commander');
 
 /**
  * Logs the effective configuration and any command-line overrides.
@@ -157,6 +155,10 @@ function runSinglePass(cliConfig) {
 }
 
 /**
+ * @typedef {import('commander').Command} Command
+ */
+
+/**
  * Registers the 'generate' command with the Commander.js program.
  * This command, which can be run as the default, finds and processes YAML files
  * to generate test files. It supports watch mode, dry runs, and inherits
@@ -190,12 +192,10 @@ module.exports = (program) => {
       '-n, --dry-run',
       'perform a dry run: simulate file generation without writing to disk', // Changed to lowercase
     )
-    .addOption(
-      new Option(
-        '-k, --test-keyword <keyword>',
-        'specify keyword for test blocks', // Changed to lowercase
-        // 'it',
-      ).choices(['it', 'test']),
+    .option(
+      '-k, --test-keyword <keyword>',
+      'specify keyword for test blocks', // Changed to lowercase
+      'it',
     )
     .option(
       '--no-cleanup',
@@ -210,12 +210,7 @@ module.exports = (program) => {
       // Removed 'async' from action as runSinglePass is no longer async
       // Pass __dirname of the main CLI entry point (src/cli.js) to loadConfig
       // This ensures configLoader can correctly find the default.json
-      const mainCliDir = path.join(__dirname, '../'); // Go up from src/commands/ to src/
-      const { cliConfig, configSource } = loadConfig(
-        cliPatterns,
-        options,
-        mainCliDir,
-      );
+      const { cliConfig, configSource } = loadConfig(cliPatterns, options);
 
       setLogLevel(cliConfig.logLevel);
       logConfigurationDetails(cliConfig, configSource, cliPatterns, options);

@@ -14,7 +14,7 @@ const { log, LOG_LEVELS } = require('./logger');
  * Dynamically loads Commander.js commands from a given directory and its subdirectories.
  * Each JavaScript file found is expected to export a function that registers a command
  * with the provided Commander.js program instance.
- * @param {Command} program - The Commander.js program instance to which commands will be added.
+ * @param {import('commander').Command} program - The Commander.js program instance to which commands will be added.
  * @param {string} commandsDirPath - The absolute path to the directory containing command files.
  * @param {string} [currentSubdir] - Internal parameter for recursive calls, tracks current subdirectory path.
  */

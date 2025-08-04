@@ -39,7 +39,7 @@ function arraysEqual(arr1, arr2) {
  * hardcoded fallbacks if the default config is unavailable.
  * It supports an interactive mode or quick generation based on flags,
  * and can optionally only write non-default settings.
- * @param {Command} program - The Commander.js program instance.
+ * @param {import('commander').Command} program - The Commander.js program instance.
  */
 module.exports = (program) => {
   program

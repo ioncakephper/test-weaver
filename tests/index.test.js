@@ -1,8 +1,6 @@
 const main = require('../src/index');
-const { Command } = require('commander');
 
 jest.mock('commander', () => {
-  const original = jest.requireActual('commander');
   const mockCommand = {
     name: jest.fn().mockReturnThis(),
     description: jest.fn().mockReturnThis(),

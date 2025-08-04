@@ -50,7 +50,6 @@ describe('generate command', () => {
     expect(loadConfig).toHaveBeenCalledWith(
       cliPatterns,
       expect.objectContaining(options),
-      expect.any(String),
     );
   });
 

@@ -14,10 +14,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Import third-party libraries
-const { Command } = require('commander');
+const { Command: CommanderCommand } = require('commander');
 
 // Import modularized components
-const { LOG_LEVELS, setLogLevel, log } = require('./utils/logger');
+const { LOG_LEVELS, log } = require('./utils/logger');
 const { loadCommands } = require('./utils/commandLoader');
 
 /**
@@ -27,7 +27,7 @@ const { loadCommands } = require('./utils/commandLoader');
  * and handles the default behavior if no specific command is provided.
  */
 function main() {
-  const program = new Command();
+  const program = new CommanderCommand();
 
   // --- Load package.json details for program name, description, and version ---
   let pkg = {};

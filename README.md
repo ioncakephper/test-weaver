@@ -166,12 +166,20 @@ This example illustrates how `test-weaver` bridges the gap between simple, decla
 
 ```bash
 npm install -g test-weaver
+# testweaver is now available globally.
+# check it's available by running:
+# testweaver -V
 ```
 
 #### Or use npx (no global install required)
 
 ```bash
 npx test-weaver input.yaml output.test
+# npx test-weaver --help
+# npx test-weaver --version
+# npx test-weaver generate input.yaml output.test
+# npx test-weaver init -h
+# npx test-weaver init -q -f --no-defaults
 ```
 
 #### Or clone and run locally
@@ -185,7 +193,7 @@ npm link
 
 ## Usage
 
-`test-weaver` is a command-line utility that can be invoked using `testweaver` (if installed globally via `npm install -g test-weaver`) or `npx test-weaver` (for one-off use without global installation).
+`testweaver` is a command-line utility that can be invoked using `testweaver` (if installed globally via `npm install -g test-weaver`) or `npx test-weaver` (for one-off use without global installation).
 
 ```bash
 # Display help information for the main command
@@ -347,17 +355,17 @@ Generates Jest-compatible test files from YAML definitions.
 
 **Arguments**
 
-- `[patterns...]`: One or more glob patterns for YAML files to process. If provided, these patterns override any patterns specified in the configuration file.
+- `[patterns...]`: one or more glob patterns for yaml files. overrides config
 
 **Options**
 
-- `-c, --config <path>`: Specify a custom configuration file to load patterns from. This overrides the default configuration cascade.
-- `-n, --dry-run`: Perform a dry run: simulate file generation without writing to disk.
-- `-i, --ignore <patterns...>`: A list of glob file patterns to exclude from matched files. These patterns override any ignore patterns specified in the configuration file.
-- `-o, --output-dir <path>`: Specify the output directory for generated test files. This overrides the `outputDir` setting in the configuration file.
-- `--no-cleanup`: Do not delete generated `.test.js` files when the source YAML file is unlinked in watch mode.
-- `-k, --test-keyword <keyword>`: Specify the keyword for test blocks (`it` or `test`). Defaults to `it`.
-- `-w, --watch`: Enable watch mode, which automatically regenerates test files whenever changes are detected in the YAML files.
+- `-c, --config <filename>`: specify a custom configuration file to load patterns from. overrides default cascade
+- `-i, --ignore <patterns...>`: list of glob file patterns to exclude from matched files. overrides config
+- `-k, --test-keyword <keyword>`: specify keyword for test blocks
+- `-n, --dry-run`: perform a dry run: simulate file generation without writing to disk
+- `-o, --output-dir <path>`: specify the output directory for generated test files. overrides config
+- `-w, --watch`: watch for changes in yaml files and regenerate test files automatically
+- `--no-cleanup`: do not delete generated .test.js files when source yaml is unlinked in watch mode
 
 **Examples**
 

@@ -114,29 +114,51 @@ function determineLogLevel(options, loadedConfig) {
 }
 
 /**
+ * Function to find the root of the installed 'test-weaver' package.
+ * This is crucial for locating default config files reliably in both
+ * development and global installation environments.
+ * @returns {string} The absolute path to the 'test-weaver' package root.
+ */
+function findPackageRoot() {
+  try {
+    // Resolve the path to package.json within the installed 'test-weaver' module.
+    // This works for global installations where 'test-weaver' is a recognized module.
+    const packageJsonPath = require.resolve('test-weaver/package.json');
+    // Get the directory of package.json, which is the package root.
+    return path.dirname(packageJsonPath);
+  } catch (error) {
+    // Fallback for development environment:
+    // If 'test-weaver' is not found as an installed module (e.g., when running
+    // directly from source), assume a development setup.
+    // __dirname in configLoader.js is src/config/, so go up two levels to reach project root.
+    return path.resolve(__dirname, '../../');
+  }
+}
+
+const packageRoot = findPackageRoot();
+
+/**
  * Loads and consolidates all CLI configuration based on a cascade:
  * Command-line options > Project config > Default config.
  * It determines the effective patterns, ignore rules, dry run status, test keyword,
  * watch mode, and cleanup preferences.
  * @param {Array<string>} cliPatterns - Glob patterns provided directly on the command line.
  * @param {object} options - Options object from Commander.js.
- * @param {string} mainModuleDir - The __dirname from the main CLI entry point (e.g., src/cli.js),
- * used for robust pathing to the default config file.
  * @returns {{cliConfig: object, configSource: string}} An object containing the consolidated
  * configuration (`cliConfig`) and a string indicating the source of the configuration.
  */
-function loadConfig(cliPatterns, options, mainModuleDir) {
+function loadConfig(cliPatterns, options) {
   const cliConfigFileName = 'testweaver.json';
   const defaultConfigFileName = 'default.json';
   const defaultConfigPath = path.join(
-    mainModuleDir,
-    '../config',
+    packageRoot,
+    'config',
     defaultConfigFileName,
   );
   const cliConfigPath = path.join(process.cwd(), cliConfigFileName);
   const schemaPath = path.join(
-    mainModuleDir,
-    '../config',
+    packageRoot,
+    'config',
     'default-config.schema.json',
   );
 
