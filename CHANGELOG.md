@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/ioncakephper/test-weaver/compare/v1.6.1...v1.7.0) (2025-08-04)
+
+
+### Features
+
+* Include default-config.schema.json in published package ([8c034e1](https://github.com/ioncakephper/test-weaver/commit/8c034e1b71f06c29edefb7e5034a59a1c095ac92))
+
+
+### Bug Fixes
+
+* Include default-config.schema.json in published package ([fe7c1d9](https://github.com/ioncakephper/test-weaver/commit/fe7c1d991e2176f66f7e6302a9267d6c57fd203b))
+
 ## [1.6.1](https://github.com/ioncakephper/test-weaver/compare/v1.6.0...v1.6.1) (2025-08-04)
 
 
