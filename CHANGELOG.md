@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1](https://github.com/ioncakephper/test-weaver/compare/v1.6.0...v1.6.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* **config:** Fix config loading to correctly resolve default.json ([b4c072f](https://github.com/ioncakephper/test-weaver/commit/b4c072f2f9a7ada44d5cb799e933fbd899c1b942))
+* **config:** Fix config loading to correctly resolve default.json ([95a5ce5](https://github.com/ioncakephper/test-weaver/commit/95a5ce51939637c8f9cd054cb530ffb6996acb41))
+
 ## [1.6.0](https://github.com/ioncakephper/test-weaver/compare/v1.5.0...v1.6.0) (2025-08-04)
 
 ### Features
