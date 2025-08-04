@@ -217,10 +217,12 @@ module.exports = (program) => {
         process.exit(1);
       }
 
-      // Removed 'async' from action as runSinglePass is no longer async
-      // Pass __dirname of the main CLI entry point (src/cli.js) to loadConfig
-      // This ensures configLoader can correctly find the default.json
-      const { cliConfig, configSource } = loadConfig(cliPatterns, options);
+      // Pass __dirname to loadConfig to ensure it can find default.json
+      const { cliConfig, configSource } = loadConfig(
+        cliPatterns,
+        options,
+        __dirname,
+      );
 
       setLogLevel(cliConfig.logLevel);
       logConfigurationDetails(cliConfig, configSource, cliPatterns, options);

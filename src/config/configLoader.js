@@ -135,8 +135,6 @@ function findPackageRoot() {
   }
 }
 
-const packageRoot = findPackageRoot();
-
 /**
  * Loads and consolidates all CLI configuration based on a cascade:
  * Command-line options > Project config > Default config.
@@ -144,10 +142,14 @@ const packageRoot = findPackageRoot();
  * watch mode, and cleanup preferences.
  * @param {Array<string>} cliPatterns - Glob patterns provided directly on the command line.
  * @param {object} options - Options object from Commander.js.
+ * @param {string} commandPath - The __dirname from the calling command file.
  * @returns {{cliConfig: object, configSource: string}} An object containing the consolidated
  * configuration (`cliConfig`) and a string indicating the source of the configuration.
  */
-function loadConfig(cliPatterns, options) {
+function loadConfig(cliPatterns, options, commandPath) {
+  const packageRoot = commandPath
+    ? path.resolve(commandPath, '../../')
+    : findPackageRoot();
   const cliConfigFileName = 'testweaver.json';
   const defaultConfigFileName = 'default.json';
   const defaultConfigPath = path.join(
