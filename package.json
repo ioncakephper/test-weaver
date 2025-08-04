@@ -10,6 +10,7 @@
     "src",
     "config/default.json",
     "LICENSE",
+    "config/default-config.schema.json",
     "README.md"
   ],
   "scripts": {
