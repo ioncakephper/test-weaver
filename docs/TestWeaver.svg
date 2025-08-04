@@ -1,0 +1,21 @@
+<svg width="200" height="38" viewBox="0 0 200 38" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">TestWeaver Logo</title>
+
+  <!-- Define the color gradient for the icon -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2DD4BF"/> <!-- Teal 400 -->
+      <stop offset="1" stop-color="#3B82F6"/> <!-- Blue 500 -->
+    </linearGradient>
+  </defs>
+
+  <!-- The stylized "W" / checkmark icon -->
+  <path d="M12.9868 28.5L5.48682 21L12.9868 13.5L20.4868 21L27.9868 13.5L20.4868 6" stroke="url(#paint0_linear)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.9868 13.5L12.9868 28.5" stroke="url(#paint0_linear)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M20.4868 21L20.4868 6" stroke="url(#paint0_linear)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M27.9868 13.5L27.9868 28.5" stroke="url(#paint0_linear)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- The "TestWeaver" text -->
+  <text x="40" y="27" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="white">
+    TestWeaver</text>
+</svg>
