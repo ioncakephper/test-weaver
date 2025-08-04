@@ -329,7 +329,7 @@ This array tells `test-weaver` which files or directories to exclude, even if th
 
 ### Other Settings
 
-- `testKeyword`: Specifies the Jest test function to use. Can be `"it"` (default) or `"test"`.
+- `testKeyword`: Specifies the Jest test function to use. Allowed values are `"it"` (default) and `"test"`.
 - `verbose`, `debug`, `silent`: Control the logging level. These are typically set via command-line flags (`--verbose`, `--debug`, `--silent`).
 - `dryRun`: If `true`, simulates test generation without writing any files. Set via `--dry-run`.
 - `noCleanup`: If `true`, prevents the deletion of generated test files when a source YAML is removed in watch mode. Set via `--no-cleanup`.
@@ -361,7 +361,7 @@ Generates Jest-compatible test files from YAML definitions.
 
 - `-c, --config <filename>`: specify a custom configuration file to load patterns from. overrides default cascade
 - `-i, --ignore <patterns...>`: list of glob file patterns to exclude from matched files. overrides config
-- `-k, --test-keyword <keyword>`: specify keyword for test blocks
+- `-k, --test-keyword <keyword>`: specify keyword for test blocks. Allowed values: "it", "test".
 - `-n, --dry-run`: perform a dry run: simulate file generation without writing to disk
 - `-o, --output-dir <path>`: specify the output directory for generated test files. overrides config
 - `-w, --watch`: watch for changes in yaml files and regenerate test files automatically

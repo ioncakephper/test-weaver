@@ -11,7 +11,6 @@ const { LOG_LEVELS, setLogLevel, log } = require('../utils/logger');
 const { loadConfig } = require('../config/configLoader');
 const { processFile } = require('../core/fileProcessor');
 const { startWatcher } = require('../core/watcher');
-// const { Option: CommanderOption } = require('commander');
 
 /**
  * Logs the effective configuration and any command-line overrides.
@@ -207,6 +206,17 @@ module.exports = (program) => {
     )
     .configureHelp({ sortOptions: true })
     .action((cliPatterns, options) => {
+      if (
+        options.testKeyword &&
+        !['it', 'test'].includes(options.testKeyword)
+      ) {
+        log(
+          'error: invalid value for --test-keyword. allowed values are "it", "test".',
+          LOG_LEVELS.ERROR,
+        );
+        process.exit(1);
+      }
+
       // Removed 'async' from action as runSinglePass is no longer async
       // Pass __dirname of the main CLI entry point (src/cli.js) to loadConfig
       // This ensures configLoader can correctly find the default.json
@@ -217,9 +227,7 @@ module.exports = (program) => {
 
       if (cliConfig.effectivePatterns.length === 0) {
         log(
-          `\n⚠️ no patterns specified via command line or configuration files.
-please provide patterns as arguments (e.g., 'testweaver generate "tests/**/*.yaml"')
-or define them in a config file (e.g., 'testweaver --config my-patterns.json').`, // Adjusted for lowercase consistency
+          `\n⚠️ no patterns specified via command line or configuration files.\nplease provide patterns as arguments (e.g., 'testweaver generate "tests/**/*.yaml"')\nor define them in a config file (e.g., 'testweaver --config my-patterns.json').`, // Adjusted for lowercase consistency
           LOG_LEVELS.WARN,
         );
         program.help();
