@@ -2,10 +2,9 @@
 
 ## [1.6.0](https://github.com/ioncakephper/test-weaver/compare/v1.5.0...v1.6.0) (2025-08-04)
 
-
 ### Features
 
-* Validate test-keyword option and update documentation ([11758b8](https://github.com/ioncakephper/test-weaver/commit/11758b8233e28af08984b0a0b0787b420ac5c889))
+- Validate test-keyword option and update documentation ([11758b8](https://github.com/ioncakephper/test-weaver/commit/11758b8233e28af08984b0a0b0787b420ac5c889))
 
 ## [1.5.0](https://github.com/ioncakephper/test-weaver/compare/v1.4.0...v1.5.0) (2025-08-02)
 
