@@ -155,17 +155,21 @@
                             Define your test suites and properties in a `your-file.yml`.
                         </p>
                         <div class="bg-gray-950 rounded-lg p-4">
-                            <pre><code class="text-gray-200">When CLI Command:
-      Gets an empty line:
-            A default command defined:
-                - execute the command
-                - return no errors code
-            No default command defined:
-                - display help screen
-                - returns no error code
-      Gets flag -h or --help:
-          - display help screen
-          - return no errors code</code></pre>
+                            <pre><code class="text-gray-200">User Authentication:
+  Logging in:
+    With correct credentials:
+      - should return a valid JWT
+      - should set a session cookie
+    With incorrect credentials:
+      - should return a 401 error
+      - should not return a JWT
+  Registering a new user:
+    With valid data:
+      - should create a new user record
+      - should return a 201 status code
+    With invalid data:
+      - should return a 400 error
+      - should not create a new user</code></pre>
                         </div>
                     </div>
                     <!-- Step 3 -->
