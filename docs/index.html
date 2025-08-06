@@ -281,6 +281,30 @@
 <script>
   noticeable.render('widget', 'KamVxkSRQTlkeLE8QcZ7');
 </script>
+<!-- Importing the Featurebase SDK -->
+<script>!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);</script>
+
+<script>
+Featurebase(
+    "initialize_survey_widget",
+    {
+      organization: "testweaver", // Replace this with your organization name, copy-paste the subdomain part from your Featurebase workspace url (e.g. https://*yourorg*.featurebase.app)
+      placement: "bottom-right", // optional (bottom-right or bottom-left)
+      theme: "light", // optional (light or dark)
+    //   email: "youraccount@yourcompany.com", // optional
+      locale: "en", // Change the language, view all available languages from https://help.featurebase.app/en/articles/8879098-using-featurebase-in-my-language
+      // jwtToken: "token", // optional - add additional user data
+    },
+    (err) => {
+      // Callback function. Called when identify completed.
+      if (err) {
+        // console.error(err);
+      } else {
+        // console.log("Data sent successfully!");
+      }
+    }
+  );
+</script>
 </body>
 </html>
 
