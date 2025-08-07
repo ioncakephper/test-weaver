@@ -7,8 +7,6 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <!-- Use Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- js-yaml library for client-side YAML validation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
         /* Use a custom font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
@@ -19,10 +17,28 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Style for the pre-filled YAML output */
-        #yaml-output {
-            white-space: pre-wrap;
-            word-wrap: break-word;
+
+        /* --- CSS-only mobile menu --- */
+        /* Hide the checkbox */
+        #mobile-menu-toggle {
+            display: none;
+        }
+        /* Show the menu when the checkbox is checked */
+        #mobile-menu-toggle:checked ~ #mobile-menu {
+            display: block;
+        }
+
+        /* --- CSS-only accordion --- */
+        /* Remove default marker */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Rotate icon on open */
+        details[open] summary svg {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -57,32 +73,29 @@
             </a>
             <!-- Desktop Navigation Links -->
             <ul class="hidden md:flex space-x-6">
-                <li><span id="noticeable-widget"></span></li>
+                <li><span id="noticeable-widget"  class="text-gray-300 hover:text-white transition-colors duration-300"></span></li>
                 <li><a href="#why-testweaver-section" class="text-gray-300 hover:text-white transition-colors duration-300">Why?</a></li>
                 <li><a href="#features-section" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a></li>
                 <li><a href="#usage-section" class="text-gray-300 hover:text-white transition-colors duration-300">Usage</a></li>
                 <li><a href="#watch-mode-section" class="text-gray-300 hover:text-white transition-colors duration-300">Watch Mode</a></li>
-                <li><a href="#ai-generation-section" class="text-gray-300 hover:text-white transition-colors duration-300">✨ AI Generation</a></li>
                 <li><a href="#faq-section" class="text-gray-300 hover:text-white transition-colors duration-300">FAQ</a></li>
             </ul>
             <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
+            <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+            <label for="mobile-menu-toggle" class="md:hidden flex items-center cursor-pointer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </label>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <ul class="flex flex-col space-y-4 p-4">
-                <li><span id="noticeable-widget-mobile"></span></li>
+                <li><span id="noticeable-widget-mobile">What's new</span></li>
                 <li><a href="#why-testweaver-section" class="text-gray-300 hover:text-white transition-colors duration-300">Why?</a></li>
                 <li><a href="#features-section" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a></li>
                 <li><a href="#usage-section" class="text-gray-300 hover:text-white transition-colors duration-300">Usage</a></li>
                 <li><a href="#watch-mode-section" class="text-gray-300 hover:text-white transition-colors duration-300">Watch Mode</a></li>
-                <li><a href="#ai-generation-section" class="text-gray-300 hover:text-white transition-colors duration-300">✨ AI Generation</a></li>
                 <li><a href="#faq-section" class="text-gray-300 hover:text-white transition-colors duration-300">FAQ</a></li>
             </ul>
         </div>
@@ -127,7 +140,7 @@
         <!-- Features Section -->
         <section id="features-section" class="bg-gray-900 py-20">
             <div class="container mx-auto px-4 md:px-0">
-                <h2 class="text-4xl font-bold text-center mb-12 text-white">Features         </h2>
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">Features</h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Feature 1 -->
                     <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 hover:border-teal-500 transition-colors duration-300">
@@ -288,177 +301,135 @@
                     </div>
                     <div class="mt-8 relative w-full h-auto max-w-full">
                         
-                                        <!-- Animated GIF showing TestWeaver in action -->
+                                <!-- Animated GIF showing TestWeaver in action -->
                         <img src="Recording 2025-08-04 232000.gif" alt="An animated GIF showing TestWeaver automatically updating a test file based on changes to a YAML test plan." class="w-full h-auto rounded-lg shadow-xl" />
-                                    </div>
-                                </div>
-                            </div>
-                        
-        </section>
-
-        <!-- Gemini API Section: AI-Powered Test Plan Generation -->
-        <section id="ai-generation-section" class="bg-gray-800 py-20">
-            <div class="container mx-auto px-4 md:px-0">
-                <h2 class="text-4xl font-bold text-center mb-12 text-white">✨ AI-Powered Test Plan Generation ✨</h2>
-                <p class="text-lg text-gray-400 text-center max-w-3xl mx-auto mb-8">
-                    Describe your software feature in plain English, and our AI will generate a structured YAML test plan for you. Just copy the output and save it to your `.yml` file to get started.
-                </p>
-                <div class="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700">
-                    <div class="flex flex-col md:flex-row gap-2 mb-4">
-                        <button class="example-prompt-button px-4 py-2 bg-gray-700 text-gray-300 rounded-full text-sm hover:bg-gray-600 transition-colors duration-300">Shopping Cart API</button>
-                        <button class="example-prompt-button px-4 py-2 bg-gray-700 text-gray-300 rounded-full text-sm hover:bg-gray-600 transition-colors duration-300">User Authentication Flow</button>
-                        <button class="example-prompt-button px-4 py-2 bg-gray-700 text-gray-300 rounded-full text-sm hover:bg-gray-600 transition-colors duration-300">Blog Post CRUD</button>
-                    </div>
-                    <label for="feature-description" class="block text-xl font-semibold text-white mb-2">Describe your feature:</label>
-                    <textarea id="feature-description" rows="6" placeholder="e.g., 'A shopping cart with add, remove, and update functionality. It should handle empty carts gracefully and display the total price correctly.'" class="w-full p-4 bg-gray-950 rounded-lg text-gray-200 border border-gray-700 focus:outline-none focus:border-teal-400 resize-none mb-4"></textarea>
-                    <div class="flex justify-center">
-                        <button id="generate-button" class="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                            ✨ Generate Test Plan
-                        </button>
-                    </div>
-                    <div id="loading-indicator" class="hidden text-center mt-4 text-teal-400">
-                        Generating...
-                    </div>
-                    <div id="output-area" class="mt-8">
-                        <label class="block text-xl font-semibold text-white mb-2">Generated YAML:</label>
-                        <div class="relative">
-                            <pre id="yaml-output" class="bg-gray-950 rounded-lg p-4 text-gray-200 border border-gray-700 overflow-x-auto min-h-[100px]"></pre>
-                            <div class="absolute top-2 right-2 flex space-x-2">
-                                <button id="validate-button" class="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors duration-300 hidden" title="Validate YAML">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-8.08"></path><path d="m9 11 3 3L22 4"></path></svg>
-                                </button>
-                                <button id="copy-button" class="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors duration-300 hidden" title="Copy to Clipboard">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M21 14H11"></path><path d="m15 10-4 4 4 4"></path></svg>
-                                </button>
                             </div>
                         </div>
-                        <div id="message-box" class="hidden mt-2 p-2 rounded-lg text-sm text-center"></div>
                     </div>
-                </div>
-            </div>
+                
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq-section" class="bg-gray-900 py-20">
+        <section id="faq-section" class="bg-gray-800 py-20">
             <div class="container mx-auto px-4 md:px-0">
                 <h2 class="text-4xl font-bold text-center mb-12 text-white">Frequently Asked Questions</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What is TestWeaver?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 TestWeaver is a command-line interface (CLI) tool designed to automate the generation of test case files from simple YAML test plans, helping developers save time and reduce boilerplate code.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>How do I install TestWeaver?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 You can install TestWeaver globally using npm with the following command: <code class="bg-gray-950 rounded-lg p-1">npm install -g test-weaver</code>
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What is the main benefit of using TestWeaver?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 The primary benefit is efficiency. TestWeaver automates the creation of test file structures, allowing developers to focus on writing the actual test logic instead of spending time on repetitive setup and boilerplate.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What kind of file does TestWeaver use to generate tests?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                TestWeaver uses a simple and human-readable YAML test plan (<code class="bg-gray-950 rounded-lg p-1">.yml</code>) to define test suites, units, and their descriptions.
+                                TestWeaver uses a simple and human-readable YAML test plan (`.yml`) to define test suites, units, and their descriptions.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>How do I generate a test file?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                After creating your YAML test plan (e.g., <code class="bg-gray-950 rounded-lg p-1">your-file.yml</code>), you can generate the corresponding test file by running the command: <code class="bg-gray-950 rounded-lg p-1">testweaver generate your-file.yml</code>
+                                After creating your YAML test plan (e.g., `your-file.yml`), you can generate the corresponding test file by running the command: <code class="bg-gray-950 rounded-lg p-1">testweaver generate your-file.yml</code>
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What does the generated test file look like?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                The generated file will be a test file (e.g., <code class="bg-gray-950 rounded-lg p-1">your-file.test.js</code>) that mirrors the structure of your YAML test plan, with <code class="bg-gray-950 rounded-lg p-1">describe</code> blocks for your test suites and <code class="bg-gray-950 rounded-lg p-1">it.todo()</code> placeholders for your individual test cases.
+                                The generated file will be a test file (e.g., `your-file.test.js`) that mirrors the structure of your YAML test plan, with `describe` blocks for your test suites and `it.todo()` placeholders for your individual test cases.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What is "Watch Mode"?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                Watch Mode is a feature that automatically regenerates your test files whenever you save a change to your YAML test plan. This is ideal for incrementally building out your test suite without manually running the <code class="bg-gray-950 rounded-lg p-1">generate</code> command each time.
+                                Watch Mode is a feature that automatically regenerates your test files whenever you save a change to your YAML test plan. This is ideal for incrementally building out your test suite without manually running the `generate` command each time.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>How do I use Watch Mode?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                You can activate Watch Mode by adding the <code class="bg-gray-950 rounded-lg p-1">--watch</code> flag to the <code class="bg-gray-950 rounded-lg p-1">generate</code> command, like this: <code class="bg-gray-950 rounded-lg p-1">testweaver generate **/*.yaml --watch</code>
+                                You can activate Watch Mode by adding the `--watch` flag to the `generate` command, like this: <code class="bg-gray-950 rounded-lg p-1">testweaver generate **/*.yaml --watch</code>
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>Is TestWeaver an open-source project?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 Yes, the "View on GitHub" button on the website indicates that TestWeaver is an open-source project, and its source code is available on GitHub.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What problem does TestWeaver solve?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 TestWeaver addresses the common developer pain point of writing repetitive, boilerplate code for test files. It streamlines the initial phase of testing by scaffolding the entire test structure from a simple YAML test plan.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>What are the key features of TestWeaver?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 The main features are:
                                 <ul class="list-disc list-inside ml-4 mt-2">
@@ -468,242 +439,70 @@
                                 </ul>
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>How does the YAML test plan translate to a test file?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                The nested structure of the YAML file directly maps to nested <code class="bg-gray-950 rounded-lg p-1">describe</code> blocks in the generated test file. The final test case descriptions in the YAML become <code class="bg-gray-950 rounded-lg p-1">it.todo()</code> statements.
+                                The nested structure of the YAML file directly maps to nested `describe` blocks in the generated test file. The final test case descriptions in the YAML become `it.todo()` statements.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>Where can I see a demonstration of TestWeaver in action?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
                                 The "Watch Mode" section of the website features an animated GIF that shows TestWeaver automatically updating a test file based on changes to a YAML test plan.
                             </p>
                         </div>
-                    </div>
-                    <div class="bg-gray-950 rounded-lg shadow-lg border border-gray-700">
-                        <button class="w-full flex justify-between items-center p-6 text-left text-white font-semibold focus:outline-none" onclick="toggleAccordion(this)">
+                    </details>
+                    <details class="bg-gray-900 rounded-lg shadow-lg">
+                        <summary class="w-full flex justify-between items-center p-6 text-left text-white font-semibold cursor-pointer">
                             <span>Who is the target audience for TestWeaver?</span>
                             <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="px-6 pb-6 hidden">
+                        </summary>
+                        <div class="px-6 pb-6">
                             <p class="text-gray-400">
-                                TestWeaver is for developers who want to streamline their testing workflow and reduce the manual effort of creating test file boilerplate.
+                                TestWeaver is for any developer who writes unit or integration tests and wants to speed up their workflow by automating the creation of test file boilerplate.
                             </p>
                         </div>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
-        
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 py-8 text-center text-gray-400">
-        <p>&copy; 2025 TestWeaver. All rights reserved.</p>
+    <footer class="bg-gray-950 p-6 text-center text-gray-500 border-t border-gray-700 mt-12">
+        <div class="container mx-auto">
+            &copy; 2025 TestWeaver CLI. All rights reserved.
+        </div>
     </footer>
 
     <script>
-        // JavaScript for Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+  !function(){'use strict';const e=['debug','destroy','do','help','identify','is','off','on','ready','render','reset','safe','set'];if(window.noticeable)console.warn('Noticeable SDK code snippet loaded more than once');else{const n=window.noticeable=window.noticeable||[];function t(e){return function(){const t=Array.prototype.slice.call(arguments);return t.unshift(e),n.push(t),n}}function o(){for(let o=0;o<e.length;o++){const c=e[o];n[c]=t(c)}}function c(){const e=document.createElement('script');e.async=!0,e.src='https://sdk.noticeable.io/l.js';const n=document.head;n.insertBefore(e,n.firstChild)}o(),c()}}();
+</script>
+<script>
+  noticeable.render('widget', 'KamVxkSRQTlkeLE8QcZ7');
+</script>
 
-        // JavaScript for FAQ Accordion
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const svg = button.querySelector('svg');
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                svg.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.add('hidden');
-                svg.style.transform = 'rotate(0deg)';
-            }
-        }
+    <!-- SDKs -->
+    <!-- <script>
+        // Noticeable SDK
+        !function(){'use strict';const e=['debug','destroy','do','help','identify','is','off','on','ready','render','reset','safe','set'];if(window.noticeable)console.warn('Noticeable SDK code snippet loaded more than once');else{const n=window.noticeable=window.noticeable||[];function t(e){return function(){const t=Array.prototype.slice.call(arguments);return t.unshift(e),n.push(t),n}}function o(){for(let o=0;o<e.length;o++){const c=e[o];n[c]=t(c)}}function c(){const e=document.createElement('script');e.async=!0,e.src='https://sdk.noticeable.io/l.js';const n=document.head;n.insertBefore(e,n.firstChild)}o(),c()}}();
+        noticeable.render('widget', 'KamVxkSRQTlkeLE8QcZ7', {selector: '#noticeable-widget'});
+        noticeable.render('widget', 'KamVxkSRQTlkeLE8QcZ7', {selector: '#noticeable-widget-mobile'});
 
-        // Gemini API Integration for Test Plan Generation
-        const generateButton = document.getElementById('generate-button');
-        const featureDescription = document.getElementById('feature-description');
-        const yamlOutput = document.getElementById('yaml-output');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const copyButton = document.getElementById('copy-button');
-        const validateButton = document.getElementById('validate-button');
-        const messageBox = document.getElementById('message-box');
-        const examplePromptButtons = document.querySelectorAll('.example-prompt-button');
-
-        // Add event listeners
-        generateButton.addEventListener('click', generateTestPlan);
-        copyButton.addEventListener('click', copyToClipboard);
-        validateButton.addEventListener('click', validateYAML);
-        examplePromptButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                featureDescription.value = button.textContent;
-            });
-        });
-
-        async function generateTestPlan() {
-            const userPrompt = featureDescription.value.trim();
-
-            if (!userPrompt) {
-                showMessage("Please enter a description for your feature.", "text-red-400 bg-red-900");
-                return;
-            }
-
-            // Show loading state
-            loadingIndicator.classList.remove('hidden');
-            generateButton.disabled = true;
-            yamlOutput.textContent = '';
-            copyButton.classList.add('hidden');
-            validateButton.classList.add('hidden');
-            messageBox.classList.add('hidden');
-
-            try {
-                // Exponential backoff for API calls
-                let retryCount = 0;
-                const maxRetries = 5;
-                let response;
-
-                while (retryCount < maxRetries) {
-                    try {
-                        const prompt = `Create a comprehensive YAML test plan for a software feature described by the following text. The YAML should be structured with nested key-value pairs representing test suites and units, with the final level being a bulleted list of individual test cases. The output must be a valid JSON object with a single key 'yamlContent', and its value should be the YAML string. Do not include any other text or formatting. The feature is: ${userPrompt}`;
-                        let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                        
-                        const payload = {
-                            contents: chatHistory,
-                            generationConfig: {
-                                responseMimeType: "application/json",
-                                responseSchema: {
-                                    type: "OBJECT",
-                                    properties: {
-                                        "yamlContent": { "type": "STRING" }
-                                    }
-                                }
-                            }
-                        };
-                        const apiKey = "AIzaSyB7skZBGf0SdPQwtctM2Qg_JOn4xAcQ984";
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                        
-                        response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (response.status === 429) {
-                            const delay = Math.pow(2, retryCount) * 1000;
-                            console.warn(`API rate limit exceeded. Retrying in ${delay}ms...`);
-                            await new Promise(res => setTimeout(res, delay));
-                            retryCount++;
-                            continue;
-                        }
-
-                        if (!response.ok) {
-                            throw new Error(`API request failed with status: ${response.status}`);
-                        }
-
-                        break; // Break the loop if successful
-
-                    } catch (error) {
-                        if (retryCount >= maxRetries - 1) {
-                            throw error; // Re-throw if max retries reached
-                        }
-                        const delay = Math.pow(2, retryCount) * 1000;
-                        console.warn(`Request failed: ${error.message}. Retrying in ${delay}ms...`);
-                        await new Promise(res => setTimeout(res, delay));
-                        retryCount++;
-                    }
-                }
-
-                if (!response) {
-                    throw new Error("Failed to get a response from the API after multiple retries.");
-                }
-
-                const result = await response.json();
-                console.log("Gemini API Response:", result); // Log the raw response
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                        const json = result.candidates[0].content.parts[0].text;
-                        const parsedJson = JSON.parse(json);
-                        const generatedYaml = parsedJson.yamlContent;
-                        yamlOutput.textContent = generatedYaml;
-                        copyButton.classList.remove('hidden');
-                        validateButton.classList.remove('hidden');
-                    } else {
-                        showMessage("Sorry, I couldn't generate a test plan. The API response was not in the expected format.", "text-red-400 bg-red-900");
-                        console.error("API response missing required parts:", result);
-                    }
-
-            } catch (error) {
-                console.error("Error generating test plan:", error);
-                showMessage("An error occurred while generating the test plan. Please check the console for details.", "text-red-400 bg-red-900");
-            } finally {
-                // Hide loading state
-                loadingIndicator.classList.add('hidden');
-                generateButton.disabled = false;
-            }
-        }
-        
-        function showMessage(message, classes) {
-            messageBox.textContent = message;
-            messageBox.className = `mt-2 p-2 rounded-lg text-sm text-center ${classes}`;
-            messageBox.classList.remove('hidden');
-        }
-
-        function copyToClipboard() {
-            const textToCopy = yamlOutput.textContent;
-            if (textToCopy) {
-                // Use document.execCommand('copy') as navigator.clipboard.writeText() may not work in iframes.
-                const tempTextArea = document.createElement('textarea');
-                tempTextArea.value = textToCopy;
-                document.body.appendChild(tempTextArea);
-                tempTextArea.select();
-                try {
-                    const success = document.execCommand('copy');
-                    if (success) {
-                        showMessage("Copied to clipboard!", "text-green-400 bg-green-900");
-                    } else {
-                        showMessage("Copy failed. Please copy manually.", "text-yellow-400 bg-yellow-900");
-                    }
-                } catch (err) {
-                    console.error('Copy to clipboard failed:', err);
-                    showMessage("Copy failed. Please copy manually.", "text-yellow-400 bg-yellow-900");
-                }
-                document.body.removeChild(tempTextArea);
-            }
-        }
-
-        function validateYAML() {
-            const yamlText = yamlOutput.textContent;
-            if (!yamlText) {
-                showMessage("There is no YAML to validate.", "text-yellow-400 bg-yellow-900");
-                return;
-            }
-
-            try {
-                // Use js-yaml to parse the string. It will throw an error if the YAML is invalid.
-                jsyaml.load(yamlText);
-                showMessage("YAML is valid! ✅", "text-green-400 bg-green-900");
-            } catch (error) {
-                console.error("YAML validation error:", error);
-                showMessage(`YAML validation failed: ${error.message}`, "text-red-400 bg-red-900");
-            }
-        }
-    </script>
-
+        // Featurebase SDK
+        !function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);
+        Featurebase("initialize_survey_widget", { organization: "testweaver", placement: "bottom-right", theme: "light", locale: "en" });
+        Featurebase("boot", { appId: "6891a1a7977bd343bfde517f", theme: "light", language: "en" });
+    </script> -->
 </body>
 </html>
