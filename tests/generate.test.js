@@ -311,4 +311,21 @@ describe('generate command', () => {
 
     expect(setLogLevel).toHaveBeenCalledWith('debug');
   });
+
+  it('should call processFile for a YAML file with special characters in its name', () => {
+    const cliPatterns = ['**/*.yaml'];
+    const files = ["file_with_apostrophe's.yaml"];
+    loadConfig.mockReturnValue({
+      cliConfig: {
+        effectivePatterns: cliPatterns,
+        effectiveIgnorePatterns: [],
+      },
+    });
+    glob.sync.mockReturnValue(files);
+
+    program.parse(['node', 'test', 'generate', ...cliPatterns]);
+
+    expect(processFile).toHaveBeenCalledTimes(1);
+    expect(processFile).toHaveBeenCalledWith(files[0], expect.any(Object));
+  });
 });

@@ -143,4 +143,16 @@ describe('Mixed Suite', () => {
     const expectedCode = `it.todo('Boolean Test: true');\n`;
     expect(generateTestCode(yamlContent, 'it')).toBe(expectedCode);
   });
+
+  // Test case for escaping special characters
+  test('should escape special characters in test descriptions', () => {
+    const yamlContent = {
+      'Suite with \'quotes\'': [
+        'Test with "double quotes"'
+      ],
+    }; 
+    const expectedCode = `describe('Suite with \'quotes\'', () => {\n  it.todo('Test with "double quotes"');\n});\n\n`;
+    const actualCode = generateTestCode(yamlContent, 'it');
+    expect(actualCode).toBe(expectedCode);
+  });
 });
